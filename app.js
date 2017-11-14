@@ -13,6 +13,7 @@ var gestor = require('./routes/gestor');
 var categoria = require('./routes/categoria');
 var aviso = require('./routes/aviso');
 var logro = require('./routes/logro');
+var mailroutes = require('./routes/mail');
 var app = express();
 
 app.use(logger('dev'));
@@ -26,6 +27,7 @@ app.use('/gestor', gestor);
 app.use('/categoria', categoria);
 app.use('/aviso', aviso);
 app.use('/logro', logro);
+app.use('/mail', mailroutes);
 
 mongoose.Promise = global.Promise;
 
