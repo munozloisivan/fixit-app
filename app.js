@@ -8,7 +8,11 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 
-
+var usuario = require('./routes/usuario');
+var gestor = require('./routes/gestor');
+var categoria = require('./routes/categoria');
+var aviso = require('./routes/aviso');
+var logro = require('./routes/logro');
 var app = express();
 
 app.use(logger('dev'));
@@ -17,7 +21,11 @@ app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(router);
-
+app.use('/usuario', usuario);
+app.use('/gestor', gestor);
+app.use('/categoria', categoria);
+app.use('/aviso', aviso);
+app.use('/logro', logro);
 
 mongoose.Promise = global.Promise;
 

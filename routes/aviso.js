@@ -1,25 +1,47 @@
 var express = require('express'),
     router = express.Router(),
-    mongoose = require('mongoose'),
-    avisoCtrl = require('../controllers/aviso');
+    mongoose = require('mongoose');
 
-/*GET*/
-//Obtener todos los avisos
-router.get('/all', avisoCtrl.findAllAvisos);
-//Obtener un aviso a partir de su id
-router.get('/:id', avisoCtrl.findAvisoById);
+var Aviso = require('../models/aviso');
 
-/*POST*/
-//Insertar un nuevo aviso
-router.post('/add', avisoCtrl.addAviso);
+/*GET ALL AVISOS*/
+router.get('/', function(req, res, next) {
+  Aviso.find().exec(function (err, avisos) {
+    if (err) return next(err);
+    res.json(avisos);
+  });
+});
 
-/*PUT*/
-//Modificar un aviso a partir de su id
-router.put('/:id/update', avisoCtrl.updateAviso);
+/* GET SINGLE AVISO BY ID */
+router.get('/:id', function(req, res, next) {
+  Aviso.findById(req.params.id).exec(function (err, aviso) {
+    if (err) return next(err);
+    res.json(aviso);
+  });
+});
 
-/*DELETE*/
-//Eliminar un aviso a partir de su id
-router.delete('/:id/delete', avisoCtrl.deleteAviso);
+/* SAVE AVISO */
+router.post('/add', function(req, res, next) {
+  Aviso.create(req.body, function (err, aviso) {
+    if (err) return next(err);
+    res.json(aviso);
+  });
+});
 
+/* DELETE CATEGORIA */
+router.delete('/:id', function(req, res, next) {
+  Aviso.findByIdAndRemove(req.params.id, req.body, function (err, aviso) {
+    if (err) return next(err);
+    res.json(aviso);
+  });
+});
+
+/* UPDATE CATEGORIA */
+router.put('/:id', function(req, res, next) {
+  Aviso.findByIdAndUpdate(req.params.id, req.body, function (err, aviso) {
+    if (err) return next(err);
+    res.json(aviso);
+  });
+});
 
 module.exports = router;
