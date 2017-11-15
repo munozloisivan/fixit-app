@@ -21,12 +21,25 @@ const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'adondequieresir', component: componenteDeDondeQuieresIr },];
 */
 
+/*const ROUTES = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent}
+];*/
+
 @NgModule({
   declarations: [
     AppComponent /*AÑADIR AQUI LOS COMPONENTES*/
   ],
-  imports: [BrowserModule],
-  providers: [UsuarioService, LogroService, GestorService, CategoriaService, AvisoService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  imports: [BrowserModule,
+    FormsModule,
+    HttpModule,
+    /*RouterModule.forRoot(ROUTES)*/],
+  providers: [UsuarioService,
+    LogroService,
+    GestorService,
+    CategoriaService,
+    AvisoService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
