@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AvisoComponent implements OnInit {
   aviso: any;
 
-  constructor(private avisoService: AvisoService) { }
+  constructor(private avisoService: AvisoService, private router: Router) { }
 
   ngOnInit() {
     this.getAvisoList();
