@@ -14,15 +14,13 @@ var usuarioSchema = new Schema({
     codigoPostal: { type: Number },
     puntos: { type: Number },
     participantes: { type: Number }, /*nº de personas que apoyan sus avisos*/
-    titulos: {
+    logros: {
         tituloActivo: { type: String },
-        coleccion: [ {type: String} ] /*se añade al vector una vez tiene el logro, lo veo mas sencillo,
+        coleccion: [ { type: mongoose.Schema.Types.ObjectId, ref:'Logro'} ] /*se añade al vector una vez tiene el logro, lo veo mas sencillo,
                                         no hace falta relacionarlo con la coleccion logro*/
     },
     avisos: { creados: [ {type: mongoose.Schema.Types.ObjectId, ref:'Aviso'}],
-              apoyados: [{ type: mongoose.Schema.Types.ObjectId, ref:'Aviso'}]}, /* creados[], apoyados[] */
-    logros: [{ type: mongoose.Schema.Types.ObjectId, ref:'Logro'}] /* vector con id de los logros */
-
+              apoyados: [{ type: mongoose.Schema.Types.ObjectId, ref:'Aviso'}]} /* creados[], apoyados[] */
 });
 
 
