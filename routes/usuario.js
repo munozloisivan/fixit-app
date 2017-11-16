@@ -4,6 +4,9 @@ var express = require('express'),
     Usuario = require('../models/usuario');
 
 var emailController = require('../controllers/mail');
+var bcrypt = require('bcrypt');
+
+var Aviso = require('../models/aviso');
 
 /*GET ALL USERS*/
 router.get('/', function(req, res, next) {
@@ -17,7 +20,7 @@ router.get('/', function(req, res, next) {
 /* GET SINGLE USER BY ID */
 router.get('/:id', function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados .populate('avisos','logros')
-  Usuario.findById(req.params.id).exec(function (err, usuario) {
+  Usuario.findById(req.params.id).populate('avisos.creados').populate('logros.coleccion').exec(function (err, usuario) {
     if (err) return next(err);
     res.json(usuario);
   });
@@ -45,6 +48,63 @@ router.put('/:id', function(req, res, next) {
     if (err) return next(err);
     res.json(user);
   });
+});
+
+/* AÑADIR AVISO A USUARIO */
+router.post('/:id/aviso/:idaviso', function (req, res, next) {
+  Usuario.update({_id:req.params.id},{ $push: { "avisos.creados" : req.params.idaviso }}, function (err, aviso) {
+    if (err) return next(err);
+    res.json(aviso);
+  });
+});
+
+/* AÑADIR LOGRO A USUARIO */
+router.post('/:id/logro/:idlogro', function (req, res, next) {
+  Usuario.update({_id:req.params.id},{ $push: { "logros.coleccion" : req.params.idlogro }}, function (err, aviso) {
+    if (err) return next(err);
+    res.json(aviso);
+  });
+});
+
+/* CREAR UN AVISO DESDE USUARIO */
+router.post('/:id/addaviso', function(req, res, next) {
+  var idAviso = req.body._id;
+  var idUsuario = req.params.id;
+
+/*  Aviso.create(req.body, function (err, aviso) {
+    if (err) return next(err);
+    res.json(aviso);
+
+    Aviso.update({_id: idAviso},{ $push: { "autor" : idUsuario }}, function (err, aviso) {
+      if (err) return next(err);
+      res.json(aviso);
+
+      Usuario.update({_id: idUsuario},{ $push: { "avisos.creados" : idAviso }}, function (err, aviso) {
+        if (err) return next(err);
+        res.json(aviso);
+      });
+    });
+  });
+  */
+
+});
+
+/* CHANGE PASSWORD */
+router.put('/:id/change', function (req, res, next) {
+  var pass_hashed;
+
+  bcrypt.hash(req.body.password, 10, function (err, hash) {
+    if(err){
+      return next(err);
+    }
+    user.password = hash;
+    next();
+    Usuario.findByIdAndUpdate(req.params.id, { $set: { "password": req.body.password} }, function (err, user) {
+      if (err) return next(err);
+      res.json(user)
+    });
+  });
+
 });
 
 /* AUTHENTICATE USUARIO*/
@@ -124,7 +184,7 @@ router.post('/resetpassword', function(req, res, next) {
       res.status(200).jsonp(user);
     });
 
-    emailController.sendPassEmail(req.body.email, 'A partir de ahora su contraseña es: '+user.password+'. \n Puede cambiarla en cualquier momento desde su perfil. \n Atentamente, \n El equipo de FIXIT')
+    emailController.sendPassEmail(req.body.email, 'A partir de ahora su contraseña es: '+user.password+'. \n Puede cambiarla en cualquier momento desde su perfil. \n Atentamente, \n El equipo de FIXIT');
 
   });
 });
