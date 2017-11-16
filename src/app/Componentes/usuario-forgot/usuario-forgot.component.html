@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-forgot">
+        <form (ngSubmit)="ForgotPassword()" #bookForm="ngForm">
+          <h1>Introduce tu correo electrónico</h1>
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="correo electrónico" value="" required>
+          </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              <button type="submit" class="form-control btn btn-login" name="forgot-submit" id="forgot-submit" tabindex="4">Reestablecer contraseña</button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -123,14 +123,16 @@ router.post('/auth', function(req, res, next) {
 });
 
 /* RESET PASSWORD */
-router.post('/resetpassword', function(req, res, next) {
+router.post('/resetpassword', function(req, res) {
+
+  console.log('Entra en routes/usuario/resetpassword');
 
   Usuario.findOne({ email: req.body.email }).exec(function (err, user) {
     if(err){
-      return next(err)
+      console.log(err)
     } else if (!user){
       var err = new Error('User not found.');
-      return next(err);
+      console.log(err);
     }
 
     var generatePassword = require("password-generator");
@@ -179,13 +181,14 @@ router.post('/resetpassword', function(req, res, next) {
     user.telefono = user.telefono,
     user.codigoPostal = user.codigoPostal;
 
+
     console.log("nombre: "+user.nombre+" passTosave: "+ user.password );
 
     user.save(function (err, user) {
       //de aqui pasa a /models/usuario antes de hacer el save para cifrar la contraseña
       if(err)
-        return next(err);
-      res.status(200).jsonp(user);
+        console.log(err);
+      //res.status(200).jsonp(user);
     });
 
     emailController.sendPassEmail(req.body.email, 'A partir de ahora su contraseña es: '+user.password+'. \n Puede cambiarla en cualquier momento desde su perfil. \n Atentamente, \n El equipo de FIXIT');

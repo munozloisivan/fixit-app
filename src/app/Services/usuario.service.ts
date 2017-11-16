@@ -66,11 +66,23 @@ export class UsuarioService {
     });
   }
 
-  authenticateUsuario(data) {
+  authenticateUsuario(email) {
     return new Promise((resolve, reject) => {
-      this.http.post('/usuario/auth', data)
+      this.http.post('/usuario/auth', email)
         .subscribe(res => {
           resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  reestablecerPassword(email) {
+    return new Promise((resolve, reject) => {
+      console.log(email);
+      this.http.post('usuario/resetpassword', email)
+        .subscribe(res => {
+          resolve(res.toString());
         }, (err) => {
           reject(err);
         });

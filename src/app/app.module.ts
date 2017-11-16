@@ -24,6 +24,7 @@ import { UsuarioLoginComponent } from './Componentes/usuario-login/usuario-login
 import { GestorLoginComponent } from './Componentes/gestor-login/gestor-login.component';
 import { HowtoComponent } from './Layouts/howto/howto.component';
 import { UsuarioRegistroComponent } from './Componentes/usuario-registro/usuario-registro.component';
+import { UsuarioForgotComponent } from './Componentes/usuario-forgot/usuario-forgot.component';
 import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import { NavbarDashboardComponent } from './Tools/navbar-dashboard/navbar-dashboard.component';
 
@@ -39,7 +40,8 @@ const ROUTES = [
   { path: 'usuarios', component: UsuarioComponent},
   { path: 'avisos', component: AvisoComponent},
   { path: 'login', component: UsuarioLoginComponent},
-  { path: 'registro', component: UsuarioRegistroComponent}
+  { path: 'registro', component: UsuarioRegistroComponent},
+  { path: 'forgot', component: UsuarioForgotComponent}
 ];
 
 @NgModule({
@@ -54,6 +56,7 @@ const ROUTES = [
     GestorLoginComponent,
     HowtoComponent,
     UsuarioRegistroComponent,
+    UsuarioForgotComponent,
     DashboardComponent,
     NavbarDashboardComponent
   ],
