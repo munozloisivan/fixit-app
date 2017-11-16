@@ -67,26 +67,28 @@ router.post('/:id/logro/:idlogro', function (req, res, next) {
 });
 
 /* CREAR UN AVISO DESDE USUARIO */
-router.post('/:id/addaviso', function(req, res, next) {
-  var idAviso = req.body._id;
+router.post('/:id/addaviso', function(req, res) {
+/*  var idAviso;
   var idUsuario = req.params.id;
 
-/*  Aviso.create(req.body, function (err, aviso) {
-    if (err) return next(err);
+  console.log('ID USUARIO: ' + req.params.id);
+  console.log('ID AVISO: ' + req.body._id);
+
+  Aviso.create(req.body, function (err, aviso) {
+    if (err) console.log(err);
     res.json(aviso);
+  });
 
-    Aviso.update({_id: idAviso},{ $push: { "autor" : idUsuario }}, function (err, aviso) {
-      if (err) return next(err);
+  Aviso.update({_id: idAviso},{ $push: { "autor" : idUsuario }}, function (err, aviso) {
+      if (err) console.log(err);
       res.json(aviso);
+  });
 
-      Usuario.update({_id: idUsuario},{ $push: { "avisos.creados" : idAviso }}, function (err, aviso) {
-        if (err) return next(err);
-        res.json(aviso);
-      });
-    });
+  Usuario.update({_id: idUsuario},{ $push: { "avisos.creados" : idAviso }}, function (err, usuario) {
+        if (err) console.log(err);
+        res.json(usuario);
   });
   */
-
 });
 
 /* CHANGE PASSWORD */
