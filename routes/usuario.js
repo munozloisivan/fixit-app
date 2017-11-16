@@ -127,14 +127,6 @@ router.post('/resetpassword', function(req, res) {
 
   console.log('Entra en routes/usuario/resetpassword');
 
-  Usuario.findOne({ email: req.body.email }).exec(function (err, user) {
-    if(err){
-      console.log(err)
-    } else if (!user){
-      var err = new Error('User not found.');
-      console.log(err);
-    }
-
     var generatePassword = require("password-generator");
 
     var maxLength = 18;
@@ -172,26 +164,34 @@ router.post('/resetpassword', function(req, res) {
       return passwordToChange;
     }
 
-    //rellenamos los campos para actualizar (los demas los dejamos igual)
-    user.nombre = user.nombre,
-    user.apellido = user.apellido,
-    user.alias = user.alias,
-    user.email = user.email,
-    user.password = customPassword(); //contraseña para autenticar (sin cifrar)
-    user.telefono = user.telefono,
-    user.codigoPostal = user.codigoPostal;
+  var passToSet = customPassword();
+
+  Usuario.findAndModify({
+    query: { email: req.body.email },
+    sort: { rating: 1 },
+    update: { $set: { password: passToSet } },
+    upsert: true
+  }).exec(function (err, user) {
+    if(err){
+      console.log(err)
+    } else if (!user){
+      var err = new Error('User not found.');
+      console.log(err);
+    }
 
 
-    console.log("nombre: "+user.nombre+" passTosave: "+ user.password );
 
-    user.save(function (err, user) {
+
+   /* user.save(function (err, user) {
       //de aqui pasa a /models/usuario antes de hacer el save para cifrar la contraseña
       if(err)
         console.log(err);
       //res.status(200).jsonp(user);
     });
 
-    emailController.sendPassEmail(req.body.email, 'A partir de ahora su contraseña es: '+user.password+'. \n Puede cambiarla en cualquier momento desde su perfil. \n Atentamente, \n El equipo de FIXIT');
+    */
+
+    emailController.sendPassEmail(req.body.email, 'A partir de ahora su contraseña es: '+passToSet+'. \n Puede cambiarla en cualquier momento desde su perfil. \n Atentamente, \n El equipo de FIXIT');
 
   });
 });

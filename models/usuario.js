@@ -57,5 +57,16 @@ usuarioSchema.pre('save', function (next) {
     });
 });
 
+usuarioSchema.pre('findAndModify', function (next) {
+  var user = this;
+  bcrypt.hash(user.password, 10, function (err, hash) {
+    if(err){
+      return next(err);
+    }
+    user.password = hash;
+    next();
+  });
+});
+
 var User = mongoose.model('Usuario', usuarioSchema);
 module.exports = mongoose.model('Usuario', usuarioSchema);

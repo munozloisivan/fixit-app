@@ -41,7 +41,8 @@ const ROUTES = [
   { path: 'avisos', component: AvisoComponent},
   { path: 'login', component: UsuarioLoginComponent},
   { path: 'registro', component: UsuarioRegistroComponent},
-  { path: 'forgot', component: UsuarioForgotComponent}
+  { path: 'forgot', component: UsuarioForgotComponent},
+  { path: 'login/administracion', component: GestorLoginComponent}
 ];
 
 @NgModule({

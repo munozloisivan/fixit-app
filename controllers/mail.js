@@ -40,7 +40,7 @@ exports.sendPassEmail = function(to, text){
 // Definimos el transporter
   var transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    secureConnection: true,
+    secureConnection: false,
     port: 465,
     auth: {
       user: 'eetakemongocbl@gmail.com',

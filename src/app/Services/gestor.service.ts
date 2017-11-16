@@ -66,4 +66,15 @@ export class GestorService {
         });
     });
   }
+
+  authenticateGestor(email) {
+    return new Promise((resolve, reject) => {
+      this.http.post('/gestor/auth', email)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 }

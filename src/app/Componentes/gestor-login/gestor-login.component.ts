@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { GestorService} from '../../Services/gestor.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-gestor-login',
@@ -8,9 +10,22 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class GestorLoginComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor( private router: Router, private gestorService: GestorService) { }
 
   ngOnInit() {
+  }
+
+  LoginGestor() {
+    this.gestorService.authenticateGestor({'email': this.email, 'password': this.password}).then((res) => {
+      // this.usuario = res;
+      alert('Autenticado Correctamente');
+      this.router.navigate(['/dashboard']);
+    }, (err) => {
+      console.log(err);
+    });
   }
 
 }
