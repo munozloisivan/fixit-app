@@ -3,7 +3,15 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class UsuarioService {
+export class UsuarioSe
+
+getAllUsuario()
+:
+any
+{
+  throw new Error("Method not implemented.");
+}
+rvice {
 
   constructor(private http: Http) { }
 

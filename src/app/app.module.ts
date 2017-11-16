@@ -15,6 +15,9 @@ import { CategoriaService } from './Services/categoria.service';
 import { AvisoService } from './Services/aviso.service';
 
 import { AppComponent } from './app.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { AvisoComponent } from './aviso/aviso.component';
+import { GestorComponent } from './gestor/gestor.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,7 +31,10 @@ const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
 
 @NgModule({
   declarations: [
-    AppComponent /*AÑADIR AQUI LOS COMPONENTES*/
+    AppComponen,
+    UsuarioComponent,
+    AvisoComponent,
+    GestorComponentt /*AÑADIR AQUI LOS COMPONENTES*/
   ],
   imports: [BrowserModule,
     FormsModule,
