@@ -53,7 +53,12 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  console.log(err.message);
+  console.log("ERROR -->" + err.message);
+  console.log('PROMISE -->' + err.promise);
+  console.log('TASK -->' + err.task);
+  console.log('source url -->' +err.sourceUrl);
+  console.log('type -->' + err.type);
+  console.log('rejection' + err.rejection);
   res.render('error');
 });
 

@@ -24,7 +24,7 @@ export class UsuarioService {
       this.http.get('/usuario/' + id)
         .map(res => res.json())
         .subscribe(res => {
-          resolve(res)
+          resolve(res);
         }, (err) => {
           reject(err);
         });
@@ -69,7 +69,6 @@ export class UsuarioService {
   authenticateUsuario(data) {
     return new Promise((resolve, reject) => {
       this.http.post('/usuario/auth', data)
-        .map(res => res.json())
         .subscribe(res => {
           resolve(res);
         }, (err) => {

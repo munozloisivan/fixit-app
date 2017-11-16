@@ -116,6 +116,7 @@ router.post('/auth', function(req, res, next) {
     if(err || !usuario){
       return next(err);
     } else {
+      console.log('Autenticado correctamente');
       return res.send('Autenticado correctamente');
     }
   });

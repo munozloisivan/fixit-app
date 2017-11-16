@@ -25,21 +25,21 @@ var usuarioSchema = new Schema({
 
 
 //Authenticate against database
-usuarioSchema.statics.authenticate = function (email, password, callback) {
+usuarioSchema.statics.authenticate = function (email, password, next) {
     User.findOne({ email: email }).exec(function (err, user) {
         if(err){
-            return callback(err)
+            return next(err)
         } else if (!user){
             var err = new Error('User not found.');
             err.status = 401;
-            return callback(err.message);
+            return next(err.message);
         }
         bcrypt.compare(password, user.password, function (err, result) {
             if(result == true){
                 console.log('La password es correcta');
-                return callback(null, user);
+                return next(null, user);
             } else {
-                return callback();
+                return next(err);
             }
         })
     });

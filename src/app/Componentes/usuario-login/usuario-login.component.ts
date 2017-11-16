@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UsuarioService } from '../../Services/usuario.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-usuario-login',
@@ -9,17 +10,19 @@ import { UsuarioService } from '../../Services/usuario.service';
 })
 export class UsuarioLoginComponent implements OnInit {
 
-  usuario: {};
+  email: string;
+  password: string;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  authenticateUsuario() {
-    this.usuarioService.authenticateUsuario(this.usuario).then((res) => {
-      this.usuario = res;
-      console.log(this.usuario);
+  Login() {
+    this.usuarioService.authenticateUsuario({'email': this.email, 'password': this.password}).then((res) => {
+      // this.usuario = res;
+      alert('Autenticado Correctamente');
+      this.router.navigate(['/home']);
     }, (err) => {
       console.log(err);
     });
