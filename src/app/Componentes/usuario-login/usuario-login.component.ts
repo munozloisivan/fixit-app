@@ -22,7 +22,7 @@ export class UsuarioLoginComponent implements OnInit {
     this.usuarioService.authenticateUsuario({'email': this.email, 'password': this.password}).then((res) => {
       // this.usuario = res;
       alert('Autenticado Correctamente');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
     }, (err) => {
       console.log(err);
     });

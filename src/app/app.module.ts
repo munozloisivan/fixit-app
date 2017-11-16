@@ -24,6 +24,8 @@ import { UsuarioLoginComponent } from './Componentes/usuario-login/usuario-login
 import { GestorLoginComponent } from './Componentes/gestor-login/gestor-login.component';
 import { HowtoComponent } from './Layouts/howto/howto.component';
 import { UsuarioRegistroComponent } from './Componentes/usuario-registro/usuario-registro.component';
+import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
+import { NavbarDashboardComponent } from './Tools/navbar-dashboard/navbar-dashboard.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -51,7 +53,9 @@ const ROUTES = [
     UsuarioLoginComponent,
     GestorLoginComponent,
     HowtoComponent,
-    UsuarioRegistroComponent
+    UsuarioRegistroComponent,
+    DashboardComponent,
+    NavbarDashboardComponent
   ],
   imports: [BrowserModule,
     FormsModule,
