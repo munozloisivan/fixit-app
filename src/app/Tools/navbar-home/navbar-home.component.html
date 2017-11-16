@@ -10,11 +10,11 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">¿Cómo funciona?</a></li>
+        <li><a [routerLink]="['/howto']">¿Cómo funciona?</a></li>
         <li><a href="#">Descargas</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <button class="btn btn-primary navbar-btn" style="margin-right: 20px; margin-left: 20px;">Acceso</button>
+        <button class="btn btn-primary navbar-btn" [routerLink]="['/login']" style="margin-right: 20px; margin-left: 20px;">Acceso</button>
       </ul>
     </div>
   </div>
