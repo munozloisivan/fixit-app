@@ -1,3 +1,20 @@
-<p>
-  gestor works!
-</p>
+<div class="container">
+  <h1>Lista de gestores  </h1>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let e of usuarios">
+      <td>{{ e.nombre }}</td>
+      <td>{{ e.apellido }}</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
