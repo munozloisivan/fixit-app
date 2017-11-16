@@ -18,12 +18,20 @@ var logro = require('./routes/logro');
 var mailroutes = require('./routes/mail');
 var app = express();
 
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://localhost/fixitest', function(err, res) {
+  if(err) throw err;
+  console.log('Connected to Database');
+});
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(router);
+
 app.use('/usuario', usuario);
 app.use('/gestor', gestor);
 app.use('/categoria', categoria);
@@ -31,13 +39,6 @@ app.use('/aviso', aviso);
 app.use('/logro', logro);
 app.use('/mail', mailroutes);
 
-mongoose.Promise = global.Promise;
-
-
-mongoose.connect('mongodb://localhost/fixitest', function(err, res) {
-  if(err) throw err;
-  console.log('Connected to Database');
-});
 
 app.listen(3000, function() {
   console.log("Server running on http://localhost:3000");

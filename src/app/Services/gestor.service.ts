@@ -3,7 +3,15 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class GestorService {
+export class GestorServi
+
+getAllAviso()
+:
+any
+{
+  throw new Error("Method not implemented.");
+}
+ce {
 
   constructor(private http: Http) { }
 

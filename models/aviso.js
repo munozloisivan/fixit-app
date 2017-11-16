@@ -14,5 +14,5 @@ var avisoSchema = new Schema({
     autor : { type: mongoose.Schema.Types.ObjectId, ref:'Usuario' }, /* _id del autor*/
     apoyos : { type: Number }
 });
-
+// export
 module.exports = mongoose.model('Aviso', avisoSchema);
