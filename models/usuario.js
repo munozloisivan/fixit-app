@@ -10,8 +10,8 @@ var usuarioSchema = new Schema({
     dni: { type: String, unique: true, required: true },
     email: { type: String, unique: true, required: true, trim: true },
     password: { type: String , required: true},
-    telefono: { type: Number, unique: true },
-    codigoPostal: { type: Number },
+    telefono: { type: String, unique: true },
+    codigoPostal: { type: String },
     puntos: { type: Number },
     participantes: { type: Number }, /*nº de personas que apoyan sus avisos*/
     logros: {

@@ -33,7 +33,7 @@ export class UsuarioService {
 
   saveUsuario(data) {
     return new Promise((resolve, reject) => {
-      this.http.post('/usuario', data)
+      this.http.post('/usuario/add', data)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);

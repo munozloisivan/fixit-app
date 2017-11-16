@@ -23,6 +23,7 @@ import { NavbarHomeComponent } from './Tools/navbar-home/navbar-home.component';
 import { UsuarioLoginComponent } from './Componentes/usuario-login/usuario-login.component';
 import { GestorLoginComponent } from './Componentes/gestor-login/gestor-login.component';
 import { HowtoComponent } from './Layouts/howto/howto.component';
+import { UsuarioRegistroComponent } from './Componentes/usuario-registro/usuario-registro.component';
 import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import { NavbarDashboardComponent } from './Tools/navbar-dashboard/navbar-dashboard.component';
 
@@ -34,10 +35,11 @@ const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
 const ROUTES = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
-  { path: 'howto', component: HowtoComponent},
-  { path: 'dashboard', component: DashboardComponent},
+  {path: 'howto', component: HowtoComponent},
   { path: 'usuarios', component: UsuarioComponent},
-  { path: 'login', component: UsuarioLoginComponent}
+  { path: 'avisos', component: AvisoComponent},
+  { path: 'login', component: UsuarioLoginComponent},
+  { path: 'registro', component: UsuarioRegistroComponent}
 ];
 
 @NgModule({
@@ -51,6 +53,7 @@ const ROUTES = [
     UsuarioLoginComponent,
     GestorLoginComponent,
     HowtoComponent,
+    UsuarioRegistroComponent,
     DashboardComponent,
     NavbarDashboardComponent
   ],
