@@ -31,10 +31,10 @@ const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
 
 @NgModule({
   declarations: [
-    AppComponen,
+    AppComponent,
     UsuarioComponent,
     AvisoComponent,
-    GestorComponentt /*AÑADIR AQUI LOS COMPONENTES*/
+    GestorComponent /*AÑADIR AQUI LOS COMPONENTES*/
   ],
   imports: [BrowserModule,
     FormsModule,

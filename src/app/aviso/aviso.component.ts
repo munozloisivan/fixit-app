@@ -15,7 +15,7 @@ export class AvisoComponent implements OnInit {
     this.getAvisoList();
   }
   getAvisoList() {
-    this.avisoService.getAllAviso().then((res) => {
+    this.avisoService.getAllAvisos().then((res) => {
       this.aviso = res;
     }, (err) => {
       console.log(err);

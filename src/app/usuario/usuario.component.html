@@ -1,3 +1,10 @@
-<p>
-  usuario works!
-</p>
+<div class="container">
+  <table class="table">
+    <tbody>
+    <tr *ngFor="let u of usuarios">
+      <td>{{ u.nombre }}</td>
+      <td>{{ u.apellido }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

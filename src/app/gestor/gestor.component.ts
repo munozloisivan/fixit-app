@@ -15,7 +15,7 @@ export class GestorComponent implements OnInit {
     this.getGestorList();
   }
   getGestorList() {
-    this.gestorService.getAllGestor().then((res) => {
+    this.gestorService.getAllGestores().then((res) => {
       this.gestor = res;
     }, (err) => {
       console.log(err);

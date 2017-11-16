@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UsuarioService} from "../Services/usuario.service";
+import { UsuarioService } from "../Services/usuario.service";
 
 @Component({
   selector: 'app-usuario',
@@ -7,8 +7,8 @@ import {UsuarioService} from "../Services/usuario.service";
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
-  usuario: any;
 
+  usuarios: any;
 
   constructor(private usuarioService: UsuarioService) { }
 
@@ -16,8 +16,8 @@ export class UsuarioComponent implements OnInit {
     this.getUsuarioList();
   }
   getUsuarioList() {
-    this.usuarioService.getAllUsuario().then((res) => {
-      this.usuario = res;
+    this.usuarioService.getAllUsuarios().then((res) => {
+      this.usuarios = res;
     }, (err) => {
       console.log(err);
     });
