@@ -31,10 +31,10 @@ app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(router);
 
+app.use('/aviso', aviso);
 app.use('/usuario', usuario);
 app.use('/gestor', gestor);
 app.use('/categoria', categoria);
-app.use('/aviso', aviso);
 app.use('/logro', logro);
 app.use('/mail', mailroutes);
 
@@ -53,6 +53,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  console.log(err.message);
   res.render('error');
 });
 

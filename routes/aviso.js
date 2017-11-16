@@ -21,10 +21,10 @@ router.get('/:id', function(req, res, next) {
 });
 
 /* SAVE AVISO */
-router.post('/add', function(req, res, next) {
+router.post('/add', function(req, res) {
   Aviso.create(req.body, function (err, aviso) {
-    if (err) return next(err);
-    res.json(aviso);
+      if (err) return next(err);
+      res.json(aviso);
   });
 });
 
