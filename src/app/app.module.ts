@@ -15,31 +15,33 @@ import { CategoriaService } from './Services/categoria.service';
 import { AvisoService } from './Services/aviso.service';
 
 import { AppComponent } from './app.component';
-import { UsuarioComponent } from './usuario/usuario.component';
-import { AvisoComponent } from './aviso/aviso.component';
-import { GestorComponent } from './gestor/gestor.component';
+import { UsuarioComponent } from './Componentes/usuario/usuario.component';
+import { AvisoComponent } from './Componentes/aviso/aviso.component';
+import { GestorComponent } from './Componentes/gestor/gestor.component';
+import { HomeComponent } from './home/home.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'adondequieresir', component: componenteDeDondeQuieresIr },];
 */
 
-/*const ROUTES = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent}
-];*/
+const ROUTES = [
+  { path: '', redirectTo: 'usuarios', pathMatch: 'full' },
+  { path: 'usuarios', component: UsuarioComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioComponent,
     AvisoComponent,
-    GestorComponent /*AÑADIR AQUI LOS COMPONENTES*/
+    GestorComponen,
+    HomeComponentt /*AÑADIR AQUI LOS COMPONENTES*/
   ],
   imports: [BrowserModule,
     FormsModule,
     HttpModule,
-    /*RouterModule.forRoot(ROUTES)*/],
+    RouterModule.forRoot(ROUTES)],
   providers: [UsuarioService,
     LogroService,
     GestorService,

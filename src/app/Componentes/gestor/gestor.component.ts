@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GestorService} from "../Services/gestor.service";
+import {GestorService} from "../../Services/gestor.service";
 
 @Component({
   selector: 'app-gestor',

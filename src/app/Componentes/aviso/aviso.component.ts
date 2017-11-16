@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AvisoService } from '../Services/aviso.service';
+import { AvisoService } from '../../Services/aviso.service';
 
 @Component({
   selector: 'app-aviso',
