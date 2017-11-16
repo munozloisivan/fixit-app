@@ -18,7 +18,8 @@ import { AppComponent } from './app.component';
 import { UsuarioComponent } from './Componentes/usuario/usuario.component';
 import { AvisoComponent } from './Componentes/aviso/aviso.component';
 import { GestorComponent } from './Componentes/gestor/gestor.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './Layouts/home/home.component';
+import { NavbarHomeComponent } from './Tools/navbar-home/navbar-home.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,8 +27,8 @@ const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
 */
 
 const ROUTES = [
-  { path: '', redirectTo: 'usuarios', pathMatch: 'full' },
-  { path: 'usuarios', component: UsuarioComponent}
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent}
 ];
 
 @NgModule({
@@ -35,8 +36,9 @@ const ROUTES = [
     AppComponent,
     UsuarioComponent,
     AvisoComponent,
-    GestorComponen,
-    HomeComponentt /*AÑADIR AQUI LOS COMPONENTES*/
+    GestorComponent,
+    HomeComponent,
+    NavbarHomeComponent /*AÑADIR AQUI LOS COMPONENTES*/
   ],
   imports: [BrowserModule,
     FormsModule,
