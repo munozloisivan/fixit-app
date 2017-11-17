@@ -11,14 +11,6 @@ import {Router} from '@angular/router';
 export class UsuarioRegistroComponent implements OnInit {
 
   usuario = {
-    nombre: { type: String},
-    apellidos: { type: String },
-    alias: { type: String},
-    dni: { type: String},
-    email: { type: String},
-    password: { type: String},
-    telefono: { type: String},
-    codigoPostal: { type: String }
   };
 
   constructor(private usuarioService: UsuarioService, private router: Router) { }

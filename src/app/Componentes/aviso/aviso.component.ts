@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./aviso.component.css']
 })
 export class AvisoComponent implements OnInit {
+
   aviso: any;
 
   constructor(private avisoService: AvisoService, private router: Router) { }
@@ -15,6 +16,7 @@ export class AvisoComponent implements OnInit {
   ngOnInit() {
     this.getAvisoList();
   }
+
   getAvisoList() {
     this.avisoService.getAllAvisos().then((res) => {
       this.aviso = res;
@@ -22,6 +24,7 @@ export class AvisoComponent implements OnInit {
       console.log(err);
     });
   }
+
   deleteAviso(id) {
     this.avisoService.deleteAviso(id).then((result) => {
         this.router.navigate(['avisos']);
@@ -29,6 +32,7 @@ export class AvisoComponent implements OnInit {
       console.log(err);
     });
   }
+
   updateAviso(id) {
     this.avisoService.updateAviso(id, this.aviso).then((result) => {
       let id = result['_id'];
