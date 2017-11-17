@@ -66,4 +66,16 @@ export class AvisoService {
         });
     });
   }
+
+  getAvisosByCategoria(categoria) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/aviso/filter/categoria/' + categoria)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 }
