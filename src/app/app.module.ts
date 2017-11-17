@@ -27,6 +27,7 @@ import { UsuarioRegistroComponent } from './Componentes/usuario-registro/usuario
 import { UsuarioForgotComponent } from './Componentes/usuario-forgot/usuario-forgot.component';
 import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import { NavbarDashboardComponent } from './Tools/navbar-dashboard/navbar-dashboard.component';
+import { AvisoGestionComponent } from './Componentes/aviso-gestion/aviso-gestion.component';
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/aviso-details/aviso-details.component';
 import { DashboardAdminComponent } from './Layouts/dashboard-admin/dashboard-admin.component';
@@ -70,7 +71,8 @@ const ROUTES = [
     AvisoEditComponent,
     AvisoDetailsComponent,
     DashboardAdminComponent,
-    AvisoAdminComponent
+    AvisoAdminComponent,
+    AvisoGestionComponent
   ],
   imports: [BrowserModule,
     FormsModule,

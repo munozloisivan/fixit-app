@@ -44,4 +44,11 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
+/*GET AVISOS BY categoria */
+router.get('/filter/categoria/:categoria', function (req, res, next) {
+  Aviso.find({"categoria": req.params.categoria }).populate('autor').populate('categoria').exec(function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 module.exports = router;

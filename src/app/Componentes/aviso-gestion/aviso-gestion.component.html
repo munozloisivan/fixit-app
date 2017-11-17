@@ -1,0 +1,26 @@
+<table class="table table-striped table-responsive">
+  <thead>
+  <tr>
+    <th>Ciudad</th>
+    <th>Calle</th>
+    <th>Descripción</th>
+    <th>Fecha</th>
+    <th>Seguimiento</th>
+    <th>Categoria</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let a of aviso">
+    <td>{{ a.datosUbicacion.ciudad }}</td>
+    <td>{{ a.datosUbicacion.calle }}</td>
+    <td>{{ a.descripcion }}</td>
+    <td>{{ a.fecha }}</td>
+    <td>{{ a.seguimiento}}</td>
+    <td>{{a.categoria}}</td>
+  </tr>
+  </tbody>
+</table>
+<tr>
+  <td><a class="btn btn-info btn-sm" (click)="getAvisosByCategoria(categoria_filtrado)">Filtrar categoria</a></td>
+  <td><input placeholder="Categoria" type="text" class="form-control" [(ngModel)]="categoria_filtrado" name="categoria" id="categoria" required></td>
+</tr>
