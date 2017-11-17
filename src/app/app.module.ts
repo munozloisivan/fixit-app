@@ -29,6 +29,8 @@ import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import { NavbarDashboardComponent } from './Tools/navbar-dashboard/navbar-dashboard.component';
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/aviso-details/aviso-details.component';
+import { DashboardAdminComponent } from './Layouts/dashboard-admin/dashboard-admin.component';
+import { AvisoAdminComponent } from './Componentes/aviso-admin/aviso-admin.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -40,6 +42,7 @@ const ROUTES = [
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
   { path: 'dashboard', component: DashboardComponent},
+  { path: 'admin/dashboard', component: DashboardAdminComponent},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent},
   { path: 'aviso-edit/:id', component: AvisoEditComponent},
   { path: 'usuarios', component: UsuarioComponent},
@@ -65,7 +68,9 @@ const ROUTES = [
     DashboardComponent,
     NavbarDashboardComponent,
     AvisoEditComponent,
-    AvisoDetailsComponent
+    AvisoDetailsComponent,
+    DashboardAdminComponent,
+    AvisoAdminComponent
   ],
   imports: [BrowserModule,
     FormsModule,
