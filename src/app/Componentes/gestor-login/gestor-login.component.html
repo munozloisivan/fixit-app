@@ -19,6 +19,8 @@
   });
 </script>
 
+<app-navbar-home></app-navbar-home>
+
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -26,10 +28,10 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-6">
-              <a href="/#/login/administracion" class="active" id="gestor-login-form-link">Login</a>
+              <a href="/#/login/administracion" class="active" id="gestor-login-form-link">Acceso de administradores</a>
             </div>
             <div class="col-xs-6">
-              <a href="/#/registro/administracion" id="gestor-register-form-link">Register</a>
+              <a href="/#/registro/administracion" id="gestor-register-form-link">Registro</a>
             </div>
           </div>
           <hr>
@@ -43,17 +45,17 @@
                   <input type="text" class="form-control" placeholder="Email" [(ngModel)]="email" name="email" required>
                 </div>
                 <div class="form-group">
-                  <label>Introduce tu password:</label>
+                  <label>Introduce tu contraseña:</label>
                   <input type="text" class="form-control" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
                 </div>
                 <div class="form-group text-center">
                   <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                  <label for="remember">Remember Me</label>
+                  <label for="remember">Recuérdame</label>
                 </div>
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
-                      <button type="submit" class="form-control btn btn-login" name="gestor-login-submit" id="gestor-login-submit" tabindex="4">Login</button>
+                      <button type="submit" class="form-control btn btn-login" name="gestor-login-submit" id="gestor-login-submit" tabindex="4">Entrar</button>
                     </div>
                   </div>
                 </div>
@@ -61,7 +63,7 @@
                   <div class="row">
                     <div class="col-lg-12">
                       <div class="text-center">
-                        <a href="/#/forgot" tabindex="5" class="forgot-password">Forgot Password?</a>
+                        <a href="/#/forgot" tabindex="5" class="forgot-password">Recordar contraseña</a>
                       </div>
                     </div>
                   </div>
