@@ -7,12 +7,20 @@ services:
   ports:
    - "27017:27017"
 
- api:
-  build: .
+server:
+  build: ../fixit-app/
   command: node app.js
-  volumes:
-   - .:/crud
   ports:
    - "3000:3000"
   links:
    - mongo
+
+    client:
+     build: ../fixit-app/
+     command: npm start
+     ports:
+      - "4200:4200"
+     links:
+      - server
+
+
