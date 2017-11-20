@@ -5,7 +5,9 @@ FROM node:alpine
 RUN mkdir /Client
 WORKDIR /Client
 # Install app dependencies
-#COPY package.json .
+COPY package.json /Client
+
+RUN cd /Client
 # For npm@5 or later, copy package-lock.json as well
 # COPY package.json package-lock.json ./
 RUN npm install -g @angular/cli
@@ -14,7 +16,7 @@ RUN npm install
 # RUN npm install --only=production
 
 # Bundle app source
-#COPY . .
+COPY . /Client
 
 EXPOSE 8080
 #CMD [ "npm", "start" ]
