@@ -59,6 +59,11 @@ router.post('/auth', function(req, res, next) {
   });
 });
 
+/*SEND REGISTER DATA */
+router.post('/registermail', function (req, res) {
+  emailController.sendEmail(req, res);
+});
+
 /* RESET PASSWORD */
 router.post('/resetpassword', function(req, res, next) {
 
