@@ -31,6 +31,7 @@ import { GestorRegistroComponent } from './Componentes/gestor-registro/gestor-re
 import { AvisoGestionComponent } from './Componentes/aviso-gestion/aviso-gestion.component';
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/aviso-details/aviso-details.component';
+import { CategoriaComponent } from './Componentes/categoria/categoria.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -50,7 +51,8 @@ const ROUTES = [
   { path: 'registro', component: UsuarioRegistroComponent},
   { path: 'forgot', component: UsuarioForgotComponent},
   { path: 'login/administracion', component: GestorLoginComponent},
-  { path: 'registro/administracion', component: GestorRegistroComponent}
+  { path: 'registro/administracion', component: GestorRegistroComponent},
+  { path: 'categorias', component: CategoriaComponent}
 ];
 
 @NgModule({
@@ -71,7 +73,8 @@ const ROUTES = [
     AvisoEditComponent,
     AvisoDetailsComponent,
     AvisoGestionComponent,
-    GestorRegistroComponent
+    GestorRegistroComponent,
+    CategoriaComponent
   ],
   imports: [BrowserModule,
     FormsModule,

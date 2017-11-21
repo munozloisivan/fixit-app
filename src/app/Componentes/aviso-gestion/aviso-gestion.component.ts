@@ -14,6 +14,7 @@ export class AvisoGestionComponent implements OnInit {
   constructor(private avisoService: AvisoService, private router: Router) { }
 
   ngOnInit() {
+    this.getAvisoList();
   }
   getAvisoList() {
     this.avisoService.getAllAvisos().then((res) => {
@@ -25,6 +26,38 @@ export class AvisoGestionComponent implements OnInit {
 
   getAvisosByCategoria(categoria) {
     this.avisoService.getAvisosByCategoria(categoria).then(res => {
+      this.aviso = res;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  getAvisosByTipo(tipo) {
+    this.avisoService.getAvisosByTipo(tipo).then(res => {
+      this.aviso = res;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  getAvisosBySubtipo(subtipo) {
+    this.avisoService.getAvisosBySubtipo(subtipo).then(res => {
+      this.aviso = res;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  getAvisosByPrioridad(tipo) {
+    this.avisoService.getAvisosByPrioridad(tipo).then(res => {
+      this.aviso = res;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  getAvisosOrderedByDate() {
+    this.avisoService.getAvisosOrderedByDate().then(res => {
       this.aviso = res;
     }, (err) => {
       console.log(err);
