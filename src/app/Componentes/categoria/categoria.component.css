@@ -1,0 +1,10 @@
+header.w3-container{
+  background-color: steelblue;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+div.w3-container{
+  background-color: lightsteelblue;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

@@ -116,7 +116,7 @@ export class AvisoService {
     });
   }
 
-/*  getAvisosOrderedByDate() {
+  getAvisosOrderedByDate() {
     return new Promise((resolve, reject) => {
       this.http.get('/aviso/filter/date/')
         .map(res => res.json())
@@ -126,5 +126,5 @@ export class AvisoService {
           reject(err);
         });
     });
-  }*/
+  }
 }
