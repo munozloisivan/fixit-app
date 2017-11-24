@@ -18,7 +18,9 @@ RUN npm install
 # Bundle app source
 COPY . /Client
 
-EXPOSE 8080
+RUN ng build
+
+EXPOSE 3000
 #CMD [ "npm", "start" ]
 
 
