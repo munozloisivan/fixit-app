@@ -75,4 +75,12 @@ export class AvisoGestionComponent implements OnInit {
     });
   }
 
+  deleteAviso(id) {
+    this.avisoService.deleteAviso(id).then((result) => {
+      this.getAvisoList();
+      // this.router.navigate(['/dashboard']);
+    }, (err) => {
+      console.log(err);
+    });
+  }
 }
