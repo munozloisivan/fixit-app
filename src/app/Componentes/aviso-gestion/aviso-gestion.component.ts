@@ -10,6 +10,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AvisoGestionComponent implements OnInit {
 
   aviso: any;
+  avisomodal: {};
+  idavisoedit: any;
 
   constructor(private avisoService: AvisoService, private router: Router) { }
 
@@ -63,4 +65,14 @@ export class AvisoGestionComponent implements OnInit {
       console.log(err);
     });
   }
+
+  getAvisoDetails(id) {
+    this.avisoService.showAviso(id).then((res) => {
+      this.avisomodal = res;
+      this.idavisoedit = id;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
 }
