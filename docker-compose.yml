@@ -10,28 +10,12 @@ services:
 
  api:
   build: .
-  command: node app.js
+  command: node ./bin/www
   volumes:
    - .:/fixit-app
   ports:
-   - "3000:3000"
+   - "80:3000"
   links:
    - mongo
-
-#server:
-#  build: ../fixit-app/
- # command: node app.js
-  #ports:
-   #- "3000:3000"
-#  links:
-#   - mongo
-
-#client:
-# build: ../fixit-app/
-# command: npm start
-# ports:
-#  - "4200:4200"
-# links:
-#  - server
 
 
