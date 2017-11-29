@@ -7,8 +7,8 @@ exports.sendEmail = function(req, res){
 // Definimos el transporter
   var transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    secureConnection: true,
-    port: 465,
+    secureConnection: false,
+    port: 25, //587 588 465
     auth: {
       user: 'eetakemongocbl@gmail.com',
       pass: 'passwordcbl'
