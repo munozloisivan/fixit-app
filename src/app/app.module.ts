@@ -53,7 +53,8 @@ const ROUTES = [
   { path: 'forgot', component: UsuarioForgotComponent},
   { path: 'login/administracion', component: GestorLoginComponent},
   { path: 'registro/administracion', component: GestorRegistroComponent},
-  { path: 'categorias', component: CategoriaComponent}
+  { path: 'categorias', component: CategoriaComponent},
+  { path: 'contacto', component: ContactoComponent}
 ];
 
 @NgModule({
