@@ -1,0 +1,25 @@
+<table class="table table-responsive">
+  <thead>
+  <tr>
+    <th>Ciudad</th>
+    <th>Fecha</th>
+    <th>Seguimiento</th>
+    <th>Acción</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let a of aviso">
+    <td>{{ a.datosUbicacion.ciudad }}</td>
+    <td>{{ a.fecha }}</td>
+    <td>{{ a.seguimiento}}</td>
+    <td>
+      <a [routerLink]="['/aviso-details', a._id]" class="btn btn-info btn-xs">
+        <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+      </a>
+      <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -39,7 +39,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form id="login-form" action="http://localhost:3000/#/login/process" method="post" role="form" (ngSubmit)="Login()" style="display: block;">
+              <form id="login-form" action="http://localhost:3000/#/login/process" method="post" role="form" (ngSubmit)="Login()" #loginUsuarioForm="ngForm" style="display: block;">
               <div class="form-group">
                 <label>Introduce tu email:</label>
                 <input type="text" class="form-control" placeholder="Email" [(ngModel)]="email" name="email" required>
@@ -55,7 +55,7 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-6 col-sm-offset-3">
-                    <button type="submit" class="form-control btn btn-login" name="login-submit" id="login-submit" tabindex="4">Entrar</button>
+                    <button type="submit" class="form-control btn btn-primary" name="login-submit" [disabled]="!loginUsuarioForm.form.valid" id="login-submit" tabindex="4">Entrar</button>
                   </div>
                 </div>
               </div>
