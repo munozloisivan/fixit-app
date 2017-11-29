@@ -82,13 +82,13 @@ router.get('/filter/prioridad/:prioridad', function (req, res, next) {
     });
   });
 
-/*/!* GET AVISOS ORDERED BY DATE *!/
+/* GET AVISOS ORDERED BY DATE */
   router.get('/filter/date', function (req, res, next) {
     Aviso.find({}, null, {sort: {fecha: 1 }}, function (err, result) {
       if (err) return next(err);
       res.json(result);
     });
-    });*/
+    });
 
 
 });

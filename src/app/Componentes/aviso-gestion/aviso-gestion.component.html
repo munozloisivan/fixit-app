@@ -54,9 +54,8 @@
           <td>{{a.categoria.subtipo}}</td>
           <td>{{a.categoria.prioridad}}</td>
           <td>
-            <a [routerLink]="['/aviso-details', a._id]" class="btn btn-info btn-xs">
-              <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-            </a>
+
+            <a type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" class="btn btn-info btn-xs" (click)="getAvisoDetails(a._id)">Detalles</a>
             <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </a>
@@ -65,6 +64,36 @@
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" align="center"><b>Edición de aviso</b></h4>
+      </div>
+      <div class="modal-body">
+        <h3 style="padding-bottom: 25px">Aviso (Próximamente foto)</h3>
+        <h4><strong>Categoría: </strong>{{ avisomodal.categoria }}</h4>
+        <h4><strong>Tipo: </strong>{{ avisomodal.tipo }}</h4>
+        <h4><strong>Subtipo: </strong>{{ avisomodal.subtipo }}</h4>
+        <h4><strong>Ciudad: </strong>{{ avisomodal.datosUbicacion.ciudad }}</h4>
+        <h4><strong>Calle: </strong>{{ avisomodal.datosUbicacion.calle }}</h4>
+        <h4><strong>Descripción: </strong>{{ avisomodal.descripcion }}</h4>
+        <h4><strong>Seguimiento: </strong>{{ avisomodal.seguimiento }}</h4>
+        <h4><strong>Autor: </strong>{{ avisomodal.autor }}</h4>
+        <h4><strong>Apoyos: </strong>{{ avisomodal.apoyos }}</h4><br>
+      </div>
+      <div class="modal-footer">
+        <a [routerLink]="['/aviso-edit', idavisoedit]" class="btn btn-success">Editar</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
 </div>
 

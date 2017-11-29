@@ -22,7 +22,7 @@ export class GestorLoginComponent implements OnInit {
     this.gestorService.authenticateGestor({'email': this.email, 'password': this.password}).then((res) => {
       // this.usuario = res;
       alert('Autenticado Correctamente');
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/admin/dashboard']);
     }, (err) => {
       console.log(err);
     });

@@ -9,16 +9,29 @@ import { CategoriaService} from '../../Services/categoria.service';
 })
 export class CategoriaComponent implements OnInit {
 
-  categoria = {};
+  categoria: any;
+  categoriaedit: {};
+  idcategoriaedit: any;
 
   constructor(private categoriaService: CategoriaService, private router: Router) { }
 
   ngOnInit() {
+    this.getCategoriaList();
   }
 
   getCategoriaList() {
     this.categoriaService.getAllCategorias().then((res) => {
+      console.log(res);
       this.categoria = res;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  getCategoria(id) {
+    this.categoriaService.showCategoria(id).then((res) => {
+      this.categoriaedit = res;
+      this.idcategoriaedit = id;
     }, (err) => {
       console.log(err);
     });

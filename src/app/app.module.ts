@@ -32,6 +32,7 @@ import { AvisoGestionComponent } from './Componentes/aviso-gestion/aviso-gestion
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/aviso-details/aviso-details.component';
 import { CategoriaComponent } from './Componentes/categoria/categoria.component';
+import { ContactoComponent } from './Componentes/contacto/contacto.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -74,7 +75,8 @@ const ROUTES = [
     AvisoDetailsComponent,
     AvisoGestionComponent,
     GestorRegistroComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    ContactoComponent
   ],
   imports: [BrowserModule,
     FormsModule,
