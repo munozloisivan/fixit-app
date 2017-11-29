@@ -27,11 +27,11 @@ import { UsuarioRegistroComponent } from './Componentes/usuario-registro/usuario
 import { UsuarioForgotComponent } from './Componentes/usuario-forgot/usuario-forgot.component';
 import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import { NavbarDashboardComponent } from './Tools/navbar-dashboard/navbar-dashboard.component';
+import { GestorRegistroComponent } from './Componentes/gestor-registro/gestor-registro.component';
 import { AvisoGestionComponent } from './Componentes/aviso-gestion/aviso-gestion.component';
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/aviso-details/aviso-details.component';
-import { DashboardAdminComponent } from './Layouts/dashboard-admin/dashboard-admin.component';
-import { AvisoAdminComponent } from './Componentes/aviso-admin/aviso-admin.component';
+import { CategoriaComponent } from './Componentes/categoria/categoria.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -43,14 +43,16 @@ const ROUTES = [
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
   { path: 'dashboard', component: DashboardComponent},
-  { path: 'admin/dashboard', component: DashboardAdminComponent},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent},
   { path: 'aviso-edit/:id', component: AvisoEditComponent},
   { path: 'usuarios', component: UsuarioComponent},
+  { path: 'avisos', component: AvisoComponent},
   { path: 'login', component: UsuarioLoginComponent},
   { path: 'registro', component: UsuarioRegistroComponent},
   { path: 'forgot', component: UsuarioForgotComponent},
-  { path: 'login/administracion', component: GestorLoginComponent}
+  { path: 'login/administracion', component: GestorLoginComponent},
+  { path: 'registro/administracion', component: GestorRegistroComponent},
+  { path: 'categorias', component: CategoriaComponent}
 ];
 
 @NgModule({
@@ -70,9 +72,9 @@ const ROUTES = [
     NavbarDashboardComponent,
     AvisoEditComponent,
     AvisoDetailsComponent,
-    DashboardAdminComponent,
-    AvisoAdminComponent,
-    AvisoGestionComponent
+    AvisoGestionComponent,
+    GestorRegistroComponent,
+    CategoriaComponent
   ],
   imports: [BrowserModule,
     FormsModule,

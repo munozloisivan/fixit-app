@@ -1,0 +1,28 @@
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-md-3" *ngFor="let c of categoria">
+    <div class="w3-card-4">
+      <header class="w3-container">
+        <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="float: left">
+        <h3 class="text-right">{{ c.tipo }}</h3>
+        <h4 class="text-right">{{ c.subtipo }}</h4>
+      </header>
+      <div class="w3-container">
+        <p><b>Prioridad:</b> {{c.prioridad}}</p>
+        <hr>
+        <p><b>Teléfono:</b> {{ c.telefonoContacto}}</p>
+        <hr>
+        <p><b>Email:</b> {{ c.emailContacto}}</p>
+        <hr>
+        <p><b>Empresa:</b> {{ c.empresaContacto}}</p>
+        <hr>
+        <p><b>Horario:</b> {{ c.horarioContacto}}</p>
+      </div>
+      <button type="button" class="btn btn-info btn-block">Editar</button>
+      <button type="button" class="btn btn-danger btn-block">Eliminar</button>
+    </div>
+  </div>
+  </div>
+</div>

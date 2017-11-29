@@ -25,7 +25,7 @@ export class GestorService {
       this.http.get('/gestor/' + id)
         .map(res => res.json())
         .subscribe(res => {
-          resolve(res)
+          resolve(res);
         }, (err) => {
           reject(err);
         });
@@ -70,6 +70,17 @@ export class GestorService {
   authenticateGestor(email) {
     return new Promise((resolve, reject) => {
       this.http.post('/gestor/auth', email)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  registerMailGestor(data) {
+    return new Promise((resolve, reject) => {
+      this.http.post('/gestor/registermail', data)
         .subscribe(res => {
           resolve(res);
         }, (err) => {

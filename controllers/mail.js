@@ -19,8 +19,8 @@ exports.sendEmail = function(req, res){
   var mailOptions = {
     from: 'Fixit <eetakemongocbl@gmail.com>',
     to: 'munozloisivan@gmail.com',
-    subject: 'Nodemailer test',
-    text: 'Contenido del email de prueba'
+    subject: 'Registro de Administrador',
+    text: req.body
   };
 // Enviamos el email
   transporter.sendMail(mailOptions, function(error, res){
@@ -65,3 +65,4 @@ exports.sendPassEmail = function(to, text){
     }
   });
 };
+

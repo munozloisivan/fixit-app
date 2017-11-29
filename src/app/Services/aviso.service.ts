@@ -6,7 +6,8 @@ import 'rxjs/add/operator/map';
 export class AvisoService {
 
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
   getAllAvisos() {
     return new Promise((resolve, reject) => {
@@ -25,7 +26,7 @@ export class AvisoService {
       this.http.get('/aviso/' + id)
         .map(res => res.json())
         .subscribe(res => {
-          resolve(res)
+          resolve(res);
         }, (err) => {
           reject(err);
         });
@@ -70,6 +71,54 @@ export class AvisoService {
   getAvisosByCategoria(categoria) {
     return new Promise((resolve, reject) => {
       this.http.get('/aviso/filter/categoria/' + categoria)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getAvisosByTipo(tipo) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/aviso/filter/tipo/' + tipo)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getAvisosBySubtipo(subtipo) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/aviso/filter/subtipo/' + subtipo)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getAvisosByPrioridad(prioridad) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/aviso/filter/prioridad/' + prioridad)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getAvisosOrderedByDate() {
+    return new Promise((resolve, reject) => {
+      this.http.get('/aviso/filter/date/')
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);

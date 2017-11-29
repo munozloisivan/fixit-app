@@ -3,10 +3,11 @@ var express = require('express'),
     mongoose = require('mongoose');
 
 var Aviso = require('../models/aviso');
+var Categoria = require('../models/categoria');
 
 /*GET ALL AVISOS*/
 router.get('/', function(req, res, next) {
-  Aviso.find().exec(function (err, avisos) {
+  Aviso.find().populate('categoria').exec(function (err, avisos) {
     if (err) return next(err);
     res.json(avisos);
   });
@@ -51,4 +52,45 @@ router.get('/filter/categoria/:categoria', function (req, res, next) {
     res.json(post);
   });
 });
+
+/*GET AVISOS BY TIPO */
+router.get('/filter/tipo/:tipo', function (req, res, next) {
+  Categoria.find({"tipo": req.params.tipo}).select('_id').exec(function (err, idcat) {
+    Aviso.find({"categoria": idcat }).populate('autor').populate('categoria').find().exec(function (err, post) {
+      if (err) return next(err);
+      res.json(post);
+    });
+  });
+});
+
+/*GET AVISOS BY SUBTIPO */
+router.get('/filter/subtipo/:subtipo', function (req, res, next) {
+  Categoria.find({"subtipo": req.params.subtipo}).select('_id').exec(function (err, idcat) {
+    Aviso.find({"categoria": idcat }).populate('autor').populate('categoria').exec(function (err, post) {
+      if (err) return next(err);
+      res.json(post);
+    });
+  });
+});
+
+/*GET AVISOS BY PRIORIDAD */
+router.get('/filter/prioridad/:prioridad', function (req, res, next) {
+  Categoria.find({"prioridad": req.params.prioridad}).select('_id').exec(function (err, idcat) {
+    Aviso.find({"categoria": idcat }).populate('autor').populate('categoria').exec(function (err, post) {
+      if (err) return next(err);
+      res.json(post);
+    });
+  });
+
+/* GET AVISOS ORDERED BY DATE */
+  router.get('/filter/date', function (req, res, next) {
+    Aviso.find({}, null, {sort: {fecha: 1 }}, function (err, result) {
+      if (err) return next(err);
+      res.json(result);
+    });
+    });
+
+
+});
+
 module.exports = router;
