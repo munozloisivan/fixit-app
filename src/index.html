@@ -19,6 +19,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
+  <!--PARA GOOGLE MAPS-->
+  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkjGaOaFOCUr1t_6MPiSLcphPJlYIjfew&callback=myMap"></script>-->
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-giP5EXvKnbUJwSRaqaZ5xRPOwG5lxfo&callback=myMap" ></script>
+
+  <!-- Initialize Google Maps -->
+  <script>
+    function myMap() {
+      var myCenter = new google.maps.LatLng(41.4922468,2.0959439);
+      var mapCanvas = document.getElementById('map');
+      var mapOptions = {center: myCenter, zoom: 12};
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+      var marker = new google.maps.Marker({position:myCenter});
+      marker.setMap(map);
+    }
+  </script>
 
   <!--PARA EL TEMPORIZADOR DE LA HOME-->
   <script>
