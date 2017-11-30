@@ -27,9 +27,9 @@
   <!-- Initialize Google Maps -->
   <script>
     function myMap() {
-      var myCenter = new google.maps.LatLng(41.4922468,2.0959439);
+      var myCenter = new google.maps.LatLng(41.275146,1.986519);
       var mapCanvas = document.getElementById('map');
-      var mapOptions = {center: myCenter, zoom: 12};
+      var mapOptions = {center: myCenter, zoom: 15};
       var map = new google.maps.Map(mapCanvas, mapOptions);
       var marker = new google.maps.Marker({position:myCenter});
       marker.setMap(map);
@@ -61,6 +61,7 @@
       }
     }, 1000);
   </script>
+
 </head>
 <body style="background-color: #dddddd;">
 <!--prueba push!-->

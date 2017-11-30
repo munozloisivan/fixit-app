@@ -83,4 +83,12 @@ export class AvisoGestionComponent implements OnInit {
       console.log(err);
     });
   }
+
+  updateAviso(data) {
+    this.avisoService.updateAviso(this.idavisoedit, data).then((result) => {
+      this.aviso = result;
+    }, (err) => {
+      console.log(err);
+    });
+  }
 }
