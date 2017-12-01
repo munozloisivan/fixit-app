@@ -2,13 +2,17 @@ var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
     Usuario = require('../models/usuario');
+
 var emailController = require('../controllers/mail');
+
 var bcrypt = require('bcrypt');
 var jwt = require('../services/jwt');
+var md_auth = require('../middlewares/athenticated');
+
 var Aviso = require('../models/aviso');
 
 /*GET ALL USERS*/
-router.get('/', function(req, res, next) {
+router.get('/', md_auth.ensureAuth, function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados
   Usuario.find().exec(function (err, usuarios) {
     if (err) return next(err);
