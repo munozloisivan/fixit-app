@@ -12,29 +12,7 @@ var gestorSchema = new Schema({
     password: { type: String, required: true},
     delegacion: { type: String},
     departamento: { type: String},
-    telefono: { type: Number}
+    telefono: { type: Number, unique: true}
 });
-
-
-//Authenticate against database
-gestorSchema.statics.authenticate = function (email, password, callback) {
-    Gestor.findOne({ email: email }).exec(function (err, gestor) {
-        if(err){
-            return callback(err)
-        } else if (!gestor){
-            var err = new Error('Gestor not found.');
-            err.status = 401;
-            return callback(err.message);
-        }
-        bcrypt.compare(password, gestor.password, function (err, result) {
-            if(result == true){
-                console.log('La password es correcta');
-                return callback(null, gestor);
-            } else {
-                return callback();
-            }
-        })
-    });
-};
 
 module.exports = mongoose.model('Gestor', gestorSchema);
