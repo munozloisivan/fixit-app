@@ -3,7 +3,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     //gestorCtrl = require('../controllers/gestor'),
     Gestor = require('../models/gestor');
-
+var bcrypt = require('bcrypt');
 var emailController = require('../controllers/mail');
 
 /*GET ALL GESTORES*/
@@ -26,9 +26,17 @@ router.get('/:id', function(req, res, next) {
 
 /* SAVE GESTOR */
 router.post('/add', function(req, res, next) {
-  Gestor.create(req.body, function (err, gestor) {
-    if (err) return next(err);
-    res.json(gestor);
+
+  var gestor = new Gestor();
+  gestor = req.body;
+
+  bcrypt.hash(gestor.password, 10, function (err, hash) {
+    gestor.password = hash;
+
+    Gestor.create(gestor, function (err, usuario) {
+      if (err) return next(err);
+      res.json(usuario);
+    });
   });
 });
 

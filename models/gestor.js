@@ -37,17 +37,4 @@ gestorSchema.statics.authenticate = function (email, password, callback) {
     });
 };
 
-//hashing a password before saving it to the database
-gestorSchema.pre('save', function (next) {
-    var gestor = this;
-    bcrypt.hash(gestor.password, 10, function (err, hash) {
-        if(err){
-            return next(err);
-        }
-        gestor.password = hash;
-        next();
-    });
-});
-
-var Gestor = mongoose.model('Gestor', gestorSchema);
 module.exports = mongoose.model('Gestor', gestorSchema);
