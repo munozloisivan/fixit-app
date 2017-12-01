@@ -44,7 +44,7 @@ button.accordion.active, button.accordion:hover {
 div.panel {
   padding: 0 18px;
   background-color: lightblue;
-  display: none;
+  display: block; /*dejar en none con el script aplicado */
 }
 
 
