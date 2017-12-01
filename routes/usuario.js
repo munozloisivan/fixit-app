@@ -30,7 +30,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 /*LOGIN USARIO*/
-router.post('/login', function (req, res) {
+router.post('/auth', function (req, res) {
   var params = req.body;
   var email = params.email;
   var password = params.password;
