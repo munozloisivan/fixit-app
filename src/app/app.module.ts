@@ -36,6 +36,10 @@ import { ContactoComponent } from './Layouts/contacto/contacto.component';
 import { FaqComponent } from './Layouts/faq/faq.component';
 import { FooterComponent } from './Tools/footer/footer.component';
 import {DashboardAdminComponent} from './Layouts/dashboard-admin/dashboard-admin.component';
+import { UsuarioPerfilComponent } from './Layouts/usuario-perfil/usuario-perfil.component';
+import { PerfilComponent } from './Componentes/perfil/perfil.component';
+import {UsuarioAvisosComponent} from './Componentes/usuario-avisos/usuario-avisos.component';
+import { UsuarioLogrosComponent } from './Componentes/usuario-logros/usuario-logros.component';
 import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
@@ -59,7 +63,8 @@ const ROUTES = [
   { path: 'registro/administracion', component: GestorRegistroComponent},
   { path: 'categorias', component: CategoriaComponent},
   { path: 'contacto', component: ContactoComponent},
-  { path: 'faq', component: FaqComponent}
+  { path: 'faq', component: FaqComponent},
+  { path: 'usuario/perfil', component: UsuarioPerfilComponent}
 ];
 
 @NgModule({
@@ -76,7 +81,6 @@ const ROUTES = [
     UsuarioRegistroComponent,
     UsuarioForgotComponent,
     DashboardComponent,
-    DashboardAdminComponent,
     NavbarDashboardComponent,
     AvisoEditComponent,
     AvisoDetailsComponent,
@@ -87,6 +91,10 @@ const ROUTES = [
     FaqComponent,
     FooterComponent,
     DashboardAdminComponent,
+    UsuarioPerfilComponent,
+    PerfilComponent,
+    UsuarioAvisosComponent,
+    UsuarioLogrosComponent,
     LogRegUserComponent
   ],
   imports: [BrowserModule,

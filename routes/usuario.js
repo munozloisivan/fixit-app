@@ -10,11 +10,12 @@ var jwt = require('../services/jwt');
 var md_auth = require('../middlewares/athenticated');
 
 var Aviso = require('../models/aviso');
+var Logro = require('../models/logro');
 
 /*GET ALL USERS*/
 router.get('/', function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados
-  Usuario.find().exec(function (err, usuarios) {
+  Usuario.find().populate('logros.coleccion').exec(function (err, usuarios) {
     if (err) return next(err);
     res.json(usuarios);
   });
@@ -23,7 +24,7 @@ router.get('/', function(req, res, next) {
 /* GET SINGLE USER BY ID */
 router.get('/:id', function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados .populate('avisos','logros')
-  Usuario.findById(req.params.id).populate('avisos.creados').populate('logros.coleccion').exec(function (err, usuario) {
+  Usuario.findById(req.params.id).populate('logros').exec(function (err, usuario) {
     if (err) return next(err);
     res.json(usuario);
   });
@@ -117,9 +118,17 @@ router.post('/:id/logro/:idlogro', function (req, res, next) {
   });
 });
 
+/* OBTENER LOGROS DE UN USUARIO  */
+router.get('/:id/logros', function(req, res, next) {
+  Usuario.findById(req.params.id).populate('logros.coleccion').exec(function (err, logros) {
+    if (err) return next(err);
+    res.json(logros);
+  });
+});
+
 /* CREAR UN AVISO DESDE USUARIO */
 router.post('/:id/addaviso', function(req, res) {
- /* var idAviso;
+  var idAviso;
   var idUsuario = req.params.id;
 
   console.log('ID USUARIO: ' + req.params.id);
@@ -127,12 +136,10 @@ router.post('/:id/addaviso', function(req, res) {
 
   Aviso.create(req.body, function (err, aviso) {
     if (err) console.log(err);
-    res.json(aviso);
     idAviso = aviso._id;
 
     Aviso.update({_id: idAviso},{ $set : { "autor" : idUsuario }}, function (err, aviso) {
       if (err) console.log(err);
-      res.json(aviso);
     });
 
     Usuario.update({_id: idUsuario},{ $push : { "avisos.creados" : idAviso }}, function (err, usuario) {
@@ -140,7 +147,6 @@ router.post('/:id/addaviso', function(req, res) {
       res.json(usuario);
     });
   });
-  */
 });
 
 /* CHANGE PASSWORD */

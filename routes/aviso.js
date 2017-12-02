@@ -45,6 +45,14 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
+/* GET AVISOS DE UN USUARIO */
+router.get('/usuario/:idusuario', function (req, res, next) {
+  Aviso.find({"autor": req.params.idusuario }).populate('autor').populate('categoria').exec(function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
 /*GET AVISOS BY categoria */
 router.get('/filter/categoria/:categoria', function (req, res, next) {
   Aviso.find({"categoria": req.params.categoria }).populate('autor').populate('categoria').exec(function (err, post) {
@@ -81,16 +89,17 @@ router.get('/filter/prioridad/:prioridad', function (req, res, next) {
       res.json(post);
     });
   });
+});
 
 /* GET AVISOS ORDERED BY DATE */
-  router.get('/filter/date', function (req, res, next) {
-    Aviso.find({}, null, {sort: {fecha: 1 }}, function (err, result) {
-      if (err) return next(err);
-      res.json(result);
-    });
-    });
-
-
+router.get('/filter/date', function (req, res, next) {
+  Aviso.find({}, null, {sort: {fecha: 1 }}, function (err, result) {
+    if (err) return next(err);
+    res.json(result);
+  });
 });
+
+
+
 
 module.exports = router;

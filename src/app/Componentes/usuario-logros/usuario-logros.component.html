@@ -1,0 +1,24 @@
+<h1>Lista de logros</h1>
+<table class="table table-striped table-responsive">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Título</th>
+    <th>Puntos</th>
+    <th>Acción</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let u of usuarios.logros.coleccion">
+    <td>{{ u.titulo }}</td>
+    <td>{{ u.titulo }}</td>
+    <td>{{ u.titulo }}</td>
+    <td>
+      <a type="button" id="btn1" class="btn btn-info btn-md">Detalles</a>
+      <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>

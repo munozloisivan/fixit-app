@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class AvisoComponent implements OnInit {
 
-  aviso: any;
+  allavisos: any;
 
   constructor(private avisoService: AvisoService, private router: Router) { }
 
@@ -19,7 +19,7 @@ export class AvisoComponent implements OnInit {
 
   getAvisoList() {
     this.avisoService.getAllAvisos().then((res) => {
-      this.aviso = res;
+      this.allavisos = res;
     }, (err) => {
       console.log(err);
     });

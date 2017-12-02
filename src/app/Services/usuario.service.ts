@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
@@ -35,6 +35,20 @@ export class UsuarioService {
     });
   }
 
+  showLogrosUsuario(id) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/usuario/' + id + '/logros')
+        .map(res => res.json())
+        .subscribe(res => {
+          console.log(res);
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
   saveUsuario(user): Observable<Response> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
@@ -43,27 +57,19 @@ export class UsuarioService {
       .catch((error: any) => Observable.throw(error.json().error || 'Error del servidor'));
   }
 
-  /*saveUsuario(data) {
-    return new Promise((resolve, reject) => {
-      this.http.post('/usuario/add', data)
-        .map(res => {
-          console.log(data);
-          if (res.status === 500) {
-            return ('Error interno' + res.status);
-          }else if (res.status === 404) {
-            return ('Credenciales incorrectas');
-          }if (res.status === 200) {
-            return res;
-          }
-        })
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
-  }*/
 
+  /* saveUsuario(data) {
+     return new Promise((resolve, reject) => {
+       this.http.post('/usuario/add', data)
+         .map(res => res.json())
+         .subscribe(res => {
+           resolve(res);
+         }, (err) => {
+           reject(err);
+         });
+     });
+   }
+ */
   updateUsuario(id, data) {
     return new Promise((resolve, reject) => {
       this.http.put('/usuario/' + id, data)
