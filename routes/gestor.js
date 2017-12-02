@@ -3,8 +3,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     //gestorCtrl = require('../controllers/gestor'),
     Gestor = require('../models/gestor');
-var bcrypt = require('bcrypt');
-var jwt = require('../services/jwt')
+var bcrypt = require('bcryptjs');
+var jwt = require('../services/jwt');
 var emailController = require('../controllers/mail');
 
 /*GET ALL GESTORES*/
