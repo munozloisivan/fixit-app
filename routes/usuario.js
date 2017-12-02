@@ -61,15 +61,12 @@ router.post('/add', function(req, res, next) {
 
   var usuario = new Usuario();
   usuario = req.body;
-  console.log(usuario.email);
-  console.log(usuario);
 
   Usuario.findOne({email: usuario.email.toLocaleLowerCase()}).exec(function (err, match) {
     if (err){
       res.status(500).send({m: "Error del servidor"})
     }else{
         if (!match){
-          console.log("Email igual" + match);
           bcrypt.hash(usuario.password, 10, function (err, hash) {
             usuario.password = hash;
 
@@ -79,7 +76,6 @@ router.post('/add', function(req, res, next) {
             });
           });
         }else {
-          console.log("Email diferente");
           res.status(404).send({m: "El correo electrónico ya esta registrado"})
         }
     }
