@@ -5,7 +5,7 @@ var express = require('express'),
 
 var emailController = require('../controllers/mail');
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var jwt = require('../services/jwt');
 var md_auth = require('../middlewares/athenticated');
 
