@@ -68,6 +68,20 @@ export class AvisoService {
     });
   }
 
+  getUsuarioAvisos(usuario) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/aviso/usuario/' + usuario)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
+
   getAvisosByCategoria(categoria) {
     return new Promise((resolve, reject) => {
       this.http.get('/aviso/filter/categoria/' + categoria)

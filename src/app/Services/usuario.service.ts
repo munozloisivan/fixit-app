@@ -31,6 +31,19 @@ export class UsuarioService {
     });
   }
 
+  showLogrosUsuario(id) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/usuario/' + id + '/logros')
+        .map(res => res.json())
+        .subscribe(res => {
+          console.log(res);
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   saveUsuario(data) {
     return new Promise((resolve, reject) => {
       this.http.post('/usuario/add', data)

@@ -36,6 +36,10 @@ import { ContactoComponent } from './Layouts/contacto/contacto.component';
 import { FaqComponent } from './Layouts/faq/faq.component';
 import { FooterComponent } from './Tools/footer/footer.component';
 import {DashboardAdminComponent} from './Layouts/dashboard-admin/dashboard-admin.component';
+import { UsuarioPerfilComponent } from './Layouts/usuario-perfil/usuario-perfil.component';
+import { PerfilComponent } from './Componentes/perfil/perfil.component';
+import {UsuarioAvisosComponent} from "./Componentes/usuario-avisos/usuario-avisos.component";
+import { UsuarioLogrosComponent } from './Componentes/usuario-logros/usuario-logros.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -59,7 +63,8 @@ const ROUTES = [
   { path: 'categorias', component: CategoriaComponent},
   { path: 'contacto', component: ContactoComponent},
   { path: 'faq', component: FaqComponent},
-  { path: 'dashboard-admin', component: DashboardAdminComponent}
+  { path: 'dashboard-admin', component: DashboardAdminComponent},
+  { path: 'usuario/perfil', component: UsuarioPerfilComponent}
 ];
 
 @NgModule({
@@ -85,7 +90,11 @@ const ROUTES = [
     ContactoComponent,
     FaqComponent,
     FooterComponent,
-    DashboardAdminComponent
+    DashboardAdminComponent,
+    UsuarioPerfilComponent,
+    PerfilComponent,
+    UsuarioAvisosComponent,
+    UsuarioLogrosComponent
   ],
   imports: [BrowserModule,
     FormsModule,
