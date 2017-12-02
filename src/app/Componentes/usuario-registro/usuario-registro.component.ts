@@ -10,8 +10,8 @@ import {Router} from '@angular/router';
 })
 export class UsuarioRegistroComponent implements OnInit {
 
-  usuario = {
-  };
+  email: string;
+  password: string;
 
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
@@ -19,11 +19,18 @@ export class UsuarioRegistroComponent implements OnInit {
   }
 
   Register() {
-    this.usuarioService.saveUsuario(this.usuario).then((result) => {
-      alert('Registrado Correctamente');
-      this.router.navigate(['/']);
-    }, (err) => {
-      console.log(err);
-    });
+      this.usuarioService.saveUsuario({email: this.email, password: this.password}).subscribe(
+        (data) => {
+          console.log(data);
+          alert('Usuario registrado');
+          // sessionStorage.setItem('usuario', JSON.stringify(data));
+          this.router.navigate(['/acceso']);
+          window.location.reload();
+        },
+        (err) => {
+          console.log(err);
+          alert('El correo electrónico ya esta en uso');
+        }
+      );
   }
 }

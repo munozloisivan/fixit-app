@@ -4,10 +4,6 @@ body, html {
   margin: 0;
 }
 
-.navbar{
-  margin-bottom: 0 !important;
-}
-
 .bgimg {
   /* Background image */
   background-image: url('../../../assets/home.png');

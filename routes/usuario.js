@@ -5,7 +5,7 @@ var express = require('express'),
 
 var emailController = require('../controllers/mail');
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var jwt = require('../services/jwt');
 var md_auth = require('../middlewares/athenticated');
 
@@ -61,42 +61,26 @@ router.post('/add', function(req, res, next) {
 
   var usuario = new Usuario();
   usuario = req.body;
+  console.log(usuario.email);
+  console.log(usuario);
 
   Usuario.findOne({email: usuario.email.toLocaleLowerCase()}).exec(function (err, match) {
     if (err){
       res.status(500).send({m: "Error del servidor"})
     }else{
         if (!match){
-          Usuario.findOne({dni: usuario.dni}).exec(function (err, match) {
-            if (err){
-              res.status(500).send({m: "Error del servidor"})
-            }else{
-              if (!match){
-                Usuario.findOne({telefono: usuario.telefono}).exec(function (err, match) {
-                  if (err){
-                    res.status(500).send({m: "Error del servidor"})
-                  }else{
-                    if (!match){
-                      bcrypt.hash(usuario.password, 10, function (err, hash) {
-                        usuario.password = hash;
+          console.log("Email igual" + match);
+          bcrypt.hash(usuario.password, 10, function (err, hash) {
+            usuario.password = hash;
 
-                        Usuario.create(usuario, function (err, usuario) {
-                          if (err) return next(err);
-                          res.json(usuario);
-                        });
-                      });
-                    }else {
-                      res.status(200).send({m: "El teléfono ya esta registrado"})
-                    }
-                  }
-                });
-              }else {
-                res.status(200).send({m: "El dni ya esta registrado"})
-              }
-            }
+            Usuario.create(usuario, function (err, usuario) {
+              if (err) return next(err);
+              res.status(200).send({m: "Registro correcto"});
+            });
           });
         }else {
-          res.status(200).send({m: "El correo electrónico ya esta registrado"})
+          console.log("Email diferente");
+          res.status(404).send({m: "El correo electrónico ya esta registrado"})
         }
     }
   });

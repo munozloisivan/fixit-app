@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Observable';
+
 
 @Injectable()
 export class UsuarioService {
@@ -44,18 +48,28 @@ export class UsuarioService {
     });
   }
 
-  saveUsuario(data) {
-    return new Promise((resolve, reject) => {
-      this.http.post('/usuario/add', data)
-        .map(res => res.json())
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
+
+  saveUsuario(user): Observable<Response> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('/usuario/add', user)
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Error del servidor'));
   }
 
+
+  /* saveUsuario(data) {
+     return new Promise((resolve, reject) => {
+       this.http.post('/usuario/add', data)
+         .map(res => res.json())
+         .subscribe(res => {
+           resolve(res);
+         }, (err) => {
+           reject(err);
+         });
+     });
+   }
+ */
   updateUsuario(id, data) {
     return new Promise((resolve, reject) => {
       this.http.put('/usuario/' + id, data)

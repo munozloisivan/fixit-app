@@ -3,8 +3,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     //gestorCtrl = require('../controllers/gestor'),
     Gestor = require('../models/gestor');
-var bcrypt = require('bcrypt');
-var jwt = require('../services/jwt')
+var bcrypt = require('bcryptjs');
+var jwt = require('../services/jwt');
 var emailController = require('../controllers/mail');
 
 /*GET ALL GESTORES*/
@@ -77,7 +77,7 @@ router.post('/add', function(req, res, next) {
 
                       Gestor.create(gestor, function (err, usuario) {
                         if (err) return next(err);
-                        res.json(usuario);
+                        res.status(200).send({m: "Registro correcto"});
                       });
                     });
                   }else {
