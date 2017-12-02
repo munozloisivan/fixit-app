@@ -77,7 +77,7 @@ router.post('/add', function(req, res, next) {
 
                       Gestor.create(gestor, function (err, usuario) {
                         if (err) return next(err);
-                        res.json(usuario);
+                        res.status(200).send({m: "Registro correcto"});
                       });
                     });
                   }else {

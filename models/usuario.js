@@ -4,13 +4,13 @@ var bcrypt = require('bcrypt');
 
 var usuarioSchema = new Schema({
 
-    nombre: { type: String, required: true},
+    nombre: { type: String},
     apellidos: { type: String },
-    alias: { type: String, required: true},
-    dni: { type: String, unique: true, required: true },
-    email: { type: String, unique: true, required: true, trim: true },
+    alias: { type: String},
+    dni: { type: String },
+    email: { type: String, required: true, trim: true},
     password: { type: String , required: true},
-    telefono: { type: String, unique: true },
+    telefono: { type: String},
     codigoPostal: { type: String },
     puntos: { type: Number },
     participantes: { type: Number }, /*nº de personas que apoyan sus avisos*/

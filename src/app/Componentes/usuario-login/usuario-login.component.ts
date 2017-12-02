@@ -20,11 +20,13 @@ export class UsuarioLoginComponent implements OnInit {
 
   Login() {
     this.usuarioService.authenticateUsuario({'email': this.email, 'password': this.password}).then((res) => {
-      // this.usuario = res;
-      alert('Autenticado Correctamente');
+      if (res) {
+        alert('Autenticado correctamente');
+      }
       this.router.navigate(['/dashboard']);
     }, (err) => {
       console.log(err);
+      alert('Credenciales incorrectas');
     });
   }
 
