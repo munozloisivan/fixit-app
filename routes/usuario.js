@@ -4,12 +4,15 @@ var express = require('express'),
     Usuario = require('../models/usuario');
 
 var emailController = require('../controllers/mail');
+
 var bcrypt = require('bcrypt');
+var jwt = require('../services/jwt');
+var md_auth = require('../middlewares/athenticated');
 
 var Aviso = require('../models/aviso');
 
 /*GET ALL USERS*/
-router.get('/', function(req, res, next) {
+router.get('/', md_auth.ensureAuth, function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados
   Usuario.find().exec(function (err, usuarios) {
     if (err) return next(err);
@@ -26,11 +29,75 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+/*LOGIN USARIO*/
+router.post('/auth', function (req, res) {
+  var params = req.body;
+  var email = params.email;
+  var password = params.password;
+  Usuario.findOne({email: email.toLowerCase()}).exec(function (err, user) {
+    if (err){
+      res.status(500).send({m: "Error del servidor"})
+    }else{
+        if(user){
+          bcrypt.compare(password, user.password, function (err, check) {
+            if (check){
+              res.status(200).send({
+                token: jwt.createTokenUser(user)
+              });
+            }else{
+              res.status(404).send({m: "Contraseña incorrecta"})
+            }
+          });
+        }else{
+          res.status(404).send({m:"El correo electrónico no esta registrado"});
+        }
+    }
+  })
+});
+
 /* SAVE USUARIO */
 router.post('/add', function(req, res, next) {
-  Usuario.create(req.body, function (err, usuario) {
-    if (err) return next(err);
-    res.json(usuario);
+
+  var usuario = new Usuario();
+  usuario = req.body;
+
+  Usuario.findOne({email: usuario.email.toLocaleLowerCase()}).exec(function (err, match) {
+    if (err){
+      res.status(500).send({m: "Error del servidor"})
+    }else{
+        if (!match){
+          Usuario.findOne({dni: usuario.dni}).exec(function (err, match) {
+            if (err){
+              res.status(500).send({m: "Error del servidor"})
+            }else{
+              if (!match){
+                Usuario.findOne({telefono: usuario.telefono}).exec(function (err, match) {
+                  if (err){
+                    res.status(500).send({m: "Error del servidor"})
+                  }else{
+                    if (!match){
+                      bcrypt.hash(usuario.password, 10, function (err, hash) {
+                        usuario.password = hash;
+
+                        Usuario.create(usuario, function (err, usuario) {
+                          if (err) return next(err);
+                          res.json(usuario);
+                        });
+                      });
+                    }else {
+                      res.status(200).send({m: "El teléfono ya esta registrado"})
+                    }
+                  }
+                });
+              }else {
+                res.status(200).send({m: "El dni ya esta registrado"})
+              }
+            }
+          });
+        }else {
+          res.status(200).send({m: "El correo electrónico ya esta registrado"})
+        }
+    }
   });
 });
 
@@ -110,18 +177,6 @@ router.put('/:id/change', function (req, res, next) {
 
 });
 
-/* AUTHENTICATE USUARIO*/
-router.post('/auth', function(req, res, next) {
-  Usuario.authenticate(req.body.email, req.body.password, function (err, usuario) {
-    if(err || !usuario){
-      return next(err);
-    } else {
-      console.log('Autenticado correctamente');
-      return res.send('Autenticado correctamente');
-    }
-  });
-});
-
 /* RESET PASSWORD */
 router.post('/resetpassword', function(req, res) {
 
@@ -190,7 +245,6 @@ router.post('/resetpassword', function(req, res) {
     });
 
     */
-
     emailController.sendPassEmail(req.body.email, 'A partir de ahora su contraseña es: '+passToSet+'. \n Puede cambiarla en cualquier momento desde su perfil. \n Atentamente, \n El equipo de FIXIT');
 
   });

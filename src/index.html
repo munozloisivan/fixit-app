@@ -7,6 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- Optional theme -->
@@ -17,10 +18,54 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+  <!--PARA GOOGLE MAPS-->
+  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkjGaOaFOCUr1t_6MPiSLcphPJlYIjfew&callback=myMap"></script>-->
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-giP5EXvKnbUJwSRaqaZ5xRPOwG5lxfo&callback=myMap" ></script>
+
+  <!-- Initialize Google Maps -->
+  <script>
+    function myMap() {
+      var myCenter = new google.maps.LatLng(41.275146,1.986519);
+      var mapCanvas = document.getElementById('map');
+      var mapOptions = {center: myCenter, zoom: 15};
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+      var marker = new google.maps.Marker({position:myCenter});
+      marker.setMap(map);
+    }
+  </script>
+
+  <!--PARA EL TEMPORIZADOR DE LA HOME-->
+  <script>
+    //Jan 19, 2018 17:00:00
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jan 19, 2018 17:00:00").getTime();
+    // Update the count down every 1 second
+    var countdownfunction = setInterval(function() {
+      // Get todays date and time
+      var now = new Date().getTime();
+      // Find the distance between now an the count down date
+      var distance = countDownDate - now;
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+      // If the count down is over, write some text
+      if (distance < 0) {
+        clearInterval(countdownfunction);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
 
 </head>
-<body style="background-color: #dddddd;">
+<body>
 <!--prueba push!-->
 <app-root>Loading...</app-root>
 

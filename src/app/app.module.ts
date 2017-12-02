@@ -32,6 +32,10 @@ import { AvisoGestionComponent } from './Componentes/aviso-gestion/aviso-gestion
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/aviso-details/aviso-details.component';
 import { CategoriaComponent } from './Componentes/categoria/categoria.component';
+import { ContactoComponent } from './Layouts/contacto/contacto.component';
+import { FaqComponent } from './Layouts/faq/faq.component';
+import { FooterComponent } from './Tools/footer/footer.component';
+import {DashboardAdminComponent} from './Layouts/dashboard-admin/dashboard-admin.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -52,7 +56,10 @@ const ROUTES = [
   { path: 'forgot', component: UsuarioForgotComponent},
   { path: 'login/administracion', component: GestorLoginComponent},
   { path: 'registro/administracion', component: GestorRegistroComponent},
-  { path: 'categorias', component: CategoriaComponent}
+  { path: 'categorias', component: CategoriaComponent},
+  { path: 'contacto', component: ContactoComponent},
+  { path: 'faq', component: FaqComponent},
+  { path: 'dashboard-admin', component: DashboardAdminComponent}
 ];
 
 @NgModule({
@@ -74,7 +81,11 @@ const ROUTES = [
     AvisoDetailsComponent,
     AvisoGestionComponent,
     GestorRegistroComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    ContactoComponent,
+    FaqComponent,
+    FooterComponent,
+    DashboardAdminComponent
   ],
   imports: [BrowserModule,
     FormsModule,
