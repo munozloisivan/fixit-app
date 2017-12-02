@@ -28,9 +28,9 @@
   <!-- Initialize Google Maps -->
   <script>
     function myMap() {
-      var myCenter = new google.maps.LatLng(41.4922468,2.0959439);
+      var myCenter = new google.maps.LatLng(41.275146,1.986519);
       var mapCanvas = document.getElementById('map');
-      var mapOptions = {center: myCenter, zoom: 12};
+      var mapOptions = {center: myCenter, zoom: 15};
       var map = new google.maps.Map(mapCanvas, mapOptions);
       var marker = new google.maps.Marker({position:myCenter});
       marker.setMap(map);
@@ -54,8 +54,8 @@
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
       // Output the result in an element with id="demo"
-      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
+        $('#demo').html(days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+
       // If the count down is over, write some text
       if (distance < 0) {
         clearInterval(countdownfunction);
@@ -63,6 +63,7 @@
       }
     }, 1000);
   </script>
+
 </head>
 <body>
 <!--prueba push!-->

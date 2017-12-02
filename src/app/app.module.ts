@@ -32,7 +32,11 @@ import { AvisoGestionComponent } from './Componentes/aviso-gestion/aviso-gestion
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/aviso-details/aviso-details.component';
 import { CategoriaComponent } from './Componentes/categoria/categoria.component';
-import { ContactoComponent } from './Componentes/contacto/contacto.component';
+import { ContactoComponent } from './Layouts/contacto/contacto.component';
+import { FaqComponent } from './Layouts/faq/faq.component';
+import { FooterComponent } from './Tools/footer/footer.component';
+import {DashboardAdminComponent} from './Layouts/dashboard-admin/dashboard-admin.component';
+import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -44,17 +48,18 @@ const ROUTES = [
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
   { path: 'dashboard', component: DashboardComponent},
+  { path: 'admin/dashboard', component: DashboardAdminComponent},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent},
   { path: 'aviso-edit/:id', component: AvisoEditComponent},
   { path: 'usuarios', component: UsuarioComponent},
   { path: 'avisos', component: AvisoComponent},
-  { path: 'login', component: UsuarioLoginComponent},
-  { path: 'registro', component: UsuarioRegistroComponent},
+  { path: 'acceso' , component: LogRegUserComponent},
   { path: 'forgot', component: UsuarioForgotComponent},
   { path: 'login/administracion', component: GestorLoginComponent},
   { path: 'registro/administracion', component: GestorRegistroComponent},
   { path: 'categorias', component: CategoriaComponent},
-  { path: 'contacto', component: ContactoComponent}
+  { path: 'contacto', component: ContactoComponent},
+  { path: 'faq', component: FaqComponent}
 ];
 
 @NgModule({
@@ -71,13 +76,18 @@ const ROUTES = [
     UsuarioRegistroComponent,
     UsuarioForgotComponent,
     DashboardComponent,
+    DashboardAdminComponent,
     NavbarDashboardComponent,
     AvisoEditComponent,
     AvisoDetailsComponent,
     AvisoGestionComponent,
     GestorRegistroComponent,
     CategoriaComponent,
-    ContactoComponent
+    ContactoComponent,
+    FaqComponent,
+    FooterComponent,
+    DashboardAdminComponent,
+    LogRegUserComponent
   ],
   imports: [BrowserModule,
     FormsModule,

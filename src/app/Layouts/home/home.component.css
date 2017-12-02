@@ -4,10 +4,6 @@ body, html {
   margin: 0;
 }
 
-.navbar{
-  margin-bottom: 0 !important;
-}
-
 .bgimg {
   /* Background image */
   background-image: url('../../../assets/home.png');
@@ -54,5 +50,5 @@ body, html {
 /* Style the <hr> element */
 hr {
   margin: auto;
-  width: 40%;
+  width: 50%;
 }

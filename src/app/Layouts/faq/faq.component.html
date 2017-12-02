@@ -1,0 +1,97 @@
+<app-navbar-home></app-navbar-home>
+
+<script type="javascript">
+  var acc = document.getElementsByClassName('accordion');
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+      this.classList.toggle('active');
+
+      const panel = this.nextElementSibling;
+      if (panel.style.display === 'block') {
+        panel.style.display = 'none';
+      } else {
+        panel.style.display = 'block';
+      }
+    };
+  }
+</script>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Preguntas Frecuentes</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#section1">Home</a></li>
+        <li><a href="#section2">FIXIT General</a></li>
+        <li><a href="#section3">Problemas de usuario</a></li>
+        <li><a href="#section4">Cómo usar Fixit</a></li>
+        <li><a href="#section5">¿Todavía no usas Fixit?</a></li>
+      </ul><br>
+    </div>
+
+    <div class="col-sm-9">
+      <button class="accordion">¿Cúando estará disponible FIXIT?</button>
+      <div class="panel">
+        <br>
+        <p>Actualmente la aplicación se encuentra en desarrollo.
+          <br>
+          No obstante puedes mantenerte informado acerca de los avances que va teniendo
+          y de las releases en marcha.
+          <br>
+          No olvides también seguirnos en las redes sociales para mantenerte informado!
+          <br>
+          <strong><a href="https://twitter.com/eaCodersG3">Twitter: @eaCodersG3</a></strong>
+          <br>
+          <strong><a href="https://github.com/munozloisivan/fixit-app">Github</a></strong>
+        </p>
+        <br>
+      </div>
+      <button class="accordion">¿Qué és fixit?</button>
+      <div class="panel">
+        <br>
+        <p>Pensar una posible respuesta</p>
+        <br>
+      </div>
+      <button class="accordion">¿Cómo puedo descargar la App?</button>
+      <div class="panel">
+        <br>
+        <p>Pensar una posible respuesta</p>
+        <br>
+      </div>
+      <button class="accordion">¿Cómo hago un aviso?</button>
+      <div class="panel">
+        <br>
+        <p>Pensar una posible respuesta</p>
+        <br>
+      </div>
+      <button class="accordion">He olvidado mi contraseña de acceso</button>
+      <div class="panel">
+        <br>
+        <p>Pensar una posible respuesta</p>
+        <br>
+      </div>
+      <button class="accordion">¿Cómo puedo reportar un aviso?</button>
+      <div class="panel">
+        <br>
+        <p>Pensar una posible respuesta</p>
+        <br>
+      </div>
+      <button class="accordion">¿Qué significa apoyar un aviso?</button>
+      <div class="panel">
+        <br>
+        <p>Pensar una posible respuesta</p>
+        <br>
+      </div>
+      <button class="accordion">¿Cómo se gestiona un aviso una vez lo he realizado?</button>
+      <div class="panel">
+        <br>
+        <p>Pensar una posible respuesta</p>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

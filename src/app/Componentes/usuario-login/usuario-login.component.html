@@ -1,78 +1,17 @@
-<script>
-  $(function() {
 
-    $('#login-form-link').click(function(e) {
-      $("#login-form").delay(100).fadeIn(100);
-      $("#register-form").fadeOut(100);
-      $('#register-form-link').removeClass('active');
-      $(this).addClass('active');
-      e.preventDefault();
-    });
-    $('#register-form-link').click(function(e) {
-      $("#register-form").delay(100).fadeIn(100);
-      $("#login-form").fadeOut(100);
-      $('#login-form-link').removeClass('active');
-      $(this).addClass('active');
-      e.preventDefault();
-    });
-
-  });
-</script>
-
-<app-navbar-home></app-navbar-home>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="panel panel-login">
-        <div class="panel-heading">
-          <div class="row">
-            <div class="col-xs-6">
-              <a href="/#/login" class="active" id="login-form-link">Acceso de usuarios</a>
-            </div>
-            <div class="col-xs-6">
-              <a href="/#/registro" id="register-form-link">Registro</a>
-            </div>
-          </div>
-          <hr>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-12">
-              <form id="login-form" action="http://localhost:3000/#/login/process" method="post" role="form" (ngSubmit)="Login()" #loginUsuarioForm="ngForm" style="display: block;">
-              <div class="form-group">
-                <label>Introduce tu email:</label>
-                <input type="text" class="form-control" placeholder="Email" [(ngModel)]="email" name="email" required>
-              </div>
-              <div class="form-group">
-                <label>Introduce tu contraseña:</label>
-                <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
-              </div>
-              <div class="form-group text-center">
-                <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                <label for="remember">Recuérdame</label>
-              </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-sm-6 col-sm-offset-3">
-                    <button type="submit" class="form-control btn btn-primary" name="login-submit" [disabled]="!loginUsuarioForm.form.valid" id="login-submit" tabindex="4">Entrar</button>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="text-center">
-                      <a href="/#/forgot" tabindex="5" class="forgot-password">Recordar contraseña</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+<form (ngSubmit)="Login()" #loginForm="ngForm">
+  <div class="form-group">
+    <label for="email">Correo electrónico</label>
+    <input type="email" class="form-control" [(ngModel)]="email" name="email" id="email" required>
+  </div>
+  <div class="form-group">
+    <label for="p">Contraseña</label>
+    <input type="password" class="form-control" [(ngModel)]="password" name="password" id="p" required>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-5">
+      <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Entrar</button>
     </div>
   </div>
-</div>
+</form>
+

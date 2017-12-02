@@ -3,7 +3,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     //gestorCtrl = require('../controllers/gestor'),
     Gestor = require('../models/gestor');
-
+var bcrypt = require('bcrypt');
+var jwt = require('../services/jwt')
 var emailController = require('../controllers/mail');
 
 /*GET ALL GESTORES*/
@@ -24,11 +25,75 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+/*LOGIN USARIO*/
+router.post('/auth', function (req, res) {
+  var params = req.body;
+  var email = params.email;
+  var password = params.password;
+  Gestor.findOne({email: email.toLowerCase()}).exec(function (err, gestor) {
+    if (err){
+      res.status(500).send({m: "Error del servidor"})
+    }else{
+      if(gestor){
+        bcrypt.compare(password, gestor.password, function (err, check) {
+          if (check){
+            res.status(200).send({
+              token: jwt.createTokenGestor(gestor)
+            });
+          }else{
+            res.status(404).send({m: "Contraseña incorrecta"})
+          }
+        });
+      }else{
+        res.status(404).send({m:"El correo electrónico no esta registrado"});
+      }
+    }
+  })
+});
+
 /* SAVE GESTOR */
 router.post('/add', function(req, res, next) {
-  Gestor.create(req.body, function (err, gestor) {
-    if (err) return next(err);
-    res.json(gestor);
+
+  var gestor = new Gestor();
+  gestor = req.body;
+
+  Gestor.findOne({email: gestor.email.toLocaleLowerCase()}).exec(function (err, match) {
+    if (err){
+      res.status(500).send({m: "Error del servidor"})
+    }else{
+      if (!match){
+        Gestor.findOne({dni: gestor.dni}).exec(function (err, match) {
+          if (err){
+            res.status(500).send({m: "Error del servidor"})
+          }else{
+            if (!match){
+              Gestor.findOne({telefono: gestor.telefono}).exec(function (err, match) {
+                if (err){
+                  res.status(500).send({m: "Error del servidor"})
+                }else{
+                  if (!match){
+                    bcrypt.hash(gestor.password, 10, function (err, hash) {
+                      gestor.password = hash;
+
+                      Gestor.create(gestor, function (err, usuario) {
+                        if (err) return next(err);
+                        res.status(200).send({m: "Registro correcto"});
+                      });
+                    });
+                  }else {
+                    res.status(200).send({m: "El teléfono ya esta registrado"})
+                  }
+                }
+              });
+            }else {
+              res.status(200).send({m: "El dni ya esta registrado"})
+            }
+          }
+        });
+      }else {
+        res.status(200).send({m: "El correo electrónico ya esta registrado"})
+      }
+    }
   });
 });
 
@@ -45,17 +110,6 @@ router.put('/:id', function(req, res, next) {
   Gestor.findByIdAndUpdate(req.params.id, req.body, function (err, gestor) {
     if (err) return next(err);
     res.json(gestor);
-  });
-});
-
-/* AUTHENTICATE GESTOR*/
-router.post('/auth', function(req, res, next) {
-  Gestor.authenticate(req.body.email, req.body.password, function (err, gestor) {
-    if(err || !gestor){
-      return next(err);
-    } else {
-      return res.send('Autenticado correctamente');
-    }
   });
 });
 
