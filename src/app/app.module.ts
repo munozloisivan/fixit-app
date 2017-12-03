@@ -41,6 +41,7 @@ import { PerfilComponent } from './Componentes/perfil/perfil.component';
 import {UsuarioAvisosComponent} from './Componentes/usuario-avisos/usuario-avisos.component';
 import { UsuarioLogrosComponent } from './Componentes/usuario-logros/usuario-logros.component';
 import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.component';
+import {AuthGuard} from "./Guards/auth.guard";
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -51,7 +52,7 @@ const ROUTES = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
-  { path: 'dashboard', component: DashboardComponent},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'admin/dashboard', component: DashboardAdminComponent},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent},
   { path: 'aviso-edit/:id', component: AvisoEditComponent},
@@ -106,6 +107,7 @@ const ROUTES = [
     GestorService,
     CategoriaService,
     AvisoService,
+    AuthGuard,
     {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
