@@ -12,6 +12,10 @@ export class UsuarioLoginComponent implements OnInit {
 
   email: string;
   password: string;
+  public status: string;
+  public token;
+  public identity: {};
+  public data: {};
 
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
@@ -19,15 +23,27 @@ export class UsuarioLoginComponent implements OnInit {
   }
 
   Login() {
-    this.usuarioService.authenticateUsuario({'email': this.email, 'password': this.password}).then((res) => {
-      if (res) {
-        alert('Autenticado correctamente');
+    this.usuarioService.authenticateUsuario({email: this.email, password: this.password}).subscribe(
+      (data) => {
+        this.data = data;
+
+        if (this.data['token'].length <= 0) {
+          alert('El token no se ha generado');
+        }else {
+          this.status = 'success';
+          localStorage.setItem('token', JSON.stringify(this.data['token']));
+          localStorage.setItem('identity', JSON.stringify(this.data['user']));
+          setTimeout(() => {this.router.navigate(['/dashboard']); }, 2000);
+        }
+        // sessionStorage.setItem('usuario', JSON.stringify(data));
+        // this.router.navigate(['/dashboard']);
+        // window.location.reload();
+      },
+      (err) => {
+        console.log(err);
+        this.status = 'error';
       }
-      this.router.navigate(['/dashboard']);
-    }, (err) => {
-      console.log(err);
-      alert('Credenciales incorrectas');
-    });
+    );
   }
 
 }

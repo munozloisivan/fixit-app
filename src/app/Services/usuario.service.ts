@@ -93,7 +93,16 @@ export class UsuarioService {
     });
   }
 
-  authenticateUsuario(email) {
+
+  authenticateUsuario(user): Observable<Response> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('/usuario/auth', user)
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Error del servidor'));
+  }
+
+  /*authenticateUsuario(email) {
     return new Promise((resolve, reject) => {
       this.http.post('/usuario/auth', email)
         .subscribe(res => {
@@ -102,7 +111,7 @@ export class UsuarioService {
           reject(err);
         });
     });
-  }
+  }*/
 
   reestablecerPassword(email) {
     return new Promise((resolve, reject) => {

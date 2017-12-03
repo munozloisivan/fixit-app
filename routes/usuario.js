@@ -42,7 +42,8 @@ router.post('/auth', function (req, res) {
         if(user){
           bcrypt.compare(password, user.password, function (err, check) {
             if (check){
-              res.status(200).send({
+              res.status(200).jsonp({
+                user: user,
                 token: jwt.createTokenUser(user)
               });
             }else{
