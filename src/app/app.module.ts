@@ -41,7 +41,8 @@ import { PerfilComponent } from './Componentes/perfil/perfil.component';
 import {UsuarioAvisosComponent} from './Componentes/usuario-avisos/usuario-avisos.component';
 import { UsuarioLogrosComponent } from './Componentes/usuario-logros/usuario-logros.component';
 import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.component';
-import {AuthGuard} from './Guards/auth.guard';
+import {AuthGuard} from "./Guards/auth.guard";
+import { NavbarUsuarioComponent } from './Tools/navbar-usuario/navbar-usuario.component';
 import { LogRegAdminComponent } from './Layouts/log-reg-admin/log-reg-admin.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
@@ -97,6 +98,7 @@ const ROUTES = [
     UsuarioAvisosComponent,
     UsuarioLogrosComponent,
     LogRegUserComponent,
+    NavbarUsuarioComponent,
     LogRegAdminComponent
   ],
   imports: [BrowserModule,
