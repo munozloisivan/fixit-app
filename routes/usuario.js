@@ -44,7 +44,8 @@ router.post('/auth', function (req, res) {
             if (check){
               res.status(200).jsonp({
                 user: user,
-                token: jwt.createTokenUser(user)
+                token: jwt.createTokenUser(user),
+                role: 'USUARIO'
               });
             }else{
               res.status(404).send({m: "Contraseña incorrecta"})

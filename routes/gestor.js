@@ -25,7 +25,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/*LOGIN USARIO*/
+/*LOGIN GESTOR*/
 router.post('/auth', function (req, res) {
   var params = req.body;
   var email = params.email;
@@ -38,6 +38,7 @@ router.post('/auth', function (req, res) {
         bcrypt.compare(password, gestor.password, function (err, check) {
           if (check){
             res.status(200).send({
+              gestor: gestor,
               token: jwt.createTokenGestor(gestor)
             });
           }else{

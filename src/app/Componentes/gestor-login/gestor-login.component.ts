@@ -12,6 +12,10 @@ export class GestorLoginComponent implements OnInit {
 
   email: string;
   password: string;
+  public status: string;
+  public token;
+  public identity: {};
+  public data: {};
 
   constructor( private router: Router, private gestorService: GestorService) { }
 
@@ -19,13 +23,24 @@ export class GestorLoginComponent implements OnInit {
   }
 
   LoginGestor() {
-    this.gestorService.authenticateGestor({'email': this.email, 'password': this.password}).then((res) => {
-      alert(res);
+    this.gestorService.authenticateGestor({'email': this.email, 'password': this.password}).subscribe(
+      (data) => {
+      this.data = data;
+
+      if (this.data['token'].length <= 0) {
+          alert('El token no se ha generado');
+      }else {
+        this.status = 'success';
+        localStorage.setItem('token', JSON.stringify(this.data['token']));
+        localStorage.setItem('identity', JSON.stringify(this.data['user']));
+        localStorage.setItem('role', JSON.stringify(this.data['role']));
+        setTimeout(() => {this.router.navigate(['/dashboard']); }, 2000);
+      }
       this.router.navigate(['/admin/dashboard']);
-    }, (err) => {
-      alert(err);
-      console.log(err);
-    });
+      }, (err) => {
+        console.log(err);
+        this.status = 'error';
+      });
   }
 
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class GestorService {
@@ -67,7 +68,15 @@ export class GestorService {
     });
   }
 
-  authenticateGestor(email) {
+  authenticateGestor(gestor): Observable<Response> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('/gestor/auth', gestor)
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Error del servidor'));
+  }
+
+  /*authenticateGestor(email) {
     return new Promise((resolve, reject) => {
       this.http.post('/gestor/auth', email)
         .subscribe(res => {
@@ -76,7 +85,7 @@ export class GestorService {
           reject(err);
         });
     });
-  }
+  }*/
 
   registerMailGestor(data) {
     return new Promise((resolve, reject) => {
