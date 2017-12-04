@@ -32,11 +32,10 @@ export class GestorLoginComponent implements OnInit {
       }else {
         this.status = 'success';
         localStorage.setItem('token', JSON.stringify(this.data['token']));
-        localStorage.setItem('identity', JSON.stringify(this.data['user']));
+        localStorage.setItem('identity', JSON.stringify(this.data['gestor']));
         localStorage.setItem('role', JSON.stringify(this.data['role']));
-        setTimeout(() => {this.router.navigate(['/dashboard']); }, 2000);
+        setTimeout(() => {this.router.navigate(['/admin/dashboard']); }, 1500);
       }
-      this.router.navigate(['/admin/dashboard']);
       }, (err) => {
         console.log(err);
         this.status = 'error';

@@ -12,6 +12,7 @@ export class UsuarioRegistroComponent implements OnInit {
 
   email: string;
   password: string;
+  status: string;
 
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
@@ -22,14 +23,13 @@ export class UsuarioRegistroComponent implements OnInit {
       this.usuarioService.saveUsuario({email: this.email, password: this.password}).subscribe(
         (data) => {
           console.log(data);
-          alert('Usuario registrado');
+          this.status = 'success';
           // sessionStorage.setItem('usuario', JSON.stringify(data));
-          this.router.navigate(['/acceso']);
-          window.location.reload();
+          setTimeout(() => {window.location.reload(); }, 1500);
         },
         (err) => {
           console.log(err);
-          alert('El correo electrónico ya esta en uso');
+          this.status = 'error';
         }
       );
   }

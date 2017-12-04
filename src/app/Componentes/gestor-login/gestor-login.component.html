@@ -1,6 +1,29 @@
-<app-navbar-home></app-navbar-home>
 
-<script>
+<div class="alert alert-success" *ngIf="status == 'success'">
+  Inicio de sesión correcto
+</div>
+
+<div class="alert alert-danger" *ngIf="status == 'error'">
+  Credenciales incorrectas
+</div>
+
+<form (ngSubmit)="LoginGestor()" #loginForm="ngForm">
+  <div class="form-group">
+    <label for="email">Correo electrónico</label>
+    <input type="email" class="form-control" [(ngModel)]="email" name="email" id="email" required>
+  </div>
+  <div class="form-group">
+    <label for="p">Contraseña</label>
+    <input type="password" class="form-control" [(ngModel)]="password" name="password" id="p" required>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-5">
+      <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Entrar</button>
+    </div>
+  </div>
+</form>
+
+<!--<script>
   $(function() {
 
     $('#gestor-login-form-link').click(function(e) {
@@ -85,6 +108,4 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-
+  </div>!-->

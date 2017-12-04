@@ -39,7 +39,8 @@ router.post('/auth', function (req, res) {
           if (check){
             res.status(200).send({
               gestor: gestor,
-              token: jwt.createTokenGestor(gestor)
+              token: jwt.createTokenGestor(gestor),
+              role: 'GESTOR'
             });
           }else{
             res.status(404).send({m: "Contraseña incorrecta"})

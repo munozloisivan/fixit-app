@@ -1,3 +1,11 @@
+<div class="alert alert-success" *ngIf="status == 'success'">
+  Registro correcto
+</div>
+
+<div class="alert alert-danger" *ngIf="status == 'error'">
+  El correo electrónico ya esta registrado
+</div>
+
 <form (submit)="Register()" #loginForm="ngForm">
   <div class="form-group">
     <label for="e">Correo electrónico</label>
