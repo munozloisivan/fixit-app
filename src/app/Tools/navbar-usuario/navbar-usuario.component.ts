@@ -9,13 +9,16 @@ import {Router} from '@angular/router';
 })
 export class NavbarUsuarioComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
   close_session() {
     localStorage.clear();
-    setTimeout(() => {this.router.navigate(['/home']); }, 1000);
+    setTimeout(() => {
+      this.router.navigate(['/home']);
+    }, 1000);
   }
 }
