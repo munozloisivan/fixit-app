@@ -10,16 +10,20 @@ import {Router} from '@angular/router';
 })
 export class PerfilComponent implements OnInit {
 
-  usuario: any;
+  usuario: {};
+  identity: {};
 
   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit() {
-    this.getUsuarioDetails('59f8a44a2d3e28801c000001');
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    console.log(this.identity['_id']);
+    this.getUsuarioDetails(this.identity['_id']);
   }
 
   getUsuarioDetails(id) {
     this.usuarioService.showUsuario(id).then((res) => {
+      console.log('Usuario:' + res);
       this.usuario = res;
     }, (err) => {
       console.log(err);

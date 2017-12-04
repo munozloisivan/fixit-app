@@ -13,11 +13,14 @@ export class UsuarioAvisosComponent implements OnInit {
 
   aviso: any;
   avisomodal: {};
+  identity: {};
 
   constructor(private avisoService: AvisoService, private router: Router) { }
 
   ngOnInit() {
-    this.getUsuarioAvisos('5a0a294ba92f340c2c0a2a5e');
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    console.log(this.identity['_id']);
+    this.getUsuarioAvisos(this.identity['_id']);
   }
 
  getUsuarioAvisos(usuario) {

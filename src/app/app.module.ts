@@ -42,6 +42,7 @@ import {UsuarioAvisosComponent} from './Componentes/usuario-avisos/usuario-aviso
 import { UsuarioLogrosComponent } from './Componentes/usuario-logros/usuario-logros.component';
 import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.component';
 import {AuthGuard} from "./Guards/auth.guard";
+import { NavbarUsuarioComponent } from './Tools/navbar-usuario/navbar-usuario.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -65,7 +66,7 @@ const ROUTES = [
   { path: 'categorias', component: CategoriaComponent},
   { path: 'contacto', component: ContactoComponent},
   { path: 'faq', component: FaqComponent},
-  { path: 'usuario/perfil', component: UsuarioPerfilComponent}
+  { path: 'usuario/perfil', component: UsuarioPerfilComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -96,7 +97,8 @@ const ROUTES = [
     PerfilComponent,
     UsuarioAvisosComponent,
     UsuarioLogrosComponent,
-    LogRegUserComponent
+    LogRegUserComponent,
+    NavbarUsuarioComponent
   ],
   imports: [BrowserModule,
     FormsModule,

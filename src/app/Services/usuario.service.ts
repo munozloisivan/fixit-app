@@ -82,6 +82,19 @@ export class UsuarioService {
     });
   }
 
+  updateTituloUsuario(id, data) {
+    console.log(data);
+    return new Promise((resolve, reject) => {
+      this.http.put('/usuario/titulo/' + id, data)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   deleteUsuario(id) {
     return new Promise((resolve, reject) => {
       this.http.delete('/usuario/' + id)

@@ -13,11 +13,14 @@ export class UsuarioLogrosComponent implements OnInit {
 
   usuarios: any;
   usuario: {};
+  identity: {};
 
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-    this.getUsuarioLogros('5a0f1b45b33008338475cceb');
+    this.identity = JSON.parse(localStorage.getItem('identity'));
+    console.log(this.identity['_id']);
+    this.getUsuarioLogros(this.identity['_id']);
   }
 
   getUsuarioLogros(usuario) {
@@ -26,6 +29,16 @@ export class UsuarioLogrosComponent implements OnInit {
       this.usuarios = res;
       this.usuario = JSON.stringify(res);
       console.log('usuario: ' + this.usuario);
+    }, (err) => {
+      console.log(err);
+    });
+  }
+  updateTituloUsuario(id, data) {
+    console.log(data);
+    window.location.reload();
+    this.usuarioService.updateTituloUsuario(id, data).then(res => {
+      console.log(res);
+      this.usuario = res;
     }, (err) => {
       console.log(err);
     });

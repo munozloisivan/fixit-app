@@ -10,15 +10,10 @@
   </thead>
   <tbody>
   <tr *ngFor="let u of usuarios.logros.coleccion">
+    <td>{{ u.nombre }}</td>
     <td>{{ u.titulo }}</td>
-    <td>{{ u.titulo }}</td>
-    <td>{{ u.titulo }}</td>
-    <td>
-      <a type="button" id="btn1" class="btn btn-info btn-md">Detalles</a>
-      <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-      </a>
-    </td>
+    <td>{{ u.puntos }}</td>
+    <td><a (click)="updateTituloUsuario(this.identity['_id'], {'tituloActivo': u.titulo})" class="btn btn-info btn-md"> Fijar título</a></td>
   </tr>
   </tbody>
 </table>
