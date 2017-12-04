@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
 /* GET SINGLE USER BY ID */
 router.get('/:id', function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados .populate('avisos','logros')
-  Usuario.findById(req.params.id).populate('logros').exec(function (err, usuario) {
+  Usuario.findById(req.params.id).populate('logros.coleccion').exec(function (err, usuario) {
     if (err) return next(err);
     res.json(usuario);
   });
@@ -44,7 +44,8 @@ router.post('/auth', function (req, res) {
             if (check){
               res.status(200).jsonp({
                 user: user,
-                token: jwt.createTokenUser(user)
+                token: jwt.createTokenUser(user),
+                role: 'USUARIO'
               });
             }else{
               res.status(404).send({m: "Contraseña incorrecta"})
@@ -112,6 +113,15 @@ router.post('/:id/logro/:idlogro', function (req, res, next) {
   Usuario.update({_id:req.params.id},{ $push: { "logros.coleccion" : req.params.idlogro }}, function (err, aviso) {
     if (err) return next(err);
     res.json(aviso);
+  });
+});
+
+/* AÑADIR TITULO A USUARIO */
+router.put('/titulo/:id', function (req, res, next) {
+  console.log(req.body);
+  Usuario.findByIdAndUpdate({_id:req.params.id},{ $set: { "logros.tituloActivo" : req.body.tituloActivo }}, function (err, usuario) {
+    if (err) return next(err);
+    res.json(usuario);
   });
 });
 
