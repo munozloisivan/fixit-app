@@ -41,7 +41,7 @@ import { PerfilComponent } from './Componentes/perfil/perfil.component';
 import {UsuarioAvisosComponent} from './Componentes/usuario-avisos/usuario-avisos.component';
 import { UsuarioLogrosComponent } from './Componentes/usuario-logros/usuario-logros.component';
 import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.component';
-import {AuthGuard} from "./Guards/auth.guard";
+import {AuthGuard} from './Guards/auth.guard';
 import { NavbarUsuarioComponent } from './Tools/navbar-usuario/navbar-usuario.component';
 import { LogRegAdminComponent } from './Layouts/log-reg-admin/log-reg-admin.component';
 
@@ -50,7 +50,8 @@ const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'adondequieresir', component: componenteDeDondeQuieresIr },];
 */
 
-const ROUTES = [
+
+const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
@@ -104,7 +105,7 @@ const ROUTES = [
   imports: [BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES)],
+    RouterModule.forRoot(appRoutes)],
   providers: [UsuarioService,
     LogroService,
     GestorService,
