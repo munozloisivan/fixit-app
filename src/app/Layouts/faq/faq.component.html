@@ -1,31 +1,12 @@
 <app-navbar-home></app-navbar-home>
 
-<script type="javascript">
-  var acc = document.getElementsByClassName('accordion');
-  var i;
-
-  for (i = 0; i < acc.length; i++) {
-    acc[i].onclick = function(){
-      this.classList.toggle('active');
-
-      const panel = this.nextElementSibling;
-      if (panel.style.display === 'block') {
-        panel.style.display = 'none';
-      } else {
-        panel.style.display = 'block';
-      }
-    };
-  }
-</script>
-
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
       <h4>Preguntas Frecuentes</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Home</a></li>
-        <li><a href="#section2">FIXIT General</a></li>
-        <li><a href="#section3">Problemas de usuario</a></li>
+        <li><a href="#section2">General</a></li>
+        <li><a href="#section3">Problemas usuario</a></li>
         <li><a href="#section4">Cómo usar Fixit</a></li>
         <li><a href="#section5">¿Todavía no usas Fixit?</a></li>
       </ul><br>
@@ -37,10 +18,7 @@
         <br>
         <p>Actualmente la aplicación se encuentra en desarrollo.
           <br>
-          No obstante puedes mantenerte informado acerca de los avances que va teniendo
-          y de las releases en marcha.
-          <br>
-          No olvides también seguirnos en las redes sociales para mantenerte informado!
+          No obstante puedes mantenerte informado acerca de los avances siguiéndonos en las redes sociales.
           <br>
           <strong><a href="https://twitter.com/eaCodersG3">Twitter: @eaCodersG3</a></strong>
           <br>
@@ -51,43 +29,41 @@
       <button class="accordion">¿Qué és fixit?</button>
       <div class="panel">
         <br>
-        <p>Pensar una posible respuesta</p>
+        <p>Fixit es una aplicación para abrir un canal de comunicación entre la gente y los servicios de mantenimiento y gestión de las cuidades
+          Todo el mundo puede contribuir a mantener su cuidad en perfecto estado, notificando de los desperfectos urbanos. De esta manera, los organismos
+        encargados del mantenimiento y la gestión estarán 100% informados del estado actual del barrio.</p>
         <br>
       </div>
-      <button class="accordion">¿Cómo puedo descargar la App?</button>
+      <button class="accordion">¿Cómo puedo descargar la aplicación?</button>
       <div class="panel">
         <br>
-        <p>Pensar una posible respuesta</p>
+        <p>Todavía no esta lista la aplicación para dispositivos móviles, pero será tan fácil de de descargar en instalar como lo es respirar.</p>
         <br>
       </div>
       <button class="accordion">¿Cómo hago un aviso?</button>
       <div class="panel">
         <br>
-        <p>Pensar una posible respuesta</p>
+        <p>Observa, fotografía, describe, publica. Fácil ¿Verdad?</p>
         <br>
       </div>
       <button class="accordion">He olvidado mi contraseña de acceso</button>
       <div class="panel">
         <br>
-        <p>Pensar una posible respuesta</p>
-        <br>
-      </div>
-      <button class="accordion">¿Cómo puedo reportar un aviso?</button>
-      <div class="panel">
-        <br>
-        <p>Pensar una posible respuesta</p>
+        <p>Puede generar una nueva contraseña a través del enlace que se encuentra en el inicio de sesión.</p>
         <br>
       </div>
       <button class="accordion">¿Qué significa apoyar un aviso?</button>
       <div class="panel">
         <br>
-        <p>Pensar una posible respuesta</p>
+        <p>Apoyar una aviso significa apoyar a al bienestar de tu ciudad manteniendo la limpieza y el orden de la aplicación.
+        Si hay un desperfecto que desear reportar, pero alguien ya lo ha hecho anteriormente, puedes apoyarle de manera rápida y sencilla sin tener
+        que abrir una nueva instancia de queja.</p>
         <br>
       </div>
       <button class="accordion">¿Cómo se gestiona un aviso una vez lo he realizado?</button>
       <div class="panel">
         <br>
-        <p>Pensar una posible respuesta</p>
+        <p>En tu panel de usuario, puedes ver todos los avisos que has creado o apoyado.</p>
         <br>
       </div>
     </div>
