@@ -41,7 +41,8 @@ import { PerfilComponent } from './Componentes/perfil/perfil.component';
 import {UsuarioAvisosComponent} from './Componentes/usuario-avisos/usuario-avisos.component';
 import { UsuarioLogrosComponent } from './Componentes/usuario-logros/usuario-logros.component';
 import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.component';
-import {AuthGuard} from "./Guards/auth.guard";
+import {AuthGuard} from './Guards/auth.guard';
+import { LogRegAdminComponent } from './Layouts/log-reg-admin/log-reg-admin.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -53,19 +54,18 @@ const ROUTES = [
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  { path: 'admin/dashboard', component: DashboardAdminComponent},
+  { path: 'admin/dashboard', component: DashboardAdminComponent, canActivate: [AuthGuard]},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent},
-  { path: 'aviso-edit/:id', component: AvisoEditComponent},
-  { path: 'usuarios', component: UsuarioComponent},
+  { path: 'aviso-edit/:id', component: AvisoEditComponent, canActivate: [AuthGuard]},
+  { path: 'usuarios', component: UsuarioComponent, canActivate: [AuthGuard]},
   { path: 'avisos', component: AvisoComponent},
   { path: 'acceso' , component: LogRegUserComponent},
   { path: 'forgot', component: UsuarioForgotComponent},
-  { path: 'login/administracion', component: GestorLoginComponent},
-  { path: 'registro/administracion', component: GestorRegistroComponent},
-  { path: 'categorias', component: CategoriaComponent},
+  { path: 'acceso/administracion', component: LogRegAdminComponent},
+  { path: 'categorias', component: CategoriaComponent, canActivate: [AuthGuard]},
   { path: 'contacto', component: ContactoComponent},
   { path: 'faq', component: FaqComponent},
-  { path: 'usuario/perfil', component: UsuarioPerfilComponent}
+  { path: 'usuario/perfil', component: UsuarioPerfilComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -96,7 +96,8 @@ const ROUTES = [
     PerfilComponent,
     UsuarioAvisosComponent,
     UsuarioLogrosComponent,
-    LogRegUserComponent
+    LogRegUserComponent,
+    LogRegAdminComponent
   ],
   imports: [BrowserModule,
     FormsModule,

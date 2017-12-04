@@ -34,7 +34,7 @@ export class UsuarioLoginComponent implements OnInit {
           localStorage.setItem('token', JSON.stringify(this.data['token']));
           localStorage.setItem('identity', JSON.stringify(this.data['user']));
           localStorage.setItem('role', JSON.stringify(this.data['role']));
-          setTimeout(() => {this.router.navigate(['/dashboard']); }, 2000);
+          setTimeout(() => {this.router.navigate(['/dashboard']); }, 1500);
         }
         // sessionStorage.setItem('usuario', JSON.stringify(data));
         // this.router.navigate(['/dashboard']);

@@ -15,7 +15,7 @@
         <li><a >Perfil</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <button class="btn btn-danger navbar-btn" [routerLink]="['/home']" style="margin-right: 20px; margin-left: 20px;">Salir</button>
+        <button class="btn btn-danger navbar-btn" (click)="close_session()" style="margin-right: 20px; margin-left: 20px;">Salir</button>
       </ul>
     </div>
   </div>
