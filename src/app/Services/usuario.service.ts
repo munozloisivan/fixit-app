@@ -106,6 +106,16 @@ export class UsuarioService {
     });
   }
 
+  deleteAvisoUsuario(id, idaviso) {
+    return new Promise((resolve, reject) => {
+      this.http.delete('/usuario/' + id + '/aviso/' + idaviso)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 
   authenticateUsuario(user): Observable<Response> {
     const headers = new Headers({ 'Content-Type': 'application/json' });

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AvisoService } from '../../Services/aviso.service';
 import {Router} from '@angular/router';
+import { UsuarioService } from '../../Services/usuario.service';
 
 
-@Component({
+@Component( {
   selector: 'app-usuario-avisos',
   templateUrl: './usuario-avisos.component.html',
   styleUrls: ['./usuario-avisos.component.css'],
@@ -15,7 +16,7 @@ export class UsuarioAvisosComponent implements OnInit {
   avisomodal: {};
   identity: {};
 
-  constructor(private avisoService: AvisoService, private router: Router) { }
+  constructor(private usuarioService: UsuarioService , private avisoService: AvisoService, private router: Router) { }
 
   ngOnInit() {
     this.identity = JSON.parse(localStorage.getItem('identity'));
@@ -39,10 +40,9 @@ export class UsuarioAvisosComponent implements OnInit {
     });
   }
 
-  deleteAviso(id) {
-    this.avisoService.deleteAviso(id).then((result) => {
-      this.getUsuarioAvisos('5a0a294ba92f340c2c0a2a5e');
-      // this.router.navigate(['/dashboard']);
+  deleteAviso(id, idaviso) {
+    this.usuarioService.deleteAvisoUsuario(id, idaviso).then((result) => {
+      this.getUsuarioAvisos(this.identity['_id']);
     }, (err) => {
       console.log(err);
     });
