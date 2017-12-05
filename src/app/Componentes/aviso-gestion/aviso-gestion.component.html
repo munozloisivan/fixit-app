@@ -1,7 +1,5 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="row">
     <div class="col-md-3">
-
       <div class="vertical-menu">
         <a href="#" class="active">Herramientas</a>
         <p></p>
@@ -54,9 +52,8 @@
           <td>{{a.categoria.subtipo}}</td>
           <td>{{a.categoria.prioridad}}</td>
           <td>
-
-            <a type="button" id="btn1" class="btn btn-info btn-md" data-toggle="modal"  data-target="#myModal" class="btn btn-info btn-xs" (click)="getAvisoDetails(a._id)">Detalles</a>
-            <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">
+            <a type="button" id="btn1" data-toggle="modal"  data-target="#myModal" class="btn btn-info btn-xs" (click)="getAvisoDetails(a._id)">Detalles</a>
+            <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-md">
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </a>
           </td>
@@ -64,8 +61,8 @@
         </tbody>
       </table>
     </div>
-  </div>
 </div>
+
 
 <div id="myModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
@@ -89,7 +86,7 @@
         <h4><strong>Apoyos: </strong>{{ avisomodal.apoyos }}</h4><br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-info btn-primary" data-toggle="modal" data-target="#myModalEditAviso" (click)="getCategoria(c._id)">Editar</button>
+        <button type="button" class="btn btn-info btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#myModalEditAviso" (click)="getCategoria(c._id)">Editar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -98,7 +95,7 @@
 </div>
 
 
-<div id="myModalEditAviso" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+<div id="myModalEditAviso" class="modal fade" role="dialog"  data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
 
     <!-- Modal content-->

@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Observable';
+
 
 @Injectable()
 export class UsuarioService {
@@ -31,9 +35,44 @@ export class UsuarioService {
     });
   }
 
-  saveUsuario(data) {
+  showLogrosUsuario(id) {
     return new Promise((resolve, reject) => {
-      this.http.post('/usuario/add', data)
+      this.http.get('/usuario/' + id + '/logros')
+        .map(res => res.json())
+        .subscribe(res => {
+          console.log(res);
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+
+  saveUsuario(user): Observable<Response> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('/usuario/add', user)
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Error del servidor'));
+  }
+
+
+  /* saveUsuario(data) {
+     return new Promise((resolve, reject) => {
+       this.http.post('/usuario/add', data)
+         .map(res => res.json())
+         .subscribe(res => {
+           resolve(res);
+         }, (err) => {
+           reject(err);
+         });
+     });
+   }
+ */
+  updateUsuario(id, data) {
+    return new Promise((resolve, reject) => {
+      this.http.put('/usuario/' + id, data)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -43,9 +82,10 @@ export class UsuarioService {
     });
   }
 
-  updateUsuario(id, data) {
+  updateTituloUsuario(id, data) {
+    console.log(data);
     return new Promise((resolve, reject) => {
-      this.http.put('/usuario/' + id, data)
+      this.http.put('/usuario/titulo/' + id, data)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -66,7 +106,16 @@ export class UsuarioService {
     });
   }
 
-  authenticateUsuario(email) {
+
+  authenticateUsuario(user): Observable<Response> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('/usuario/auth', user)
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Error del servidor'));
+  }
+
+  /*authenticateUsuario(email) {
     return new Promise((resolve, reject) => {
       this.http.post('/usuario/auth', email)
         .subscribe(res => {
@@ -75,7 +124,7 @@ export class UsuarioService {
           reject(err);
         });
     });
-  }
+  }*/
 
   reestablecerPassword(email) {
     return new Promise((resolve, reject) => {

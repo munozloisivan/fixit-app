@@ -5,16 +5,17 @@ var express = require('express'),
 
 var emailController = require('../controllers/mail');
 
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var jwt = require('../services/jwt');
 var md_auth = require('../middlewares/athenticated');
 
 var Aviso = require('../models/aviso');
+var Logro = require('../models/logro');
 
 /*GET ALL USERS*/
-router.get('/', md_auth.ensureAuth, function(req, res, next) {
+router.get('/', function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados
-  Usuario.find().exec(function (err, usuarios) {
+  Usuario.find().populate('logros.coleccion').exec(function (err, usuarios) {
     if (err) return next(err);
     res.json(usuarios);
   });
@@ -23,7 +24,7 @@ router.get('/', md_auth.ensureAuth, function(req, res, next) {
 /* GET SINGLE USER BY ID */
 router.get('/:id', function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados .populate('avisos','logros')
-  Usuario.findById(req.params.id).populate('avisos.creados').populate('logros.coleccion').exec(function (err, usuario) {
+  Usuario.findById(req.params.id).populate('logros.coleccion').exec(function (err, usuario) {
     if (err) return next(err);
     res.json(usuario);
   });
@@ -41,8 +42,10 @@ router.post('/auth', function (req, res) {
         if(user){
           bcrypt.compare(password, user.password, function (err, check) {
             if (check){
-              res.status(200).send({
-                token: jwt.createTokenUser(user)
+              res.status(200).jsonp({
+                user: user,
+                token: jwt.createTokenUser(user),
+                role: 'USUARIO'
               });
             }else{
               res.status(404).send({m: "Contraseña incorrecta"})
@@ -66,36 +69,16 @@ router.post('/add', function(req, res, next) {
       res.status(500).send({m: "Error del servidor"})
     }else{
         if (!match){
-          Usuario.findOne({dni: usuario.dni}).exec(function (err, match) {
-            if (err){
-              res.status(500).send({m: "Error del servidor"})
-            }else{
-              if (!match){
-                Usuario.findOne({telefono: usuario.telefono}).exec(function (err, match) {
-                  if (err){
-                    res.status(500).send({m: "Error del servidor"})
-                  }else{
-                    if (!match){
-                      bcrypt.hash(usuario.password, 10, function (err, hash) {
-                        usuario.password = hash;
+          bcrypt.hash(usuario.password, 10, function (err, hash) {
+            usuario.password = hash;
 
-                        Usuario.create(usuario, function (err, usuario) {
-                          if (err) return next(err);
-                          res.json(usuario);
-                        });
-                      });
-                    }else {
-                      res.status(200).send({m: "El teléfono ya esta registrado"})
-                    }
-                  }
-                });
-              }else {
-                res.status(200).send({m: "El dni ya esta registrado"})
-              }
-            }
+            Usuario.create(usuario, function (err, usuario) {
+              if (err) return next(err);
+              res.status(200).send({m: "Registro correcto"});
+            });
           });
         }else {
-          res.status(200).send({m: "El correo electrónico ya esta registrado"})
+          res.status(404).send({m: "El correo electrónico ya esta registrado"})
         }
     }
   });
@@ -133,9 +116,26 @@ router.post('/:id/logro/:idlogro', function (req, res, next) {
   });
 });
 
+/* AÑADIR TITULO A USUARIO */
+router.put('/titulo/:id', function (req, res, next) {
+  console.log(req.body);
+  Usuario.findByIdAndUpdate({_id:req.params.id},{ $set: { "logros.tituloActivo" : req.body.tituloActivo }}, function (err, usuario) {
+    if (err) return next(err);
+    res.json(usuario);
+  });
+});
+
+/* OBTENER LOGROS DE UN USUARIO  */
+router.get('/:id/logros', function(req, res, next) {
+  Usuario.findById(req.params.id).populate('logros.coleccion').exec(function (err, logros) {
+    if (err) return next(err);
+    res.json(logros);
+  });
+});
+
 /* CREAR UN AVISO DESDE USUARIO */
 router.post('/:id/addaviso', function(req, res) {
- /* var idAviso;
+  var idAviso;
   var idUsuario = req.params.id;
 
   console.log('ID USUARIO: ' + req.params.id);
@@ -143,12 +143,10 @@ router.post('/:id/addaviso', function(req, res) {
 
   Aviso.create(req.body, function (err, aviso) {
     if (err) console.log(err);
-    res.json(aviso);
     idAviso = aviso._id;
 
     Aviso.update({_id: idAviso},{ $set : { "autor" : idUsuario }}, function (err, aviso) {
       if (err) console.log(err);
-      res.json(aviso);
     });
 
     Usuario.update({_id: idUsuario},{ $push : { "avisos.creados" : idAviso }}, function (err, usuario) {
@@ -156,7 +154,6 @@ router.post('/:id/addaviso', function(req, res) {
       res.json(usuario);
     });
   });
-  */
 });
 
 /* CHANGE PASSWORD */

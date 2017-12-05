@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar-dashboard',
@@ -8,9 +9,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class NavbarDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  close_session() {
+    localStorage.clear();
+    setTimeout(() => {this.router.navigate(['/home']); }, 1000);
+  }
 }

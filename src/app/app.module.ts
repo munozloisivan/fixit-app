@@ -36,30 +36,38 @@ import { ContactoComponent } from './Layouts/contacto/contacto.component';
 import { FaqComponent } from './Layouts/faq/faq.component';
 import { FooterComponent } from './Tools/footer/footer.component';
 import {DashboardAdminComponent} from './Layouts/dashboard-admin/dashboard-admin.component';
+import { UsuarioPerfilComponent } from './Layouts/usuario-perfil/usuario-perfil.component';
+import { PerfilComponent } from './Componentes/perfil/perfil.component';
+import {UsuarioAvisosComponent} from './Componentes/usuario-avisos/usuario-avisos.component';
+import { UsuarioLogrosComponent } from './Componentes/usuario-logros/usuario-logros.component';
+import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.component';
+import {AuthGuard} from './Guards/auth.guard';
+import { NavbarUsuarioComponent } from './Tools/navbar-usuario/navbar-usuario.component';
+import { LogRegAdminComponent } from './Layouts/log-reg-admin/log-reg-admin.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'adondequieresir', component: componenteDeDondeQuieresIr },];
 */
 
-const ROUTES = [
+
+const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
-  { path: 'dashboard', component: DashboardComponent},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: 'admin/dashboard', component: DashboardAdminComponent, canActivate: [AuthGuard]},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent},
-  { path: 'aviso-edit/:id', component: AvisoEditComponent},
-  { path: 'usuarios', component: UsuarioComponent},
+  { path: 'aviso-edit/:id', component: AvisoEditComponent, canActivate: [AuthGuard]},
+  { path: 'usuarios', component: UsuarioComponent, canActivate: [AuthGuard]},
   { path: 'avisos', component: AvisoComponent},
-  { path: 'login', component: UsuarioLoginComponent},
-  { path: 'registro', component: UsuarioRegistroComponent},
+  { path: 'acceso' , component: LogRegUserComponent},
   { path: 'forgot', component: UsuarioForgotComponent},
-  { path: 'login/administracion', component: GestorLoginComponent},
-  { path: 'registro/administracion', component: GestorRegistroComponent},
-  { path: 'categorias', component: CategoriaComponent},
+  { path: 'acceso/administracion', component: LogRegAdminComponent},
+  { path: 'categorias', component: CategoriaComponent, canActivate: [AuthGuard]},
   { path: 'contacto', component: ContactoComponent},
   { path: 'faq', component: FaqComponent},
-  { path: 'dashboard-admin', component: DashboardAdminComponent}
+  { path: 'usuario/perfil', component: UsuarioPerfilComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -85,17 +93,25 @@ const ROUTES = [
     ContactoComponent,
     FaqComponent,
     FooterComponent,
-    DashboardAdminComponent
+    DashboardAdminComponent,
+    UsuarioPerfilComponent,
+    PerfilComponent,
+    UsuarioAvisosComponent,
+    UsuarioLogrosComponent,
+    LogRegUserComponent,
+    NavbarUsuarioComponent,
+    LogRegAdminComponent
   ],
   imports: [BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES)],
+    RouterModule.forRoot(appRoutes)],
   providers: [UsuarioService,
     LogroService,
     GestorService,
     CategoriaService,
     AvisoService,
+    AuthGuard,
     {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })

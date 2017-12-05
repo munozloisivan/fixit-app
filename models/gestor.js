@@ -1,8 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var bcrypt = require('bcrypt');
-
 var gestorSchema = new Schema({
 
     nombre: { type: String, required: true},
