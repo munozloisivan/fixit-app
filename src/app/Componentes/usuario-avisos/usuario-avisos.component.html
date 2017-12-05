@@ -24,10 +24,9 @@
       <td>{{a.categoria.subtipo}}</td>
       <td>{{a.categoria.prioridad}}</td>
       <td>
-
         <a type="button" id="btn1" class="btn btn-info btn-md" data-toggle="modal"  data-target="#myModalAvisosUsuario" (click)="getAvisoDetails(a._id)">Detalles</a>
-        <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">
-          <span class="glyphicon glyphicon-remove" aria-hidden="true" style="border-left: 25px"></span>
+        <a (click)="deleteAviso(this.identity['_id'],a._id)" class="btn btn-danger btn-xs">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </a>
       </td>
     </tr>

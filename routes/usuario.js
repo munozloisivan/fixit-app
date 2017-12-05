@@ -108,6 +108,23 @@ router.post('/:id/aviso/:idaviso', function (req, res, next) {
   });
 });
 
+
+/* ELIMIINAR AVISO A UN USUARIO */
+router.delete('/:id/aviso/:idaviso', function (req, res, next) {
+  var id = req.params.id;
+  var idaviso = req.params.idaviso;
+
+  Usuario.update({_id: id},{ $pull: { "avisos.creados" :idaviso }}, function (err, aviso) {
+    if (err) return next(err);
+  });
+
+  Aviso.findByIdAndRemove(idaviso, req.body, function (err, aviso) {
+    if (err) return next(err);
+    res.json(aviso);
+  });
+});
+
+
 /* AÑADIR LOGRO A USUARIO */
 router.post('/:id/logro/:idlogro', function (req, res, next) {
   Usuario.update({_id:req.params.id},{ $push: { "logros.coleccion" : req.params.idlogro }}, function (err, aviso) {
