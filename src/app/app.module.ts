@@ -63,7 +63,7 @@ const appRoutes: Routes = [
   { path: 'avisos', component: AvisoComponent},
   { path: 'acceso' , component: LogRegUserComponent},
   { path: 'forgot', component: UsuarioForgotComponent},
-  { path: 'acceso/administracion', component: LogRegAdminComponent},
+  { path: 'administracion', component: LogRegAdminComponent},
   { path: 'categorias', component: CategoriaComponent, canActivate: [AuthGuard]},
   { path: 'contacto', component: ContactoComponent},
   { path: 'faq', component: FaqComponent},
