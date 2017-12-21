@@ -78,7 +78,7 @@ function onError(error) {
 }
 
 /**
- * Event listener for HTTP server "listening" event.
+ * Event listener for HTTP server "listening" event .
  */
 
 function onListening() {
@@ -89,4 +89,3 @@ function onListening() {
   console.log('Listening on ' + bind);
 }
 //To make the server run from bin/www, open and edit "package.json" then replace "start" value.
-
