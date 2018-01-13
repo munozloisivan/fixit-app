@@ -30,6 +30,7 @@
       <table class="table table-striped table-responsive">
         <thead>
         <tr>
+          <th>Foto</th>
           <th>Ciudad</th>
           <th>Calle</th>
           <th>Descripción</th>
@@ -43,6 +44,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let a of aviso">
+          <td><img src="/avisos/{{a.imagen}}" class="img-thumbnail" alt="Aviso"></td>
           <td>{{ a.datosUbicacion.ciudad }}</td>
           <td>{{ a.datosUbicacion.calle }}</td>
           <td>{{ a.descripcion }}</td>
