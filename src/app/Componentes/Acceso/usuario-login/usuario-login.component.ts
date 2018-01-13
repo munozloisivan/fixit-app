@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { UsuarioService } from '../../Services/usuario.service';
+import { UsuarioService } from '../../../Services/usuario.service';
 import {Router} from '@angular/router';
 
 declare const FB: any;

@@ -240,7 +240,7 @@ router.post('/:id/addaviso', function(req, res) {
 });
 
 /* CHANGE PASSWORD */
-router.put('/:id/change', function (req, res, next) {
+/*router.put('/:id/change', function (req, res, next) {
   var pass_hashed;
 
   bcrypt.hash(req.body.password, 10, function (err, hash) {
@@ -255,7 +255,7 @@ router.put('/:id/change', function (req, res, next) {
     });
   });
 
-});
+});*/
 
 /* RESET PASSWORD */
 router.post('/resetpassword', function(req, res) {

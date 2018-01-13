@@ -20,15 +20,15 @@ import { AvisoComponent } from './Componentes/aviso/aviso.component';
 import { GestorComponent } from './Componentes/gestor/gestor.component';
 import { HomeComponent } from './Layouts/home/home.component';
 import { NavbarHomeComponent } from './Tools/navbar-home/navbar-home.component';
-import { UsuarioLoginComponent } from './Componentes/usuario-login/usuario-login.component';
-import { GestorLoginComponent } from './Componentes/gestor-login/gestor-login.component';
+import { UsuarioLoginComponent } from './Componentes/Acceso/usuario-login/usuario-login.component';
+import { GestorLoginComponent } from './Componentes/Acceso/gestor-login/gestor-login.component';
 import { HowtoComponent } from './Layouts/howto/howto.component';
-import { UsuarioRegistroComponent } from './Componentes/usuario-registro/usuario-registro.component';
+import { UsuarioRegistroComponent } from './Componentes/Acceso/usuario-registro/usuario-registro.component';
 import { UsuarioForgotComponent } from './Componentes/usuario-forgot/usuario-forgot.component';
 import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import { NavbarDashboardComponent } from './Tools/navbar-dashboard/navbar-dashboard.component';
-import { GestorRegistroComponent } from './Componentes/gestor-registro/gestor-registro.component';
-import { AvisoGestionComponent } from './Componentes/aviso-gestion/aviso-gestion.component';
+import { GestorRegistroComponent } from './Componentes/Acceso/gestor-registro/gestor-registro.component';
+import { AvisoGestionComponent } from './Componentes/Administracion/aviso-gestion/aviso-gestion.component';
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/aviso-details/aviso-details.component';
 import { CategoriaComponent } from './Componentes/categoria/categoria.component';
@@ -44,6 +44,7 @@ import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.compone
 import {AuthGuard} from './Guards/auth.guard';
 import { NavbarUsuarioComponent } from './Tools/navbar-usuario/navbar-usuario.component';
 import { LogRegAdminComponent } from './Layouts/log-reg-admin/log-reg-admin.component';
+import {AuthuserGuard} from "./Guards/authuser.guard";
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -55,8 +56,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  { path: 'admin/dashboard', component: DashboardAdminComponent, canActivate: [AuthGuard]},
+  { path: 'admin-avisos', component: DashboardAdminComponent, canActivate: [AuthGuard]},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent},
   { path: 'aviso-edit/:id', component: AvisoEditComponent, canActivate: [AuthGuard]},
   { path: 'usuarios', component: UsuarioComponent, canActivate: [AuthGuard]},
@@ -67,7 +67,7 @@ const appRoutes: Routes = [
   { path: 'categorias', component: CategoriaComponent, canActivate: [AuthGuard]},
   { path: 'contacto', component: ContactoComponent},
   { path: 'faq', component: FaqComponent},
-  { path: 'usuario/perfil', component: UsuarioPerfilComponent, canActivate: [AuthGuard]}
+  { path: 'usuario/perfil', component: UsuarioPerfilComponent, canActivate: [AuthuserGuard]}
 ];
 
 @NgModule({
@@ -112,6 +112,7 @@ const appRoutes: Routes = [
     CategoriaService,
     AvisoService,
     AuthGuard,
+    AuthuserGuard,
     {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })

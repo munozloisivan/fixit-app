@@ -1,0 +1,19 @@
+
+.vertical-menu a {
+  color: black; /* Black text color */
+  display: inline-block; /* Make the links appear below each other */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu input {
+  display: inline-block;
+}
+
+#detalles_aviso {
+  background-color: #e5e5e5;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px black;
+}
+
+

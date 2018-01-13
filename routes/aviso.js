@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 /* GET SINGLE AVISO BY ID */
 router.get('/:id', function(req, res, next) {
-  Aviso.findById(req.params.id).exec(function (err, aviso) {
+  Aviso.findById(req.params.id).populate('categoria').exec(function (err, aviso) {
     if (err) return next(err);
     res.json(aviso);
   });

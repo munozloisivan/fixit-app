@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AvisoService } from '../../Services/aviso.service';
+import { AvisoService } from '../../../Services/aviso.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -8,6 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./aviso-gestion.component.css']
 })
 export class AvisoGestionComponent implements OnInit {
+
+  detalles_aviso: string;
 
   aviso: any;
   avisomodal: {};
@@ -70,9 +72,16 @@ export class AvisoGestionComponent implements OnInit {
     this.avisoService.showAviso(id).then((res) => {
       this.avisomodal = res;
       this.idavisoedit = id;
+      this.detalles_aviso = 'yes';
     }, (err) => {
       console.log(err);
     });
+  }
+
+  cerrarDetalles() {
+    this.avisomodal = null;
+    this.idavisoedit = null;
+    this.detalles_aviso = '';
   }
 
   deleteAviso(id) {

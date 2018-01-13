@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { GestorService} from '../../Services/gestor.service';
+import { GestorService} from '../../../Services/gestor.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -34,7 +34,7 @@ export class GestorLoginComponent implements OnInit {
         localStorage.setItem('token', JSON.stringify(this.data['token']));
         localStorage.setItem('identity', JSON.stringify(this.data['gestor']));
         localStorage.setItem('role', JSON.stringify(this.data['role']));
-        setTimeout(() => {this.router.navigate(['/admin/dashboard']); }, 1500);
+        setTimeout(() => {this.router.navigate(['/admin-avisos']); }, 1500);
       }
       }, (err) => {
         console.log(err);
