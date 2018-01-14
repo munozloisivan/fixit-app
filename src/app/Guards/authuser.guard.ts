@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-@Injectable()
-export class AuthGuard implements CanActivate {
 
+@Injectable()
+export class AuthuserGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate() {
@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
     const token = JSON.parse(localStorage.getItem('token'));
     const role = JSON.parse(localStorage.getItem('role'));
 
-    if ((token) && (role === 'GESTOR')) {
+    if ((token) && (role === 'USUARIO')) {
       // logged in so return true
       return true;
     }

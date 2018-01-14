@@ -24,25 +24,11 @@
   <!--PARA GOOGLE MAPS-->
   <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkjGaOaFOCUr1t_6MPiSLcphPJlYIjfew&callback=myMap"></script>-->
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-giP5EXvKnbUJwSRaqaZ5xRPOwG5lxfo&callback=myMap" ></script>
-
-  <!-- Initialize Google Maps -->
-  <script>
-    function myMap() {
-      var myCenter = new google.maps.LatLng(41.275146,1.986519);
-      var mapCanvas = document.getElementById('map');
-      var mapOptions = {center: myCenter, zoom: 15};
-      var map = new google.maps.Map(mapCanvas, mapOptions);
-      var marker = new google.maps.Marker({position:myCenter});
-      marker.setMap(map);
-    }
-  </script>
-
   <!--PARA EL TEMPORIZADOR DE LA HOME-->
-  <script>
+  <!--<script>
     //Jan 19, 2018 17:00:00
     // Set the date we're counting down to
-    var countDownDate = new Date("Jan 19, 2018 17:00:00").getTime();
+    var countDownDate = new Date("Jan 22, 2018 17:00:00").getTime();
     // Update the count down every 1 second
     var countdownfunction = setInterval(function() {
       // Get todays date and time
@@ -63,7 +49,7 @@
         document.getElementById("demo").innerHTML = "EXPIRED";
       }
     }, 1000);
-  </script>
+  </script>-->
 
 </head>
 <body>

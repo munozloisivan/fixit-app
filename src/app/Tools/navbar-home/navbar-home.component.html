@@ -16,11 +16,15 @@
         <li><a [routerLink]="['/contacto']">Contacto</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <button class="btn btn-primary navbar-btn" [routerLink]="['/acceso']" style="margin-right: 20px; margin-left: 20px;">Acceso</button>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <button class="btn btn-primary navbar-btn" [routerLink]="['/administracion']" style="margin-right: 20px; margin-left: 20px;">Administradores</button>
-      </ul>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Acceso
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/acceso']" style="margin-right: 20px; margin-left: 20px;">Usuarios</a></li>
+            <li><a [routerLink]="['/administracion']" style="margin-right: 20px; margin-left: 20px;">Administradores</a></li>
+            </ul>
+        </li>
+        </ul>
     </div>
   </div>
 </nav>

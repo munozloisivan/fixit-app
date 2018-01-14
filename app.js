@@ -19,11 +19,21 @@ var mailroutes = require('./routes/mail');
 var app = express();
 
 mongoose.Promise = global.Promise;
+var options = {
+  useMongoClient: true,
+  autoIndex: false, // Don't build indexes
+  reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+  reconnectInterval: 500, // Reconnect every 500ms
+  poolSize: 10, // Maintain up to 10 socket connections
+  // If not connected, return errors immediately rather than waiting for reconnect
+  bufferMaxEntries: 0
+};
 
-mongoose.connect('mongodb://mongo:27017/fixitest', function(err, res) {
+mongoose.connect('mongodb://147.83.7.158:27017/fixitest', options, function(err, res) {
   if(err) throw err;
-  console.log('Connected to Database');
+  console.log('Connected to Fixitest');
 });
+
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

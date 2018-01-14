@@ -12,6 +12,7 @@ var usuarioSchema = new Schema({
     password: { type: String , required: true},
     telefono: { type: String},
     codigoPostal: { type: String },
+    imagen: {type: String, default: 'user.png'},
     puntos: { type: Number },
     participantes: { type: Number }, /*nº de personas que apoyan sus avisos*/
     logros: {

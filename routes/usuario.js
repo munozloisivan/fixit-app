@@ -4,13 +4,16 @@ var express = require('express'),
     Usuario = require('../models/usuario');
 
 var emailController = require('../controllers/mail');
-
+var fs = require('fs');
 var bcrypt = require('bcryptjs');
 var jwt = require('../services/jwt');
 var md_auth = require('../middlewares/athenticated');
 
 var Aviso = require('../models/aviso');
 var Logro = require('../models/logro');
+
+var multipart = require('connect-multiparty');
+var md_upload = multipart({ uploadDir: './public/usuarios'});
 
 /*GET ALL USERS*/
 router.get('/', function(req, res, next) {
@@ -82,6 +85,69 @@ router.post('/add', function(req, res, next) {
         }
     }
   });
+});
+
+// UPLOAD FOTO A USUARIO
+router.post('/image/:id', md_upload, function (req, res) {
+
+  var file_name = 'No subido';
+
+
+  if(req.files){
+
+    console.log(req.files);
+    var file_path = req.files.image.path;
+    var file_split = file_path.split('\\');
+    var file_name = file_split[2];
+    var ext_split = file_path.split('\.');
+    var file_ext = ext_split[1];
+
+    console.log(file_path +" "+ file_name);
+
+    if(file_ext === 'png' || file_ext === 'jpg' || file_ext === 'jpeg'){
+      Usuario.findById(req.params.id).exec(function (err, jugador) {
+        if (err) return next(err);
+        var image_name = jugador.imagen;
+
+        if (image_name.toString().trim() === 'user.png'){
+          Usuario.findByIdAndUpdate(jugador, {imagen: file_name}, {new: true}, function (err, act) {
+            if (err){
+              res.status(500).send({message: 'Error al actualizar el usuario'})
+            }else {
+              if (!act){
+                res.status(404).send({message: 'No se ha podido actualizar al usuario'})
+              }else {
+                res.status(200).send({jugador: act})
+              }
+            }
+          })
+        } else {
+          var path_dev = '/Users/rober/fixit-app/public/usuarios/';
+          var path_prod = '/FIXIT/public/plantillas/';
+          fs.unlink(path_dev + image_name, function (err2) {
+            if (err2) throw err2;
+            Usuario.findByIdAndUpdate(jugador, {imagen: file_name}, {new: true}, function (err, act) {
+              if (err) {
+                res.status(500).send({message: 'Error al actualizar el usuario'})
+              } else {
+                if (!act) {
+                  res.status(404).send({message: 'No se ha podido actualizar al usuario'})
+                } else {
+                  res.status(200).send({jugador: act})
+                }
+              }
+            })
+          });
+        }
+      });
+    }else {
+      res.status(300).send({message: 'Extensión no valida'});
+    }
+  }else{
+    res.status(500).send({message: 'No se ha subido el archivo'})
+  }
+
+  //res.status(200).send({path: file_path, split: file_split, name: file_name, ext: file_ext})
 });
 
 /* DELETE USUARIO */
@@ -174,7 +240,7 @@ router.post('/:id/addaviso', function(req, res) {
 });
 
 /* CHANGE PASSWORD */
-router.put('/:id/change', function (req, res, next) {
+/*router.put('/:id/change', function (req, res, next) {
   var pass_hashed;
 
   bcrypt.hash(req.body.password, 10, function (err, hash) {
@@ -189,7 +255,7 @@ router.put('/:id/change', function (req, res, next) {
     });
   });
 
-});
+});*/
 
 /* RESET PASSWORD */
 router.post('/resetpassword', function(req, res) {
