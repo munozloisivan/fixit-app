@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { AgmCoreModule } from '@agm/core';
 import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import { HttpModule} from '@angular/http';
@@ -45,6 +45,7 @@ import {AuthGuard} from './Guards/auth.guard';
 import { NavbarUsuarioComponent } from './Tools/navbar-usuario/navbar-usuario.component';
 import { LogRegAdminComponent } from './Layouts/log-reg-admin/log-reg-admin.component';
 import {AuthuserGuard} from "./Guards/authuser.guard";
+import { AdminMapComponent } from './Componentes/Administracion/admin-map/admin-map.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
   { path: 'admin-avisos', component: DashboardAdminComponent, canActivate: [AuthGuard]},
+  { path: 'admin-map', component: AdminMapComponent, canActivate: [AuthGuard]},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent},
   { path: 'aviso-edit/:id', component: AvisoEditComponent, canActivate: [AuthGuard]},
   { path: 'usuarios', component: UsuarioComponent, canActivate: [AuthGuard]},
@@ -100,11 +102,15 @@ const appRoutes: Routes = [
     UsuarioLogrosComponent,
     LogRegUserComponent,
     NavbarUsuarioComponent,
-    LogRegAdminComponent
+    LogRegAdminComponent,
+    AdminMapComponent
   ],
   imports: [BrowserModule,
     FormsModule,
     HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBkEnyDP9tEWPI97FdYK82xyx2VDGQvt-A'
+    }),
     RouterModule.forRoot(appRoutes)],
   providers: [UsuarioService,
     LogroService,

@@ -1,0 +1,24 @@
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid" style="margin-top: 15px">
+  <agm-map
+    [latitude]="41.390205"
+    [longitude]="2.154007"
+    [zoom]="14">
+
+    <agm-marker
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="clickedMarker(m.label, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.label">
+
+      <agm-info-window>
+        <strong>Desperfecto</strong>
+      </agm-info-window>
+
+    </agm-marker>
+
+
+  </agm-map>
+</div>

@@ -137,8 +137,8 @@ router.post('/image/:id', md_upload, function (req, res) {
           })
         } else {
           var path_dev = '/Users/rober/fixit-app/public/avisos/';
-          var path_prod = '/FIXIT/public/plantillas/';
-          fs.unlink(path_dev + image_name, function (err2) {
+          var path_prod = '/fixit/public/avisos/';
+          fs.unlink(path_prod + image_name, function (err2) {
             if (err2) throw err2;
             Aviso.findByIdAndUpdate(jugador, {imagen: file_name}, {new: true}, function (err, act) {
               if (err) {
