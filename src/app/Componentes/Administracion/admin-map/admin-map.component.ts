@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
+import {AvisoService} from "../../../Services/aviso.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-map',
@@ -8,28 +9,23 @@ import { AgmCoreModule } from '@agm/core';
 })
 export class AdminMapComponent implements OnInit {
 
-  markers: any;
+  avisos: any;
 
-  constructor() {
-
-    this.markers = [
-      {
-        lat: 41.388814,
-        lng: 2.129154,
-        label: 'A'
-      },
-      {
-        lat: 41.389431,
-        lng: 2.138521,
-        label: 'B'
-      }
-    ];
+  constructor(private avisoService: AvisoService, private router: Router) {
   }
 
   ngOnInit() {
+    this.getAvisoList();
+  }
+  getAvisoList() {
+    this.avisoService.getAllAvisos().then((res) => {
+      this.avisos = res;
+    }, (err) => {
+      console.log(err);
+    });
   }
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`);
+  clickedMarker(index: number) {
+    this.router.navigate(['/aviso-details', index]);
   }
 }

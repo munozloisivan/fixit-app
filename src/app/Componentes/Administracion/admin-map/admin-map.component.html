@@ -4,18 +4,13 @@
   <agm-map
     [latitude]="41.390205"
     [longitude]="2.154007"
-    [zoom]="14">
+    [zoom]="3">
 
     <agm-marker
-      *ngFor="let m of markers; let i = index"
-      (markerClick)="clickedMarker(m.label, i)"
-      [latitude]="m.lat"
-      [longitude]="m.lng"
-      [label]="m.label">
-
-      <agm-info-window>
-        <strong>Desperfecto</strong>
-      </agm-info-window>
+      *ngFor="let a of avisos; let i = index"
+      (markerClick)="clickedMarker(a._id, i)"
+      [latitude]="a.localizacion.lat"
+      [longitude]="a.localizacion.lon">
 
     </agm-marker>
 
