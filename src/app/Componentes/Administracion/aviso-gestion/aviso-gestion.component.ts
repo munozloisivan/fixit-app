@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AvisoService } from '../../../Services/aviso.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-aviso-gestion',
@@ -10,9 +11,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AvisoGestionComponent implements OnInit {
 
   detalles_aviso: string;
-
+  view_location: any;
+  view_lon: any;
+  view_lat: any;
   aviso: any;
-  avisomodal: {};
+  avisomodal: any;
   idavisoedit: any;
 
   constructor(private avisoService: AvisoService, private router: Router) { }
@@ -69,19 +72,7 @@ export class AvisoGestionComponent implements OnInit {
   }
 
   getAvisoDetails(id) {
-    this.avisoService.showAviso(id).then((res) => {
-      this.avisomodal = res;
-      this.idavisoedit = id;
-      this.detalles_aviso = 'yes';
-    }, (err) => {
-      console.log(err);
-    });
-  }
-
-  cerrarDetalles() {
-    this.avisomodal = null;
-    this.idavisoedit = null;
-    this.detalles_aviso = '';
+    this.router.navigate(['/aviso-details', id]);
   }
 
   deleteAviso(id) {

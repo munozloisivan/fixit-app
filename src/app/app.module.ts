@@ -30,7 +30,7 @@ import { NavbarDashboardComponent } from './Tools/navbar-dashboard/navbar-dashbo
 import { GestorRegistroComponent } from './Componentes/Acceso/gestor-registro/gestor-registro.component';
 import { AvisoGestionComponent } from './Componentes/Administracion/aviso-gestion/aviso-gestion.component';
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
-import { AvisoDetailsComponent } from './Componentes/aviso-details/aviso-details.component';
+import { AvisoDetailsComponent } from './Componentes/Administracion/aviso-details/aviso-details.component';
 import { CategoriaComponent } from './Componentes/categoria/categoria.component';
 import { ContactoComponent } from './Layouts/contacto/contacto.component';
 import { FaqComponent } from './Layouts/faq/faq.component';
@@ -46,6 +46,7 @@ import { NavbarUsuarioComponent } from './Tools/navbar-usuario/navbar-usuario.co
 import { LogRegAdminComponent } from './Layouts/log-reg-admin/log-reg-admin.component';
 import {AuthuserGuard} from "./Guards/authuser.guard";
 import { AdminMapComponent } from './Componentes/Administracion/admin-map/admin-map.component';
+import { DatePipe } from '@angular/common';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -59,7 +60,7 @@ const appRoutes: Routes = [
   { path: 'howto', component: HowtoComponent},
   { path: 'admin-avisos', component: DashboardAdminComponent, canActivate: [AuthGuard]},
   { path: 'admin-map', component: AdminMapComponent, canActivate: [AuthGuard]},
-  { path: 'aviso-details/:id', component: AvisoDetailsComponent},
+  { path: 'aviso-details/:id', component: AvisoDetailsComponent, canActivate: [AuthGuard]},
   { path: 'aviso-edit/:id', component: AvisoEditComponent, canActivate: [AuthGuard]},
   { path: 'usuarios', component: UsuarioComponent, canActivate: [AuthGuard]},
   { path: 'avisos', component: AvisoComponent},
@@ -119,6 +120,7 @@ const appRoutes: Routes = [
     AvisoService,
     AuthGuard,
     AuthuserGuard,
+    DatePipe,
     {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,150 @@
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid" style="margin-top: 25px">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <h3 class="panel-title">Visualización del aviso {{avisomodal._id}}</h3>
+            </div>
+            <div class="col col-xs-6 text-right">
+              <button type="button" class="btn btn-sm btn-info" (click)="getCategoria(c._id)">Editar</button>
+              <button type="button" class="btn btn-sm btn-primary" [routerLink]="['/admin-avisos']">Cerrar</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-3" style="padding: 5px">
+            <img src="/avisos/{{avisomodal.imagen}}" class="img-thumbnail" alt="Aviso" height="250" width="250" style="overflow: auto; max-height: 250px; max-width: 250px;">
+          </div>
+          <div class="col-md-3" style="font-size: 13px">
+            <table class="table table-list">
+              <thead>
+              <tr>
+                <th>Detalles</th>
+                <th> </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <strong>Categoría: </strong>
+                </td>
+                <td>
+                  {{avisomodal.categoria.tipo}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Tipo: </strong>
+                </td>
+                <td>
+                  {{avisomodal.categoria.subtipo}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Prioridad: </strong>
+                </td>
+                <td>
+                  {{avisomodal.categoria.prioridad}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Seguimiento: </strong>
+                </td>
+                <td>
+                  {{ avisomodal.seguimiento }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Apoyos: </strong>
+                </td>
+                <td>
+                  {{ avisomodal.apoyos }}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-2" style="font-size: 13px">
+            <table class="table table-list">
+              <thead>
+              <tr>
+                <th>Localización</th>
+                <th> </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <strong>Ciudad: </strong>
+                </td>
+                <td>
+                  {{ avisomodal.datosUbicacion.ciudad }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Calle: </strong>
+                </td>
+                <td>
+                  {{avisomodal.datosUbicacion.calle}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Latitud: </strong>
+                </td>
+                <td>
+                  {{avisomodal.localizacion.lat}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Longitud: </strong>
+                </td>
+                <td>
+                  {{avisomodal.localizacion.lon}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <table class="table table-list">
+              <thead>
+              <tr>
+                <th>Descripción</th>
+                <th> </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  {{avisomodal.descripcion}}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4" style="padding: 5px">
+            <agm-map
+              [latitude]="view_lat"
+              [longitude]="view_lon"
+              [zoom]="5">
+
+              <agm-marker
+                [latitude]="view_lat"
+                [longitude]="view_lon">
+              </agm-marker>
+
+            </agm-map>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {AvisoService} from '../../Services/aviso.service';
+import {AvisoService} from '../../../Services/aviso.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -11,7 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AvisoDetailsComponent implements OnInit {
 
-  aviso: {};
+  avisomodal: any;
+  view_location: any;
+  view_lon: any;
+  view_lat: any;
 
   constructor(private route: ActivatedRoute, private avisoService: AvisoService, private router: Router) { }
 
@@ -21,7 +24,10 @@ export class AvisoDetailsComponent implements OnInit {
 
   getAvisoDetails(id) {
     this.avisoService.showAviso(id).then((res) => {
-      this.aviso = res;
+      this.avisomodal = res;
+      this.view_location = res['localizacion'];
+      this.view_lon = this.view_location['lon'];
+      this.view_lat = this.view_location['lat'];
     }, (err) => {
       console.log(err);
     });
