@@ -6,10 +6,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Inicio</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+        <li><a href="/">Inicio</a></li>
         <li><a [routerLink]="['/howto']">¿Cómo funciona?</a></li>
         <li><a >Descargas</a></li>
         <li><a [routerLink]="['/faq']">FAQ</a></li>
@@ -20,11 +20,12 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Acceso
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a [routerLink]="['/acceso']" style="margin-right: 20px; margin-left: 20px;">Usuarios</a></li>
-            <li><a [routerLink]="['/administracion']" style="margin-right: 20px; margin-left: 20px;">Administradores</a></li>
+            <li><a [routerLink]="['/acceso']">Usuarios</a></li>
+            <li><a [routerLink]="['/administracion']">Administradores</a></li>
             </ul>
         </li>
         </ul>
     </div>
   </div>
 </nav>
+

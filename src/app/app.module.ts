@@ -47,6 +47,7 @@ import { LogRegAdminComponent } from './Layouts/log-reg-admin/log-reg-admin.comp
 import {AuthuserGuard} from "./Guards/authuser.guard";
 import { AdminMapComponent } from './Componentes/Administracion/admin-map/admin-map.component';
 import { DatePipe } from '@angular/common';
+import { UsuarioGestionComponent } from './Componentes/Administracion/usuario-gestion/usuario-gestion.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'howto', component: HowtoComponent},
   { path: 'admin-avisos', component: DashboardAdminComponent, canActivate: [AuthGuard]},
+  { path: 'admin-usuarios', component: UsuarioGestionComponent, canActivate: [AuthGuard]},
   { path: 'admin-map', component: AdminMapComponent, canActivate: [AuthGuard]},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent, canActivate: [AuthGuard]},
   { path: 'aviso-edit/:id', component: AvisoEditComponent, canActivate: [AuthGuard]},
@@ -104,7 +106,8 @@ const appRoutes: Routes = [
     LogRegUserComponent,
     NavbarUsuarioComponent,
     LogRegAdminComponent,
-    AdminMapComponent
+    AdminMapComponent,
+    UsuarioGestionComponent
   ],
   imports: [BrowserModule,
     FormsModule,

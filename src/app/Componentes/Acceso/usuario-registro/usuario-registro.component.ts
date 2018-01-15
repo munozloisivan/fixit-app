@@ -30,6 +30,7 @@ export class UsuarioRegistroComponent implements OnInit {
         (err) => {
           console.log(err);
           this.status = 'error';
+          setTimeout(() => {this.status = ''; }, 1500);
         }
       );
   }

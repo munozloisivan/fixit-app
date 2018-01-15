@@ -1,11 +1,13 @@
 a{
   color: #ffffff !important;
+  font-size: 17px;
 }
 .navbar{
   margin-bottom: 0 !important;
 }
 a:hover {
   text-decoration: underline !important;
+  cursor: pointer !important;
 }
 .dropdown-menu {
   background-color: #333 !important;
