@@ -8,10 +8,12 @@
    color: #000;
  }
 .sidenav a{
-
     color: #000 !important;
   }
 
+  .faq-class{
+    margin: 10px !important;
+  }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
@@ -34,17 +36,35 @@ button.accordion {
   transition: 0.4s;
 }
 
+.text-collapsed a {
+  color: black !important;
+}
+
+.panel-title a{
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+#enlaces-faq a{
+  color: #000 !important;
+}
+
+.panel-title a:hover{
+  text-decoration: none !important;
+}
+
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 button.accordion.active, button.accordion:hover {
   background-color: royalblue;
 }
 
 /* Style the accordion panel. Note: hidden by default */
-div.panel {
+/* div.panel {
   padding: 0 18px;
   background-color: lightblue;
-  display: block; /*dejar en none con el script aplicado */
-}
+  display: block;
+  border-radius: 0px !important;
+} */
 
 
 
