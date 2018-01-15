@@ -10,7 +10,7 @@ var md_upload = multipart({ uploadDir: './public/avisos'});
 
 /*GET ALL AVISOS*/
 router.get('/', function(req, res, next) {
-  Aviso.find().populate('categoria').exec(function (err, avisos) {
+  Aviso.find().populate('categoria').populate('autor').exec(function (err, avisos) {
     if (err) return next(err);
     res.json(avisos);
   });
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 /* GET SINGLE AVISO BY ID */
 router.get('/:id', function(req, res, next) {
-  Aviso.findById(req.params.id).populate('categoria').exec(function (err, aviso) {
+  Aviso.findById(req.params.id).populate('categoria').populate('autor').exec(function (err, aviso) {
     if (err) return next(err);
     res.json(aviso);
   });
@@ -96,7 +96,7 @@ router.get('/filter/prioridad/:prioridad', function (req, res, next) {
 
 /* GET AVISOS ORDERED BY DATE */
 router.get('/filter/date', function (req, res, next) {
-  Aviso.find({}, null, {sort: {fecha: 1 }}, function (err, result) {
+  Aviso.find({}, null, {sort: {fecha: 1 }}).populate('categoria').populate('autor').exec(function (err, result) {
     if (err) return next(err);
     res.json(result);
   });

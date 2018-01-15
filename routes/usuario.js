@@ -18,7 +18,7 @@ var md_upload = multipart({ uploadDir: './public/usuarios'});
 /*GET ALL USERS*/
 router.get('/', function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados
-  Usuario.find().populate('logros.coleccion').exec(function (err, usuarios) {
+  Usuario.find().populate('logros.coleccion').populate('avisos.apoyados').populate('avisos.creados').exec(function (err, usuarios) {
     if (err) return next(err);
     res.json(usuarios);
   });
@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 /* GET SINGLE USER BY ID */
 router.get('/:id', function(req, res, next) {
   //añadir populate cuando haya avisos y logros creados .populate('avisos','logros')
-  Usuario.findById(req.params.id).populate('logros.coleccion').exec(function (err, usuario) {
+  Usuario.findById(req.params.id).populate('logros.coleccion').populate('avisos.apoyados').populate('avisos.creados').exec(function (err, usuario) {
     if (err) return next(err);
     res.json(usuario);
   });
