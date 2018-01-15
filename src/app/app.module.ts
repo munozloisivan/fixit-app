@@ -31,7 +31,7 @@ import { GestorRegistroComponent } from './Componentes/Acceso/gestor-registro/ge
 import { AvisoGestionComponent } from './Componentes/Administracion/aviso-gestion/aviso-gestion.component';
 import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/Administracion/aviso-details/aviso-details.component';
-import { CategoriaComponent } from './Componentes/categoria/categoria.component';
+import { CategoriaComponent } from './Componentes/Administracion/categoria/categoria.component';
 import { ContactoComponent } from './Layouts/contacto/contacto.component';
 import { FaqComponent } from './Layouts/faq/faq.component';
 import { FooterComponent } from './Tools/footer/footer.component';
@@ -48,6 +48,7 @@ import {AuthuserGuard} from "./Guards/authuser.guard";
 import { AdminMapComponent } from './Componentes/Administracion/admin-map/admin-map.component';
 import { DatePipe } from '@angular/common';
 import { UsuarioGestionComponent } from './Componentes/Administracion/usuario-gestion/usuario-gestion.component';
+import { UsuarioDetailsComponent } from './usuario-details/usuario-details.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -107,7 +108,8 @@ const appRoutes: Routes = [
     NavbarUsuarioComponent,
     LogRegAdminComponent,
     AdminMapComponent,
-    UsuarioGestionComponent
+    UsuarioGestionComponent,
+    UsuarioDetailsComponent
   ],
   imports: [BrowserModule,
     FormsModule,
