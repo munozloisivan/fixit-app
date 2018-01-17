@@ -1,0 +1,168 @@
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid" style="margin-top: 25px">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-md-6">
+              <h3 class="panel-title">{{usuario._id}}</h3>
+            </div>
+            <div class="col col-xs-6 text-right">
+              <button type="button" class="btn btn-sm btn-info">Editar</button>
+              <button type="button" class="btn btn-sm btn-primary" [routerLink]="['/admin-usuarios']">Listado</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-6" style="padding: 5px">
+            <img src="/usuarios/{{usuario.imagen}}" class="img-thumbnail" alt="Aviso" style="overflow: auto; max-height: 250px; max-width: 250px;">
+          </div>
+          <div class="col-md-6" style="padding: 5px">
+            <table class="table table-list">
+              <thead>
+              <tr>
+                <th>Detalles</th>
+                <th> </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <strong>Nombre: </strong>
+                </td>
+                <td>
+                  {{usuario.nombre}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Apellidos: </strong>
+                </td>
+                <td>
+                  {{usuario.apellidos}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Correo electrónico: </strong>
+                </td>
+                <td>
+                  {{ usuario.email }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Alias: </strong>
+                </td>
+                <td>
+                  {{ usuario.alias }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>DNI: </strong>
+                </td>
+                <td>
+                  {{ usuario.dni }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Teléfono: </strong>
+                </td>
+                <td>
+                  {{ usuario.telefono }}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>CP: </strong>
+                </td>
+                <td>
+                  {{ usuario.codigoPostal }}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="col-md-12">
+        <div class="panel panel-default panel-table">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col col-xs-6">
+                <h3 class="panel-title">Avisos creados</h3>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+              <table class="table table-striped table-bordered table-list">
+                <thead>
+                <tr>
+                  <th>Ciudad</th>
+                  <th>CP</th>
+                  <th>Fecha</th>
+                  <th>Seguimiento</th>
+                  <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let a of usuario.avisos.creados">
+                  <td>{{ a.datosUbicacion.ciudad }}</td>
+                  <td>{{ a.datosUbicacion.codPostal }}</td>
+                  <td>{{ a.fecha | date:'dd-MM-yyyy HH:mm':'+0100' }}</td>
+                  <td>{{ a.seguimiento}}</td>
+                  <td>
+                    <a (click)="getAvisoDetails(a._id)" class="btn btn-info btn-xs" >Ver</a>
+                    <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">Eliminar</a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12" style="margin-top: 5px">
+        <div class="panel panel-default panel-table">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col col-xs-6">
+                <h3 class="panel-title">Avisos apoyados</h3>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped table-bordered table-list">
+              <thead>
+              <tr>
+                <th>Ciudad</th>
+                <th>CP</th>
+                <th>Fecha</th>
+                <th>Seguimiento</th>
+                <th>Acciones</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let a of usuario.avisos.apoyados">
+                <td>{{ a.datosUbicacion.ciudad }}</td>
+                <td>{{ a.datosUbicacion.codPostal }}</td>
+                <td>{{ a.fecha | date:'dd-MM-yyyy HH:mm':'+0100' }}</td>
+                <td>{{ a.seguimiento}}</td>
+                <td>
+                  <a (click)="getAvisoDetails(a._id)" class="btn btn-info btn-xs" >Ver</a>
+                  <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">Eliminar</a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

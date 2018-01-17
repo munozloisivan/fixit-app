@@ -94,6 +94,22 @@ router.get('/filter/prioridad/:prioridad', function (req, res, next) {
   });
 });
 
+/*GET AVISOS BY CIUDAD */
+router.get('/filter/ciudad/:ciudad', function (req, res, next) {
+    Aviso.find({"datosUbicacion.ciudad": req.params.ciudad }).populate('autor').populate('categoria').exec(function (err, post) {
+      if (err) return next(err);
+      res.json(post);
+    });
+});
+
+/*GET AVISOS BY CP */
+router.get('/filter/cp/:ciudad', function (req, res, next) {
+  Aviso.find({"datosUbicacion.codPostal": req.params.ciudad }).populate('autor').populate('categoria').exec(function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
 /* GET AVISOS ORDERED BY DATE */
 router.get('/filter/date', function (req, res, next) {
   Aviso.find({}, null, {sort: {fecha: 1 }}).populate('categoria').populate('autor').exec(function (err, result) {

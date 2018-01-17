@@ -13,7 +13,9 @@
             <tbody>
             <tr>
               <td>
-                <input placeholder="Categoría" type="text" class="form-control" [(ngModel)]="tipo_filtrado" name="tipo" id="tipo" required>
+                <select class="form-control" [(ngModel)]="tipo_filtrado">
+                  <option *ngFor="let c of categorias" [ngValue]="c.tipo">{{c.tipo}}</option>
+                </select>
               </td>
               <td>
                 <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByTipo(tipo_filtrado)">Filtrar por categoría</a>
@@ -25,6 +27,22 @@
               </td>
               <td>
                 <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByPrioridad(prioridad_filtrado)">Filtrar por prioridad</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input placeholder="Ciudad" type="text" class="form-control" [(ngModel)]="ciudad_filtrado" name="ciudad" id="ciudad" required>
+              </td>
+              <td>
+                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByCiudad(ciudad_filtrado)">Filtrar por ciudad</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input placeholder="Código postal" type="text" class="form-control" [(ngModel)]="cp_filtrado" name="cp" id="cp" required>
+              </td>
+              <td>
+                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByCP(cp_filtrado)">Filtrar por CP</a>
               </td>
             </tr>
             </tbody>
@@ -53,23 +71,29 @@
             <thead>
             <tr>
               <th>Ciudad</th>
+              <th>CP</th>
               <th>Fecha</th>
               <th>Seguimiento</th>
               <th>Categoría</th>
               <th>Prioridad</th>
-              <th>Acciones</th>
+              <th>Apoyos</th>
+              <th>Opciones</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let a of aviso">
               <td>{{ a.datosUbicacion.ciudad }}</td>
+              <td>{{ a.datosUbicacion.codPostal }}</td>
               <td>{{ a.fecha | date:'dd-MM-yyyy HH:mm':'+0100' }}</td>
               <td>{{ a.seguimiento}}</td>
-              <td>{{a.categoria.tipo}}</td>
+              <td>
+                <img src="../../../../assets/iconos/{{a.categoria.icono}}" class="img" alt="icon" style="overflow: auto; max-height: 20px; max-width: 20px;">
+                {{a.categoria.tipo}}
+              </td>
               <td>{{a.categoria.prioridad}}</td>
+              <td>{{a.apoyos}}</td>
               <td>
                 <a (click)="getAvisoDetails(a._id)" class="btn btn-info btn-xs" >Ver</a>
-                <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">Eliminar</a>
               </td>
             </tr>
             </tbody>

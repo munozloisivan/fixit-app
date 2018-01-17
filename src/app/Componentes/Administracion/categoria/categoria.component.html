@@ -5,12 +5,15 @@
     <div class="panel panel-default panel-table">
       <div class="panel-heading">
         <div class="row">
+          <div class="col col-xs-2">
+            <img src="../../../../assets/iconos/{{c.icono}}" class="img" alt="icon" style="overflow: auto; max-height: 35px; max-width: 35px;">
+          </div>
           <div class="col col-xs-6">
             <h3 class="panel-title"><strong>{{c.tipo}}</strong></h3>
           </div>
-          <div class="col col-xs-6 text-right">
-            <button type="button" class="btn btn-xs btn-info" (click)="getCategoria(c._id)">E</button>
-            <button type="button" class="btn btn-xs btn-danger" (click)="deleteCategoria(c._id)">X</button>
+          <div class="col col-xs-4 text-right">
+            <button type="button" class="btn btn-xs btn-info" (click)="getCategoria(c._id)">Editar</button>
+            <!--<button type="button" class="btn btn-xs btn-danger" (click)="deleteCategoria(c._id)">X</button>-->
           </div>
         </div>
       </div>
@@ -18,6 +21,7 @@
         <div class="col-xs-12" style="margin-top: 5px">
         <p><b>Prioridad:</b> {{c.prioridad}}</p>
         <p><b>Teléfono:</b> {{ c.telefonoContacto}}</p>
+        <p><b>Responsable:</b> {{ c.personaContacto}}</p>
         <p><b>Email:</b> {{ c.emailContacto}}</p>
         <p><b>Empresa:</b> {{ c.empresaContacto}}</p>
         <p><b>Horario:</b> {{ c.horarioContacto}}</p>

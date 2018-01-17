@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UsuarioService} from "../../../Services/usuario.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-usuario-gestion',
@@ -10,7 +11,7 @@ export class UsuarioGestionComponent implements OnInit {
 
   usuarios: any;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit() {
     this.getUsuarioList();
@@ -21,6 +22,10 @@ export class UsuarioGestionComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  getUsuarioDetails(id) {
+    this.router.navigate(['/usuario-details', id]);
   }
 
 }

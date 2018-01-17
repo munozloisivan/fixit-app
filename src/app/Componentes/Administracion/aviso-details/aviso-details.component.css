@@ -1,5 +1,5 @@
 agm-map {
-  height: 175px;
+  height: 200px;
 }
 .panel-table .panel-body{
   padding:0;
@@ -8,11 +8,6 @@ agm-map {
 .panel-table .panel-body .table-bordered{
   border-style: none;
   margin:0;
-}
-
-.panel-table .panel-body .table-bordered > thead > tr > th:first-of-type {
-  text-align:center;
-  width: 100px;
 }
 
 .panel-table .panel-body .table-bordered > thead > tr > th:last-of-type,

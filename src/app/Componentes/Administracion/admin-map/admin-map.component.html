@@ -4,15 +4,21 @@
   <agm-map
     [latitude]="41.390205"
     [longitude]="2.154007"
-    [zoom]="8">
+    [zoom]="8"
+    [clickableIcons] = "false"
+    [mapTypeId]= "'roadmap'"
+    [minZoom]="3"
+    [streetViewControl]="false">
 
-    <agm-marker
-      *ngFor="let a of avisos; let i = index"
-      (markerClick)="clickedMarker(a._id, i)"
-      [latitude]="a.localizacion.lat"
-      [longitude]="a.localizacion.lon">
-
-    </agm-marker>
+    <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+      <agm-marker
+        *ngFor="let a of avisos; let i = index"
+        (markerClick)="clickedMarker(a._id, i)"
+        [latitude]="a.localizacion.lat"
+        [longitude]="a.localizacion.lon"
+        [iconUrl]="'assets/iconos/' + a.categoria.icono">
+      </agm-marker>
+    </agm-marker-cluster>
 
 
   </agm-map>
