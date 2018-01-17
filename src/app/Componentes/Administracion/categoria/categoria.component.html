@@ -12,7 +12,7 @@
             <h3 class="panel-title"><strong>{{c.tipo}}</strong></h3>
           </div>
           <div class="col col-xs-4 text-right">
-            <button type="button" class="btn btn-xs btn-info" (click)="getCategoria(c._id)">Editar</button>
+            <button type="button" class="btn btn-xs btn-info" [routerLink]="['/categoria-edit', c._id]">Editar</button>
             <!--<button type="button" class="btn btn-xs btn-danger" (click)="deleteCategoria(c._id)">X</button>-->
           </div>
         </div>

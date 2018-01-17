@@ -50,6 +50,7 @@ import { AdminMapComponent } from './Componentes/Administracion/admin-map/admin-
 import { DatePipe } from '@angular/common';
 import { UsuarioGestionComponent } from './Componentes/Administracion/usuario-gestion/usuario-gestion.component';
 import { UsuarioDetailsComponent } from './Componentes/Administracion/usuario-details/usuario-details.component';
+import { CategoriaEditComponent } from './Componentes/Administracion/categoria-edit/categoria-edit.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
   { path: 'forgot', component: UsuarioForgotComponent},
   { path: 'administracion', component: LogRegAdminComponent},
   { path: 'categorias', component: CategoriaComponent, canActivate: [AuthGuard]},
+  { path: 'categoria-edit/:id', component: CategoriaEditComponent, canActivate: [AuthGuard]},
   { path: 'contacto', component: ContactoComponent},
   { path: 'faq', component: FaqComponent},
   { path: 'usuario/perfil', component: UsuarioPerfilComponent, canActivate: [AuthuserGuard]}
@@ -111,7 +113,8 @@ const appRoutes: Routes = [
     LogRegAdminComponent,
     AdminMapComponent,
     UsuarioGestionComponent,
-    UsuarioDetailsComponent
+    UsuarioDetailsComponent,
+    CategoriaEditComponent
   ],
   imports: [BrowserModule,
     FormsModule,
