@@ -6,7 +6,7 @@ import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import { HttpModule} from '@angular/http';
 import { FormsModule} from '@angular/forms';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 
 /* SERVICES */
 import { UsuarioService } from './Services/usuario.service';
@@ -30,7 +30,7 @@ import { DashboardComponent } from './Layouts/dashboard/dashboard.component';
 import { NavbarDashboardComponent } from './Tools/navbar-dashboard/navbar-dashboard.component';
 import { GestorRegistroComponent } from './Componentes/Acceso/gestor-registro/gestor-registro.component';
 import { AvisoGestionComponent } from './Componentes/Administracion/aviso-gestion/aviso-gestion.component';
-import { AvisoEditComponent } from './Componentes/aviso-edit/aviso-edit.component';
+import { AvisoEditComponent } from './Componentes/Administracion/aviso-edit/aviso-edit.component';
 import { AvisoDetailsComponent } from './Componentes/Administracion/aviso-details/aviso-details.component';
 import { CategoriaComponent } from './Componentes/Administracion/categoria/categoria.component';
 import { ContactoComponent } from './Layouts/contacto/contacto.component';

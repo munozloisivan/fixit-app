@@ -30,6 +30,7 @@ export class AvisoGestionComponent implements OnInit {
     this.getAvisoList();
     this.getCategorias();
   }
+
   getAvisoList() {
     this.avisoService.getAllAvisos().then((res) => {
       this.aviso = res;
@@ -100,13 +101,5 @@ export class AvisoGestionComponent implements OnInit {
 
   getAvisoDetails(id) {
     this.router.navigate(['/aviso-details', id]);
-  }
-
-  updateAviso(data) {
-    this.avisoService.updateAviso(this.idavisoedit, data).then((result) => {
-      this.aviso = result;
-    }, (err) => {
-      console.log(err);
-    });
   }
 }

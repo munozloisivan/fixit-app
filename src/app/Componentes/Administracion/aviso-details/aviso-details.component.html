@@ -11,7 +11,7 @@
             </div>
             <div class="col col-xs-6 text-right">
               <button type="button" class="btn btn-sm btn-danger" (click)="deleteAviso(avisomodal._id)">Eliminar</button>
-              <button type="button" class="btn btn-sm btn-info" (click)="getCategoria(c._id)">Editar</button>
+              <button type="button" class="btn btn-sm btn-info" [routerLink]="['/aviso-edit', avisomodal._id]">Editar</button>
               <button type="button" class="btn btn-sm btn-primary" [routerLink]="['/admin-avisos']">Listado</button>
             </div>
           </div>
@@ -154,7 +154,6 @@
                 [latitude]="view_lat"
                 [longitude]="view_lon">
               </agm-marker>
-
             </agm-map>
           </div>
         </div>

@@ -54,13 +54,4 @@ export class CategoriaComponent implements OnInit {
       console.log(err);
     });
   }
-
-  updateCategoria(id, data) {
-    this.categoriaService.updateCategoria(id, data).then((result) => {
-      this.getCategoriaList();
-      // this.router.navigate(['/dashboard']);
-    }, (err) => {
-      console.log(err);
-    });
-  }
 }
