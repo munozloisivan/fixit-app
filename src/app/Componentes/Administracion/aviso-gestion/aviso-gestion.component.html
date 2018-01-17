@@ -13,26 +13,10 @@
             <tbody>
             <tr>
               <td>
-                <input placeholder="Categoria" type="text" class="form-control" [(ngModel)]="categoria_filtrado" name="categoria" id="categoria">
+                <input placeholder="Categoría" type="text" class="form-control" [(ngModel)]="tipo_filtrado" name="tipo" id="tipo" required>
               </td>
               <td>
-                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByCategoria(categoria_filtrado)">Filtrar por categoria</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input placeholder="Tipo" type="text" class="form-control" [(ngModel)]="tipo_filtrado" name="tipo" id="tipo" required>
-              </td>
-              <td>
-                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByTipo(tipo_filtrado)">Filtrar por tipo</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input placeholder="Subtipo" type="text" class="form-control" [(ngModel)]="subtipo_filtrado" name="subtipo" id="subtipo" required>
-              </td>
-              <td>
-                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosBySubtipo(subtipo_filtrado)">Filtrar por subtipo</a>
+                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByTipo(tipo_filtrado)">Filtrar por categoría</a>
               </td>
             </tr>
             <tr>
@@ -69,12 +53,9 @@
             <thead>
             <tr>
               <th>Ciudad</th>
-              <th>Calle</th>
-              <th>Descripción</th>
               <th>Fecha</th>
               <th>Seguimiento</th>
-              <th>Tipo</th>
-              <th>Subtipo</th>
+              <th>Categoría</th>
               <th>Prioridad</th>
               <th>Acciones</th>
             </tr>
@@ -82,12 +63,9 @@
             <tbody>
             <tr *ngFor="let a of aviso">
               <td>{{ a.datosUbicacion.ciudad }}</td>
-              <td>{{ a.datosUbicacion.calle }}</td>
-              <td>{{ a.descripcion }}</td>
               <td>{{ a.fecha | date:'dd-MM-yyyy HH:mm':'+0100' }}</td>
               <td>{{ a.seguimiento}}</td>
               <td>{{a.categoria.tipo}}</td>
-              <td>{{a.categoria.subtipo}}</td>
               <td>{{a.categoria.prioridad}}</td>
               <td>
                 <a (click)="getAvisoDetails(a._id)" class="btn btn-info btn-xs" >Ver</a>

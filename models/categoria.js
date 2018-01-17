@@ -4,7 +4,6 @@ var mongoose = require('mongoose'),
 var categoriaSchema = new Schema({
 
     tipo: { type: String },
-    subtipo: {type: String, unique: true },
     prioridad: { type: Number },
     icono: { type: String }, /*url de donde este guardada la imagen*/
     telefonoContacto: { type: Number },
