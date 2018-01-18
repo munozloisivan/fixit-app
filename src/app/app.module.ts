@@ -51,6 +51,7 @@ import { DatePipe } from '@angular/common';
 import { UsuarioGestionComponent } from './Componentes/Administracion/usuario-gestion/usuario-gestion.component';
 import { UsuarioDetailsComponent } from './Componentes/Administracion/usuario-details/usuario-details.component';
 import { CategoriaEditComponent } from './Componentes/Administracion/categoria-edit/categoria-edit.component';
+import {DataTableModule} from 'angular2-datatable';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -119,6 +120,7 @@ const appRoutes: Routes = [
   imports: [BrowserModule,
     FormsModule,
     HttpModule,
+    DataTableModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBkEnyDP9tEWPI97FdYK82xyx2VDGQvt-A'
     }),

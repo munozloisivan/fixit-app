@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {AvisoService} from '../../../Services/aviso.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {CategoriaService} from "../../../Services/categoria.service";
+import {AgmMap} from "@agm/core";
 
 @Component({
   selector: 'app-aviso-edit',
   templateUrl: './aviso-edit.component.html',
   styleUrls: ['./aviso-edit.component.css']
 })
+
 export class AvisoEditComponent implements OnInit {
 
   avisomodal: {};
