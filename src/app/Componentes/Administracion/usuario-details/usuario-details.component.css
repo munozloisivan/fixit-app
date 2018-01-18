@@ -2,6 +2,10 @@
   padding:0;
 }
 
+.table-hover > tbody > tr:hover {
+  cursor: pointer !important;
+}
+
 .panel-table .panel-body .table-bordered{
   border-style: none;
   margin:0;

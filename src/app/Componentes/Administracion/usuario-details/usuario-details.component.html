@@ -17,7 +17,7 @@
         </div>
         <div class="panel-body">
           <div class="col-md-6" style="padding: 5px">
-            <img src="/usuarios/{{usuario.imagen}}" class="img-thumbnail" alt="Aviso" style="overflow: auto; max-height: 250px; max-width: 250px;">
+            <img src="/usuarios/{{usuario.imagen}}" class="img-thumbnail" alt="usuario" style="overflow: auto; max-height: 250px; max-width: 250px;">
           </div>
           <div class="col-md-6" style="padding: 5px">
             <table class="table table-list">
@@ -101,26 +101,25 @@
             </div>
           </div>
           <div class="panel-body">
-              <table class="table table-striped table-bordered table-list">
+              <table class="table table-striped table-bordered table-list table-hover">
                 <thead>
                 <tr>
+                  <th>Imagen</th>
                   <th>Ciudad</th>
                   <th>CP</th>
                   <th>Fecha</th>
                   <th>Seguimiento</th>
-                  <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let a of usuario.avisos.creados">
+                <tr *ngFor="let a of usuario.avisos.creados" (click)="getAvisoDetails(a._id)">
+                  <td class="text-center">
+                    <img src="/avisos/{{a.imagen}}" class="img" alt="icon" style="overflow: auto; max-height: 50px; max-width: 100px;">
+                  </td>
                   <td>{{ a.datosUbicacion.ciudad }}</td>
                   <td>{{ a.datosUbicacion.codPostal }}</td>
                   <td>{{ a.fecha | date:'dd-MM-yyyy HH:mm':'+0100' }}</td>
                   <td>{{ a.seguimiento}}</td>
-                  <td>
-                    <a (click)="getAvisoDetails(a._id)" class="btn btn-info btn-xs" >Ver</a>
-                    <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">Eliminar</a>
-                  </td>
                 </tr>
                 </tbody>
               </table>
@@ -137,26 +136,25 @@
             </div>
           </div>
           <div class="panel-body">
-            <table class="table table-striped table-bordered table-list">
+            <table class="table table-striped table-bordered table-list table-hover">
               <thead>
               <tr>
+                <th>Imagen</th>
                 <th>Ciudad</th>
                 <th>CP</th>
                 <th>Fecha</th>
                 <th>Seguimiento</th>
-                <th>Acciones</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let a of usuario.avisos.apoyados">
+              <tr *ngFor="let a of usuario.avisos.apoyados" (click)="getAvisoDetails(a._id)">
+                <td class="text-center">
+                  <img src="/avisos/{{a.imagen}}" class="img" alt="icon" style="overflow: auto; max-height: 50px; max-width: 100px;">
+                </td>
                 <td>{{ a.datosUbicacion.ciudad }}</td>
                 <td>{{ a.datosUbicacion.codPostal }}</td>
                 <td>{{ a.fecha | date:'dd-MM-yyyy HH:mm':'+0100' }}</td>
                 <td>{{ a.seguimiento}}</td>
-                <td>
-                  <a (click)="getAvisoDetails(a._id)" class="btn btn-info btn-xs" >Ver</a>
-                  <a (click)="deleteAviso(a._id)" class="btn btn-danger btn-xs">Eliminar</a>
-                </td>
               </tr>
               </tbody>
             </table>

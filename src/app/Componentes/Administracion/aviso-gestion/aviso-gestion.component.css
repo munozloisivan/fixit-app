@@ -7,6 +7,10 @@
   margin:0;
 }
 
+.table-hover > tbody > tr:hover {
+  cursor: pointer !important;
+}
+
 .panel-table .panel-body .table-bordered > thead > tr > th:last-of-type,
 .panel-table .panel-body .table-bordered > tbody > tr > td:last-of-type {
   border-right: 0px;
