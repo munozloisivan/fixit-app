@@ -40,7 +40,7 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
-/* UPDATE CATEGORIA */
+/* UPDATE AVISO */
 router.put('/:id', function(req, res, next) {
   Aviso.findByIdAndUpdate(req.params.id, req.body, function (err, aviso) {
     if (err) return next(err);

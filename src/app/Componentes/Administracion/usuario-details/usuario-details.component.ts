@@ -11,7 +11,8 @@ export class UsuarioDetailsComponent implements OnInit {
 
   usuario: {};
 
-  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
     this.getUsuarioDetails(this.route.snapshot.params['id']);
@@ -23,8 +24,8 @@ export class UsuarioDetailsComponent implements OnInit {
 
   getUsuarioDetails(id) {
     this.usuarioService.showUsuario(id).then((res) => {
-      console.log('Usuario:' + res);
-      this.usuario = res;
+      console.log('Usuario:' + JSON.stringify(res));
+      this.usuario = JSON.stringify(res);
     }, (err) => {
       console.log(err);
     });

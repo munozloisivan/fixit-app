@@ -20,7 +20,11 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <style>
-    .pagination li a {background-color:#2aabd2;}
+    .pagination li a {
+      background-color:#2aabd2;
+      margin: 0 4px;
+      border-radius: 5px;
+    }
     .pagination>.active>a {
       background-color: #337ab7;
       border-color: #337ab7;
@@ -29,6 +33,12 @@
       background-color: #2aabd2;
       border-color: #2aabd2;
     }
+    .pagination>.disabled>a:hover {
+      background-color: #2aabd2;
+      border-color: #2aabd2;
+      text-decoration: none !important;
+      cursor: context-menu !important;
+     }
     .pagination>.active>a:hover,
     .pagination>li>a:hover{
       background-color: #337ab7;

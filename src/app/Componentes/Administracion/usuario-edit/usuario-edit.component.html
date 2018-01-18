@@ -1,0 +1,51 @@
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid">
+  <div class="col-md-4 col-md-offset-4" style="margin-top: 15px">
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title"><strong>{{categoriaedit._id}}</strong></h3>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body" style="overflow: hidden">
+        <form #categoriaForm="ngForm" style="padding: 20px">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="usuarioedit.nombre" name="tipo" id="tipo">
+          </div>
+          <div class="form-group">
+            <label>Apellidos</label>
+            <input type="number" class="form-control" [(ngModel)]="usuarioedit.apellidos" name="prioridad" id="prioridad">
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="text" class="form-control" [(ngModel)]="usuarioedit.email" name="empresaContacto" id="empresaContacto">
+          </div>
+          <div class="form-group">
+            <label>Alias</label>
+            <input type="text" class="form-control" [(ngModel)]="usuarioedit.alias" name="telefonoContacto" id="telefonoContacto">
+          </div>
+          <div class="form-group">
+            <label>DNI</label>
+            <input type="text" class="form-control" [(ngModel)]="usuarioedit.dni" name="emailContacto" id="emailContacto">
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="text" class="form-control" [(ngModel)]="usuarioedit.telefono" name="horarioContacto" id="horarioContacto">
+          </div>
+          <div class="form-group">
+            <label>Código postal</label>
+            <input type="text" class="form-control" [(ngModel)]="usuarioedit.codigoPostal" name="cpo" id="codpo">
+          </div>
+          <div class="col-md-12 text-center" style="margin-bottom: 10px">
+            <button type="button" class="btn btn-success" (click)="updateUsuario(usuarioedit._id, usuarioedit)">Actualizar</button>
+            <button type="button" class="btn btn-default" [routerLink]="['/categorias']">Atrás</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
