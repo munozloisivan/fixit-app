@@ -52,6 +52,7 @@ import { UsuarioGestionComponent } from './Componentes/Administracion/usuario-ge
 import { UsuarioDetailsComponent } from './Componentes/Administracion/usuario-details/usuario-details.component';
 import { CategoriaEditComponent } from './Componentes/Administracion/categoria-edit/categoria-edit.component';
 import {DataTableModule} from 'angular2-datatable';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 import { UsuarioEditComponent } from './Componentes/Administracion/usuario-edit/usuario-edit.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
@@ -118,6 +119,7 @@ const appRoutes: Routes = [
     UsuarioGestionComponent,
     UsuarioDetailsComponent,
     CategoriaEditComponent,
+    EstadisticasComponent,
     UsuarioEditComponent
   ],
   imports: [BrowserModule,
