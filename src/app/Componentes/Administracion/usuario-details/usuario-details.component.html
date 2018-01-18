@@ -114,7 +114,7 @@
                 <tbody>
                 <tr *ngFor="let a of usuario.avisos.creados" (click)="getAvisoDetails(a._id)">
                   <td class="text-center">
-                    <img src="/avisos/{{a.imagen}}" class="img" alt="icon" style="overflow: auto; max-height: 50px; max-width: 100px;">
+                    <img src="/avisos/{{a.imagen}}" class="img" alt="image" style="overflow: auto; max-height: 50px; max-width: 100px;">
                   </td>
                   <td>{{ a.datosUbicacion.ciudad }}</td>
                   <td>{{ a.datosUbicacion.codPostal }}</td>
@@ -149,7 +149,7 @@
               <tbody>
               <tr *ngFor="let a of usuario.avisos.apoyados" (click)="getAvisoDetails(a._id)">
                 <td class="text-center">
-                  <img src="/avisos/{{a.imagen}}" class="img" alt="icon" style="overflow: auto; max-height: 50px; max-width: 100px;">
+                  <img src="/avisos/{{a.imagen}}" class="img" alt="image" style="overflow: auto; max-height: 50px; max-width: 100px;">
                 </td>
                 <td>{{ a.datosUbicacion.ciudad }}</td>
                 <td>{{ a.datosUbicacion.codPostal }}</td>

@@ -31,6 +31,26 @@
             <label>Seguimiento</label>
             <input type="text" class="form-control" [(ngModel)]="avisomodal.seguimiento" name="seg" id="seguimiento" required>
           </div>
+          <div class="col-md-6 form-group" style="padding: 5px">
+            <label>Latitud</label>
+            <input type="text" class="form-control" [(ngModel)]="view_lat" name="lat" id="view_lati" required>
+          </div>
+          <div class="col-md-6 form-group" style="padding: 5px">
+            <label>Longitud</label>
+            <input type="text" class="form-control" [(ngModel)]="view_lon" name="lon" id="view_long" required>
+          </div>
+            <agm-map
+              [latitude]="view_lat"
+              [longitude]="view_lon"
+              [zoom]="16"
+              [streetViewControl]="false">
+
+              <agm-marker
+                [latitude]="view_lat"
+                [longitude]="view_lon"
+                [markerDraggable]="true">
+              </agm-marker>
+            </agm-map>
           <div class="col-md-12 text-center" style="margin-bottom: 10px">
             <button type="button" class="btn btn-success" (click)="updateAviso(avisomodal._id, avisomodal)">Actualizar</button>
             <button type="button" class="btn btn-default" [routerLink]="['/aviso-details', avisomodal._id]">Atrás</button>

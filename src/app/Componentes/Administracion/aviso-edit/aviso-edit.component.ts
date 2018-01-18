@@ -12,8 +12,14 @@ export class AvisoEditComponent implements OnInit {
 
   avisomodal: {};
   categorias: any;
+  view_location: any;
+  view_lon: any;
+  view_lat: any;
 
-  constructor(private route: ActivatedRoute, private categoriasService: CategoriaService, private avisoService: AvisoService, private router: Router) { }
+  constructor(private route: ActivatedRoute,
+              private categoriasService: CategoriaService,
+              private avisoService: AvisoService,
+              private router: Router) {}
 
   ngOnInit() {
     this.getAvisoDetails(this.route.snapshot.params['id']);
@@ -23,6 +29,9 @@ export class AvisoEditComponent implements OnInit {
   getAvisoDetails(id) {
     this.avisoService.showAviso(id).then((res) => {
       this.avisomodal = res;
+      this.view_location = res['localizacion'];
+      this.view_lon = this.view_location['lon'];
+      this.view_lat = this.view_location['lat'];
     }, (err) => {
       console.log(err);
     });
