@@ -1,3 +1,11 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.faq-class {
+  /* Full height */
+  height: 100%;
+}
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {height: 100%}
 
