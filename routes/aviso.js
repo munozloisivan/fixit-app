@@ -16,6 +16,32 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/stats', function(req, res, next) {
+  Categoria.find().exec(function (err, categorias) {
+    if (err) return next(err);
+
+    var labels = [];
+    var cantidad = [];
+    for (index in categorias){
+      console.log(categorias[index]._id);
+      labels.push(categorias[index].tipo);
+      Aviso.find({categoria: categorias[index]._id}).exec(function (err, avisos) {
+        if (err) return next(err);
+
+        var count = 0;
+        for ( index2 in avisos){
+          count++;
+          console.log(count);
+        }
+      });
+    }
+    console.log(labels);
+    console.log(cantidad);
+    res.json("hecho");
+  });
+
+});
+
 /* GET SINGLE AVISO BY ID */
 router.get('/:id', function(req, res, next) {
   Aviso.findById(req.params.id).populate('categoria').populate('autor').exec(function (err, aviso) {

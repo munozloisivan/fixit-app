@@ -18,7 +18,7 @@
           </div>
           <div class="form-group">
             <label>Apellidos</label>
-            <input type="number" class="form-control" [(ngModel)]="usuarioedit.apellidos" name="prioridad" id="prioridad">
+            <input type="text" class="form-control" [(ngModel)]="usuarioedit.apellidos" name="prioridad" id="prioridad">
           </div>
           <div class="form-group">
             <label>Correo electrónico</label>
@@ -42,7 +42,7 @@
           </div>
           <div class="col-md-12 text-center" style="margin-bottom: 10px">
             <button type="button" class="btn btn-success" (click)="updateUsuario(usuarioedit._id, usuarioedit)">Actualizar</button>
-            <button type="button" class="btn btn-default" [routerLink]="['/categorias']">Atrás</button>
+            <button type="button" class="btn btn-default" [routerLink]="['/usuario-details', usuarioedit._id]">Atrás</button>
           </div>
         </form>
       </div>

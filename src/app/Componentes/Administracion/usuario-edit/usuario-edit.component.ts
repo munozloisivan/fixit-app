@@ -25,7 +25,7 @@ export class UsuarioEditComponent implements OnInit {
     });
   }
 
-  updateCategoria(id, data) {
+  updateUsuario(id, data) {
     this.usuarioService.updateUsuario(id, data).then((result) => {
       this.router.navigate(['/usuario-details', id]);
     }, (err) => {

@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class UsuarioDetailsComponent implements OnInit {
 
-  usuario: {};
+  usuario: any;
 
   constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private router: Router) {
   }
