@@ -12,7 +12,7 @@
             <div class="col col-xs-6 text-right">
               <button type="button" class="btn btn-sm btn-danger" (click)="deleteAviso(avisomodal._id)">Eliminar</button>
               <button type="button" class="btn btn-sm btn-info" [routerLink]="['/aviso-edit', avisomodal._id]">Editar</button>
-              <button type="button" class="btn btn-sm btn-primary" [routerLink]="['/admin-avisos']">Listado</button>
+              <button type="button" class="btn btn-sm btn-primary" [routerLink]="['/admin-avisos']">Ver listado</button>
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@
             <div class="col col-xs-6 text-right">
               <button type="button" class="btn btn-sm btn-primary" [routerLink]="['/admin-map']"
                       [queryParams]="{lat: avisomodal.localizacion.lat, lon: avisomodal.localizacion.lon, zoom: 16}">
-                Mapa
+                Ver en el mapa
               </button>
             </div>
           </div>

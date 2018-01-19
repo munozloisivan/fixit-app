@@ -22,6 +22,15 @@ export class UsuarioDetailsComponent implements OnInit {
     this.router.navigate(['/aviso-details', id]);
   }
 
+  deleteUsuario(id) {
+    this.usuarioService.deleteUsuario(id).then((result) => {
+      this.router.navigate(['/admin-usuarios']);
+      // this.router.navigate(['/dashboard']);
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
   getUsuarioDetails(id) {
     this.usuarioService.showUsuario(id).then((res) => {
       console.log('Usuario:' + res);
