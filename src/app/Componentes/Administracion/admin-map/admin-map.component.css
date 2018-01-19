@@ -2,6 +2,11 @@ agm-map {
   height: 550px;
   position: relative !important;
 }
+
+img:hover {
+  cursor: pointer !important;
+}
+
 #mapa {
   position: relative !important;
 }

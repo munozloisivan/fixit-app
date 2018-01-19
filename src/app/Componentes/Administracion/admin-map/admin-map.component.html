@@ -54,10 +54,14 @@
     <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
       <agm-marker
         *ngFor="let a of avisos; let i = index"
-        (markerClick)="clickedMarker(a._id, i)"
         [latitude]="a.localizacion.lat"
         [longitude]="a.localizacion.lon"
         [iconUrl]="'assets/iconos/' + a.categoria.icono">
+
+        <agm-info-window>
+          <img (click)="clickedMarker(a._id, i)" src="/avisos/{{a.imagen}}" class="img-thumbnail" alt="aviso" style="overflow: auto; max-height: 150px; max-width: 200px;">
+        </agm-info-window>
+
       </agm-marker>
     </agm-marker-cluster>
 
