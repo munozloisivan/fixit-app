@@ -23,7 +23,6 @@ router.get('/stats', function(req, res, next) {
     var labels = [];
     var cantidad = [];
     for (index in categorias){
-      console.log(categorias[index]._id);
       labels.push(categorias[index].tipo);
       Aviso.find({categoria: categorias[index]._id}).exec(function (err, avisos) {
         if (err) return next(err);
@@ -31,12 +30,12 @@ router.get('/stats', function(req, res, next) {
         var count = 0;
         for ( index2 in avisos){
           count++;
-          console.log(count);
         }
+       cantidad.push(count);
       });
     }
-    console.log(labels);
     console.log(cantidad);
+    console.log(labels);
     res.json("hecho");
   });
 

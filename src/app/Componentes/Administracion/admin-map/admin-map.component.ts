@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AvisoService} from "../../../Services/aviso.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {CategoriaService} from "../../../Services/categoria.service";
+import {AvisoService} from '../../../Services/aviso.service';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {CategoriaService} from '../../../Services/categoria.service';
+import { ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-admin-map',
@@ -10,6 +11,8 @@ import {CategoriaService} from "../../../Services/categoria.service";
 })
 export class AdminMapComponent implements OnInit {
 
+  @ViewChild('map_container') elementView: ElementRef;
+
   avisos: any;
   ciudad_filtrado: any;
   tipo_filtrado: any;
@@ -17,10 +20,13 @@ export class AdminMapComponent implements OnInit {
   init_lat: number;
   init_lon: number;
   init_zoom: number;
+  viewHeight: number;
 
   constructor(private avisoService: AvisoService, private categoriasService: CategoriaService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.viewHeight = this.elementView.nativeElement.offsetHeight;
+    console.log(this.viewHeight);
     this.setMapa();
     this.getAvisoList();
     this.getCategorias();

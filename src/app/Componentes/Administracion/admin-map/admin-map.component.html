@@ -41,8 +41,9 @@
   </div>
 </div>
 
-<div id="mapa" class="container-fluid" style="margin-top: 15px">
+<div class="maps" #map_container>
   <agm-map
+    [style.height.px]="viewHeight"
     [latitude]="init_lat"
     [longitude]="init_lon"
     [zoom]="init_zoom"
