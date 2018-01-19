@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../Services/usuario.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-details',
@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class UsuarioDetailsComponent implements OnInit {
 
-  usuario: any;
+  usuario: {};
 
   constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private router: Router) {
   }
@@ -24,8 +24,8 @@ export class UsuarioDetailsComponent implements OnInit {
 
   getUsuarioDetails(id) {
     this.usuarioService.showUsuario(id).then((res) => {
-      console.log('Usuario:' + JSON.stringify(res));
-      this.usuario = JSON.stringify(res);
+      console.log('Usuario:' + res);
+      this.usuario = res;
     }, (err) => {
       console.log(err);
     });

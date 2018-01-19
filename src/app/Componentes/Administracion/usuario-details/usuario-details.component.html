@@ -101,28 +101,28 @@
             </div>
           </div>
           <div class="panel-body">
-              <table class="table table-striped table-bordered table-list table-hover">
-                <thead>
-                <tr>
-                  <th>Imagen</th>
-                  <th>Ciudad</th>
-                  <th>CP</th>
-                  <th>Fecha</th>
-                  <th>Seguimiento</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let a of usuario.avisos.creados" (click)="getAvisoDetails(a._id)">
-                  <td class="text-center">
-                    <img src="/avisos/{{a.imagen}}" class="img" alt="image" style="overflow: auto; max-height: 50px; max-width: 100px;">
-                  </td>
-                  <td>{{ a.datosUbicacion.ciudad }}</td>
-                  <td>{{ a.datosUbicacion.codPostal }}</td>
-                  <td>{{ a.fecha | date:'dd-MM-yyyy HH:mm':'+0100' }}</td>
-                  <td>{{ a.seguimiento}}</td>
-                </tr>
-                </tbody>
-              </table>
+            <table class="table table-striped table-bordered table-list table-hover">
+              <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Ciudad</th>
+                <th>CP</th>
+                <th>Fecha</th>
+                <th>Seguimiento</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let a of usuario.avisos.creados" (click)="getAvisoDetails(a._id)">
+                <td class="text-center">
+                  <img src="/avisos/{{a.imagen}}" class="img" alt="image" style="overflow: auto; max-height: 50px; max-width: 100px;">
+                </td>
+                <td>{{ a.datosUbicacion.ciudad }}</td>
+                <td>{{ a.datosUbicacion.codPostal }}</td>
+                <td>{{ a.fecha | date:'dd-MM-yyyy HH:mm':'+0100' }}</td>
+                <td>{{ a.seguimiento}}</td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
