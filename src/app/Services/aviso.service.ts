@@ -106,9 +106,21 @@ export class AvisoService {
     });
   }
 
-  getAvisosBySubtipo(subtipo) {
+  getAvisosByCiudad(subtipo) {
     return new Promise((resolve, reject) => {
-      this.http.get('/aviso/filter/subtipo/' + subtipo)
+      this.http.get('/aviso/filter/ciudad/' + subtipo)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  getAvisosByCP(subtipo) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/aviso/filter/cp/' + subtipo)
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);

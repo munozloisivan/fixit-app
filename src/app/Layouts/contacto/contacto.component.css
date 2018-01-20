@@ -1,7 +1,9 @@
 * {
   box-sizing: border-box;
 }
-
+agm-map {
+  height: 550px;
+}
 /* Style inputs */
 input[type=text], select, textarea {
   width: 100%;

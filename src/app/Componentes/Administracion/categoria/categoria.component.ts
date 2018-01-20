@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { CategoriaService} from '../../Services/categoria.service';
+import { CategoriaService} from '../../../Services/categoria.service';
 
 @Component({
   selector: 'app-categoria',
@@ -48,15 +48,6 @@ export class CategoriaComponent implements OnInit {
 
   addCategoria(id) {
     this.categoriaService.saveCategoria(id).then((result) => {
-      this.getCategoriaList();
-      // this.router.navigate(['/dashboard']);
-    }, (err) => {
-      console.log(err);
-    });
-  }
-
-  updateCategoria(id, data) {
-    this.categoriaService.updateCategoria(id, data).then((result) => {
       this.getCategoriaList();
       // this.router.navigate(['/dashboard']);
     }, (err) => {

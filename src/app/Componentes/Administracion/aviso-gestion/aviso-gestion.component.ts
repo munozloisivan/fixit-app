@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AvisoService } from '../../../Services/aviso.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { DatePipe } from '@angular/common';
+import {CategoriaService} from '../../../Services/categoria.service';
 
 @Component({
   selector: 'app-aviso-gestion',
@@ -17,15 +18,34 @@ export class AvisoGestionComponent implements OnInit {
   aviso: any;
   avisomodal: any;
   idavisoedit: any;
+  tipo_filtrado: any;
+  prioridad_filtrado: any;
+  categorias: any;
+  ciudad_filtrado: any;
+  cp_filtrado: any;
 
-  constructor(private avisoService: AvisoService, private router: Router) { }
+  constructor(private avisoService: AvisoService, private categoriasService: CategoriaService, private router: Router) { }
 
   ngOnInit() {
     this.getAvisoList();
+    this.getCategorias();
   }
+
   getAvisoList() {
     this.avisoService.getAllAvisos().then((res) => {
       this.aviso = res;
+      this.tipo_filtrado = null;
+      this.prioridad_filtrado = null;
+      this.cp_filtrado = null;
+      this.ciudad_filtrado = null;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  getCategorias() {
+    this.categoriasService.getAllCategorias().then((res) => {
+      this.categorias = res;
     }, (err) => {
       console.log(err);
     });
@@ -47,8 +67,8 @@ export class AvisoGestionComponent implements OnInit {
     });
   }
 
-  getAvisosBySubtipo(subtipo) {
-    this.avisoService.getAvisosBySubtipo(subtipo).then(res => {
+  getAvisosByCiudad(ciudad) {
+    this.avisoService.getAvisosByCiudad(ciudad).then(res => {
       this.aviso = res;
     }, (err) => {
       console.log(err);
@@ -57,6 +77,14 @@ export class AvisoGestionComponent implements OnInit {
 
   getAvisosByPrioridad(tipo) {
     this.avisoService.getAvisosByPrioridad(tipo).then(res => {
+      this.aviso = res;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  getAvisosByCP(tipo) {
+    this.avisoService.getAvisosByCP(tipo).then(res => {
       this.aviso = res;
     }, (err) => {
       console.log(err);
@@ -73,22 +101,5 @@ export class AvisoGestionComponent implements OnInit {
 
   getAvisoDetails(id) {
     this.router.navigate(['/aviso-details', id]);
-  }
-
-  deleteAviso(id) {
-    this.avisoService.deleteAviso(id).then((result) => {
-      this.getAvisoList();
-      // this.router.navigate(['/dashboard']);
-    }, (err) => {
-      console.log(err);
-    });
-  }
-
-  updateAviso(data) {
-    this.avisoService.updateAviso(this.idavisoedit, data).then((result) => {
-      this.aviso = result;
-    }, (err) => {
-      console.log(err);
-    });
   }
 }

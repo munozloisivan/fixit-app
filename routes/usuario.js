@@ -234,7 +234,7 @@ router.post('/:id/addaviso', function(req, res) {
 
     Usuario.update({_id: idUsuario},{ $push : { "avisos.creados" : idAviso }}, function (err, usuario) {
       if (err) console.log(err);
-      res.json(usuario);
+      res.json(aviso);
     });
   });
 });

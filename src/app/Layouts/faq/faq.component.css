@@ -1,28 +1,51 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.faq-class {
+  /* Full height */
+  height: 100%;
+}
+
+
+.bg {
+  position: relative !important;
+  /* The image used */
+  background-image: url("http://147.83.7.158/assets/back_nologo.jpg") !important;
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {height: 100%}
 
-/* Set gray background color and 100% height */
-.sidenav {
-   background-color: #f1f1f1;
-   height: 100%;
-   color: #000;
- }
-.sidenav a{
-    color: #000 !important;
-  }
+/*!* Set gray background color and 100% height *!*/
+/*.sidenav {*/
+   /*background-color: #f1f1f1;*/
+   /*height: 100%;*/
+   /*color: #000;*/
+ /*}*/
+/*.sidenav a{*/
+    /*color: #000 !important;*/
+  /*}*/
 
-  .faq-class{
-    margin: 10px !important;
-  }
+  /*.faq-class{*/
+    /*margin: 10px !important;*/
+  /*}*/
 
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-  .sidenav {
-    height: auto;
-    padding: 15px;
-  }
-  .row.content {height: auto;}
-}
+/*!* On small screens, set height to 'auto' for sidenav and grid *!*/
+/*@media screen and (max-width: 767px) {*/
+  /*.sidenav {*/
+    /*height: auto;*/
+    /*padding: 15px;*/
+  /*}*/
+  /*.row.content {height: auto;}*/
+/*}*/
 
 button.accordion {
   background-color: #eee;

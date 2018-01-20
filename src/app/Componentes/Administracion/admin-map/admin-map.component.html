@@ -1,18 +1,70 @@
 <app-navbar-dashboard></app-navbar-dashboard>
 
-<div class="container-fluid" style="margin-top: 15px">
+<div id="filtros" class="col-md-3">
+  <div class="panel panel-default panel-table">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col col-xs-6">
+          <h3 class="panel-title">Filtros</h3>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered table-list">
+        <tbody>
+        <tr>
+          <td>
+            <select style="height: 30px !important;" class="form-control" [(ngModel)]="tipo_filtrado">
+              <option *ngFor="let c of categorias" [ngValue]="c.tipo">
+                {{c.tipo}}
+              </option>
+            </select>
+          </td>
+          <td>
+            <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByTipo(tipo_filtrado)">Filtrar por categoría</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input style="height: 22px !important;" placeholder="Ciudad" type="text" class="form-control" [(ngModel)]="ciudad_filtrado" name="ciudad" id="ciudad" required>
+          </td>
+          <td>
+            <a class="btn btn-info btn-xs" style="display: block" (click)="getAvisosByCiudad(ciudad_filtrado)">Filtrar por ciudad</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="col-md-12" style="padding: 3px">
+        <a class="btn btn-warning btn-xs" style="display: block" (click)="getAvisoList()">Limpiar filtros</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="maps" #map_container>
   <agm-map
-    [latitude]="41.390205"
-    [longitude]="2.154007"
-    [zoom]="3">
+    [style.height.px]="viewHeight"
+    [latitude]="init_lat"
+    [longitude]="init_lon"
+    [zoom]="init_zoom"
+    [clickableIcons] = "false"
+    [mapTypeId]= "'roadmap'"
+    [minZoom]="3"
+    [streetViewControl]="false">
 
-    <agm-marker
-      *ngFor="let a of avisos; let i = index"
-      (markerClick)="clickedMarker(a._id, i)"
-      [latitude]="a.localizacion.lat"
-      [longitude]="a.localizacion.lon">
+    <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+      <agm-marker
+        *ngFor="let a of avisos; let i = index"
+        [latitude]="a.localizacion.lat"
+        [longitude]="a.localizacion.lon"
+        [iconUrl]="'assets/iconos/' + a.categoria.icono">
 
-    </agm-marker>
+        <agm-info-window>
+          <img (click)="clickedMarker(a._id, i)" src="/avisos/{{a.imagen}}" class="img-thumbnail" alt="aviso" style="overflow: auto; max-height: 150px; max-width: 200px;">
+        </agm-info-window>
+
+      </agm-marker>
+    </agm-marker-cluster>
 
 
   </agm-map>

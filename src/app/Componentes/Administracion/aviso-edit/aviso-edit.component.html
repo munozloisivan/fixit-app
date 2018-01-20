@@ -1,0 +1,43 @@
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid">
+
+  <div class="col-md-4 col-md-offset-4" style="margin-top: 15px">
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title"><strong>{{avisomodal._id}}</strong></h3>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body" style="overflow: hidden">
+        <form #categoriaForm="ngForm" style="padding: 10px">
+          <div class="form-group">
+            <label>Ciudad</label>
+            <input type="text" class="form-control" [(ngModel)]="avisomodal.datosUbicacion.ciudad" name="ciudad" id="ciudad" required>
+          </div>
+          <div class="form-group">
+            <label>Categoría</label>
+            <p>Actual: {{avisomodal.categoria.tipo}}</p>
+            <select class="form-control" [(ngModel)]="avisomodal.categoria" [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let c of categorias" [ngValue]="c._id" name="cat">{{c.tipo}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <input type="text" class="form-control" [(ngModel)]="avisomodal.descripcion" name="desc" id="descripcion" required>
+          </div>
+          <div class="form-group">
+            <label>Seguimiento</label>
+            <input type="text" class="form-control" [(ngModel)]="avisomodal.seguimiento" name="seg" id="seguimiento" required>
+          </div>
+          <div class="col-md-12 text-center" style="margin-bottom: 10px">
+            <button type="button" class="btn btn-success" (click)="updateAviso(avisomodal._id, avisomodal)">Actualizar</button>
+            <button type="button" class="btn btn-default" [routerLink]="['/aviso-details', avisomodal._id]">Atrás</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

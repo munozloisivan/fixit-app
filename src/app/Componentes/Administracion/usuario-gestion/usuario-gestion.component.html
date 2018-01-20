@@ -1,0 +1,105 @@
+<app-navbar-dashboard></app-navbar-dashboard>
+
+<div class="container-fluid" style="margin-top: 25px">
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <h3 class="panel-title">Filtros</h3>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <table class="table table-bordered table-list">
+            <tbody>
+            <tr>
+              <td>
+                <input placeholder="Nombre" type="text" class="form-control" [(ngModel)]="categoria_filtrado" name="categoria" id="categoria">
+              </td>
+              <td>
+                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByCategoria(categoria_filtrado)">Filtrar por nombre</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input placeholder="Teléfono" type="text" class="form-control" [(ngModel)]="tipo_filtrado" name="tipo" id="tipo" required>
+              </td>
+              <td>
+                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByTipo(tipo_filtrado)">Filtrar por teléfono</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input placeholder="CP" type="text" class="form-control" [(ngModel)]="subtipo_filtrado" name="subtipo" id="subtipo" required>
+              </td>
+              <td>
+                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosBySubtipo(subtipo_filtrado)">Filtrar por CP</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input placeholder="DNI" type="text" class="form-control" [(ngModel)]="prioridad_filtrado" name="prioridad" id="prioridad" required>
+              </td>
+              <td>
+                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByPrioridad(prioridad_filtrado)">Filtrar por DNI</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="col-md-12" style="padding: 3px">
+            <a class="btn btn-info btn-sm" style="display: block"  (click)="getAvisosOrderedByDate()">Ordenar por apellido</a>
+          </div>
+          <div class="col-md-12" style="padding: 3px">
+            <a class="btn btn-warning btn-sm" style="display: block" (click)="getAvisoList()">Limpiar filtros</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="panel panel-default panel-table">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col col-xs-6">
+              <h3 class="panel-title">Lista de usuarios</h3>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <table class="table table-bordered table-list table-hover" [mfData]="usuarios" #mf="mfDataTable"
+                 [mfRowsOnPage]="5">
+            <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Alias</th>
+              <th>DNI</th>
+              <th>Teléfono</th>
+              <th>CP</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let a of mf.data" (click)="getUsuarioDetails(a._id)">
+              <td>
+                <img src="/usuarios/{{a.imagen}}" class="img-thumbnail" alt="usuario" style="overflow: auto; max-height: 50px; max-width: 100px;">
+              </td>
+              <td>{{ a.nombre }}</td>
+              <td>{{ a.apellidos }}</td>
+              <td>{{ a.alias }}</td>
+              <td>{{ a.dni }}</td>
+              <td>{{ a.telefono}}</td>
+              <td>{{a.codigoPostal}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -12,18 +12,18 @@
     <input type="email" class="form-control" [(ngModel)]="email" name="email" id="email" required>
   </div>
   <div class="form-group">
-    <label for="p">Contraseña</label>
+    <label for="password">Contraseña</label>
     <input type="password" class="form-control" [(ngModel)]="password" name="password" id="password" required>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-5">
-      <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Entrar</button>
+    <div class="text-center">
+      <button style="width: 150px !important;" type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Entrar</button>
     </div>
   </div>
 </form>
 
-<div class="col-sm-offset-5">
-  <button  class="btn btn-primary" (click)="loginF()">Facebook</button>
+<div class="text-center">
+  <button style="width: 150px !important;" class="btn btn-primary" (click)="loginF()">Facebook</button>
 </div>
 
 <div *ngIf="display" class="list-group">

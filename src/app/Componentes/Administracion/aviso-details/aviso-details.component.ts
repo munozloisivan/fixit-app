@@ -22,6 +22,19 @@ export class AvisoDetailsComponent implements OnInit {
     this.getAvisoDetails(this.route.snapshot.params['id']);
   }
 
+  goToAutor(id) {
+    this.router.navigate(['/usuario-details', id]);
+  }
+
+  deleteAviso(id) {
+    this.avisoService.deleteAviso(id).then((result) => {
+      this.router.navigate(['/admin-avisos']);
+      // this.router.navigate(['/dashboard']);
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
   getAvisoDetails(id) {
     this.avisoService.showAviso(id).then((res) => {
       this.avisomodal = res;
