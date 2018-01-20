@@ -37,7 +37,7 @@ mongoose.connect('mongodb://147.83.7.158:27017/fixitest', options, function(err,
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({'extended':'false'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'public')));
 
