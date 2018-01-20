@@ -16,6 +16,31 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/stats', function(req, res, next) {
+  Categoria.find().exec(function (err, categorias) {
+    if (err) return next(err);
+
+    var labels = [];
+    var cantidad = [];
+    for (index in categorias){
+      labels.push(categorias[index].tipo);
+      Aviso.find({categoria: categorias[index]._id}).exec(function (err, avisos) {
+        if (err) return next(err);
+
+        var count = 0;
+        for ( index2 in avisos){
+          count++;
+        }
+       cantidad.push(count);
+      });
+    }
+    console.log(cantidad);
+    console.log(labels);
+    res.json("hecho");
+  });
+
+});
+
 /* GET SINGLE AVISO BY ID */
 router.get('/:id', function(req, res, next) {
   Aviso.findById(req.params.id).populate('categoria').populate('autor').exec(function (err, aviso) {
@@ -40,7 +65,7 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
-/* UPDATE CATEGORIA */
+/* UPDATE AVISO */
 router.put('/:id', function(req, res, next) {
   Aviso.findByIdAndUpdate(req.params.id, req.body, function (err, aviso) {
     if (err) return next(err);
@@ -179,5 +204,8 @@ router.post('/image/:id', md_upload, function (req, res) {
 
   //res.status(200).send({path: file_path, split: file_split, name: file_name, ext: file_ext})
 });
+
+
+/*DELETE AVISOS IF DELETE STUDENT*/
 
 module.exports = router;

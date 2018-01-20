@@ -27,10 +27,10 @@ export class UsuarioLoginComponent implements OnInit {
 
   ngOnInit() {
     FB.init({
-      appId: '130567867638561',
+      appId: '2023582221252986',
       cookie: true,
       xfbml: true,
-      version: 'v2.8'
+      version: 'v2.11'
     });
   }
 

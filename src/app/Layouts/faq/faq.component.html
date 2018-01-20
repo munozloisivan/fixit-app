@@ -1,29 +1,31 @@
 <app-navbar-home></app-navbar-home>
 
-<div class="container-fluid faq-class">
-  <div class="row content">
-    <div class="col-sm-4 sidenav">
-      <h4>
-        <strong>Preguntas Frecuentes</strong>
-      </h4>
-      <ul class="nav nav-pills nav-stacked">
-        <li>
-          <a href="#section2">General</a>
-        </li>
-        <li>
-          <a href="#section3">Problemas usuario</a>
-        </li>
-        <li>
-          <a href="#section4">Cómo usar Fixit</a>
-        </li>
-        <li>
-          <a href="#section5">¿Todavía no usas Fixit?</a>
-        </li>
-      </ul>
-      <br>
-    </div>
+<div class="bg">
 
-    <div class="col-sm-8">
+<div class="faq-class">
+  <!--<div class="row content">-->
+    <!--<div class="col-sm-4 sidenav">-->
+      <!--<h4>-->
+        <!--<strong>Preguntas Frecuentes</strong>-->
+      <!--</h4>-->
+      <!--<ul class="nav nav-pills nav-stacked">-->
+        <!--<li>-->
+          <!--<a href="#section2">General</a>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a href="#section3">Problemas usuario</a>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a href="#section4">Cómo usar Fixit</a>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a href="#section5">¿Todavía no usas Fixit?</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+      <!--<br>-->
+    <!--</div>-->
+
+    <div class="col-sm-12">
       <!-- <button id="a1" class="accordion">¿Cúando estará disponible FIXIT?</button>
       <div class="panel">
         <br>
@@ -76,29 +78,24 @@
         <br>
         <p>En tu panel de usuario, puedes ver todos los avisos que has creado o apoyado.</p>
         <br>
-      </div> -->
+      </div> 0-->
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <strong>¿Cúando estará disponible FIXIT?</strong>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              Actualmente la aplicación se encuentra en desarrollo.
-          <br>
-          No obstante puedes mantenerte informado acerca de los avances siguiéndonos en las redes sociales.
-          <br><br>
-          <div id="enlaces-faq">
-          <strong><a href="https://twitter.com/eaCodersG3">Twitter: @eaCodersG3</a></strong>
-          <br>
-          <strong><a href="https://github.com/munozloisivan/fixit-app">Github</a></strong>
-        </div>
-            </div>
-          </div>
+        <!--<div class="panel panel-default">-->
+          <!--<div class="panel-heading" role="tab" id="headingOne">-->
+            <!--<h4 class="panel-title">-->
+              <!--<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
+                <!--<strong>¿Cúando estará disponible FIXIT?</strong>-->
+              <!--</a>-->
+            <!--</h4>-->
+          <!--</div>-->
+          <!--<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">-->
+            <!--<div class="panel-body">-->
+              <!--Actualmente la aplicación se encuentra en desarrollo.-->
+          <!--<br>-->
+          <!--No obstante puedes mantenerte informado acerca de los avances siguiéndonos en las redes sociales.-->
+        <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
         </div>
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingTwo">
@@ -109,7 +106,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
               Fixit es una aplicación para abrir un canal de comunicación entre la gente y los servicios de mantenimiento y gestión de
               las cuidades Todo el mundo puede contribuir a mantener su cuidad en perfecto estado, notificando de los desperfectos
@@ -127,7 +124,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
             <div class="panel-body">
               Todavía no esta lista la aplicación para dispositivos móviles, pero será tan fácil de de descargar en instalar como lo es
               respirar.
@@ -143,27 +140,27 @@
               </a>
             </h4>
           </div>
-          <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+          <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
             <div class="panel-body">
               Observa, fotografía, describe, publica. Fácil ¿Verdad?
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingFive">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false"
-                aria-controls="collapseFive">
-                <strong>He olvidado mi contraseña de acceso</strong>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-            <div class="panel-body">
-              Puede generar una nueva contraseña a través del enlace que se encuentra en el inicio de sesión.
-            </div>
-          </div>
-        </div>
+        <!--<div class="panel panel-default">-->
+          <!--<div class="panel-heading" role="tab" id="headingFive">-->
+            <!--<h4 class="panel-title">-->
+              <!--<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false"-->
+                <!--aria-controls="collapseFive">-->
+                <!--<strong>He olvidado mi contraseña de acceso</strong>-->
+              <!--</a>-->
+            <!--</h4>-->
+          <!--</div>-->
+          <!--<div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">-->
+            <!--<div class="panel-body">-->
+              <!--Puede generar una nueva contraseña a través del enlace que se encuentra en el inicio de sesión.-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingSix">
             <h4 class="panel-title">
@@ -173,7 +170,7 @@
               </a>
             </h4>
           </div>
-          <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+          <div id="collapseSix" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSix">
             <div class="panel-body">
               Apoyar una aviso significa apoyar a al bienestar de tu ciudad manteniendo la limpieza y el orden de la aplicación. Si hay
               un desperfecto que desear reportar, pero alguien ya lo ha hecho anteriormente, puedes apoyarle de manera rápida
@@ -181,24 +178,24 @@
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingSeven">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false"
-                aria-controls="collapseThree">
-                <strong>¿Cómo se gestiona un aviso una vez lo he realizado?</strong>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
-            <div class="panel-body">
-              En tu panel de usuario, puedes ver todos los avisos que has creado o apoyado.
-            </div>
-          </div>
-        </div>
+        <!--<div class="panel panel-default">-->
+          <!--<div class="panel-heading" role="tab" id="headingSeven">-->
+            <!--<h4 class="panel-title">-->
+              <!--<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false"-->
+                <!--aria-controls="collapseThree">-->
+                <!--<strong>¿Cómo se gestiona un aviso una vez lo he realizado?</strong>-->
+              <!--</a>-->
+            <!--</h4>-->
+          <!--</div>-->
+          <!--<div id="collapseSeven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSeven">-->
+            <!--<div class="panel-body">-->
+              <!--En tu panel de usuario, puedes ver todos los avisos que has creado o apoyado.-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
     </div>
-  </div>
+
 </div>
 
 <app-footer></app-footer>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../Services/usuario.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-details',
@@ -11,7 +11,8 @@ export class UsuarioDetailsComponent implements OnInit {
 
   usuario: {};
 
-  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
     this.getUsuarioDetails(this.route.snapshot.params['id']);
@@ -19,6 +20,15 @@ export class UsuarioDetailsComponent implements OnInit {
 
   getAvisoDetails(id) {
     this.router.navigate(['/aviso-details', id]);
+  }
+
+  deleteUsuario(id) {
+    this.usuarioService.deleteUsuario(id).then((result) => {
+      this.router.navigate(['/admin-usuarios']);
+      // this.router.navigate(['/dashboard']);
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   getUsuarioDetails(id) {

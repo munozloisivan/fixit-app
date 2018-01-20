@@ -45,12 +45,15 @@ import { LogRegUserComponent } from './Layouts/log-reg-user/log-reg-user.compone
 import {AuthGuard} from './Guards/auth.guard';
 import { NavbarUsuarioComponent } from './Tools/navbar-usuario/navbar-usuario.component';
 import { LogRegAdminComponent } from './Layouts/log-reg-admin/log-reg-admin.component';
-import {AuthuserGuard} from "./Guards/authuser.guard";
+import {AuthuserGuard} from './Guards/authuser.guard';
 import { AdminMapComponent } from './Componentes/Administracion/admin-map/admin-map.component';
 import { DatePipe } from '@angular/common';
 import { UsuarioGestionComponent } from './Componentes/Administracion/usuario-gestion/usuario-gestion.component';
-import { UsuarioDetailsComponent } from './Componentes/Administracion/usuario-details/usuario-details.component';
 import { CategoriaEditComponent } from './Componentes/Administracion/categoria-edit/categoria-edit.component';
+import {DataTableModule} from 'angular2-datatable';
+import { EstadisticasComponent } from './Componentes/Administracion/estadisticas/estadisticas.component';
+import { UsuarioEditComponent } from './Componentes/Administracion/usuario-edit/usuario-edit.component';
+import { UsuarioDetailsComponent } from './Componentes/Administracion/usuario-details/usuario-details.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -65,8 +68,10 @@ const appRoutes: Routes = [
   { path: 'admin-avisos', component: DashboardAdminComponent, canActivate: [AuthGuard]},
   { path: 'admin-usuarios', component: UsuarioGestionComponent, canActivate: [AuthGuard]},
   { path: 'admin-map', component: AdminMapComponent, canActivate: [AuthGuard]},
+  { path: 'admin-stats', component: EstadisticasComponent, canActivate: [AuthGuard]},
   { path: 'aviso-details/:id', component: AvisoDetailsComponent, canActivate: [AuthGuard]},
   { path: 'usuario-details/:id', component: UsuarioDetailsComponent, canActivate: [AuthGuard]},
+  { path: 'usuario-edit/:id', component: UsuarioEditComponent, canActivate: [AuthGuard]},
   { path: 'aviso-edit/:id', component: AvisoEditComponent, canActivate: [AuthGuard]},
   { path: 'usuarios', component: UsuarioComponent, canActivate: [AuthGuard]},
   { path: 'avisos', component: AvisoComponent},
@@ -113,12 +118,15 @@ const appRoutes: Routes = [
     LogRegAdminComponent,
     AdminMapComponent,
     UsuarioGestionComponent,
-    UsuarioDetailsComponent,
-    CategoriaEditComponent
+    CategoriaEditComponent,
+    EstadisticasComponent,
+    UsuarioEditComponent,
+    UsuarioDetailsComponent
   ],
   imports: [BrowserModule,
     FormsModule,
     HttpModule,
+    DataTableModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBkEnyDP9tEWPI97FdYK82xyx2VDGQvt-A'
     }),

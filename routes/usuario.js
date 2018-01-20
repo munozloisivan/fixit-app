@@ -152,9 +152,19 @@ router.post('/image/:id', md_upload, function (req, res) {
 
 /* DELETE USUARIO */
 router.delete('/:id', function(req, res, next) {
-  Usuario.findByIdAndRemove(req.params.id, req.body, function (err, usuario) {
+
+  Usuario.findById(req.params.id, 'avisos.creados -_id').exec(function(err, result) {
     if (err) return next(err);
-    res.json(usuario);
+    console.log(result.avisos.creados);
+
+      Aviso.remove({'_id':{'$in':result.avisos.creados}}, function (err, result) {
+        if (err) return next(err);
+
+        Usuario.findByIdAndRemove(req.params.id, req.body, function (err, usuario) {
+          if (err) return next(err);
+          res.json(usuario);
+        });
+      });
   });
 });
 
@@ -175,7 +185,7 @@ router.post('/:id/aviso/:idaviso', function (req, res, next) {
 });
 
 
-/* ELIMIINAR AVISO A UN USUARIO */
+/* ELIMINAR AVISO A UN USUARIO */
 router.delete('/:id/aviso/:idaviso', function (req, res, next) {
   var id = req.params.id;
   var idaviso = req.params.idaviso;
@@ -234,10 +244,84 @@ router.post('/:id/addaviso', function(req, res) {
 
     Usuario.update({_id: idUsuario},{ $push : { "avisos.creados" : idAviso }}, function (err, usuario) {
       if (err) console.log(err);
-      res.json(usuario);
+      res.json(aviso);
     });
   });
 });
+
+
+//
+//
+//
+// /* obtener token olvidar contraseña */
+// router.post('/olvideContraseña', function(req, res, next) {
+//
+//
+//
+//   async.waterfall([
+//     function(done) {
+//       User.findOne({
+//         email: req.body.email
+//       }).exec(function(err, user) {
+//         if (user) {
+//           done(err, user);
+//         } else {
+//           done('User not found.');
+//         }
+//       });
+//     },
+//     function(user, done) {
+//       // create the random token
+//       crypto.randomBytes(20, function(err, buffer) {
+//         var token = buffer.toString('hex');
+//         done(err, user, token);
+//       });
+//     },
+//     function(user, token, done) {
+//       User.findByIdAndUpdate({ _id: user._id }, { token_temporal: token, token_caducidad: Date.now() + 5550000 }, { upsert: true, new: true }).exec(function(err, new_user) {
+//         done(err, token, new_user);
+//       });
+//     },
+//     function(token, user, done) {
+//       console.log("http://localhost:3000/#/insertarContraseña?token="+token);
+//     }
+//   ], function(err) {
+//     next(err);
+//   });
+// });
+// router.post('/resetearContrasena', function(req, res, next) {
+//   User.findOne({
+//     token_temporal: req.body.token,
+//     token_caducidad: {
+//       $gt: Date.now()
+//     }
+//   }).exec(function(err, user) {
+//     if (!err && user) {
+//       bcrypt.hash(req.body.password, null, null, function (err, hash) {
+//         if (err)
+//           next(err);
+//         else{
+//           user.password = hash;
+//         }
+//       });
+//       user.token_temporal = undefined;
+//       user.token_caducidad = undefined;
+//       user.save(function(err) {
+//         if (err) {
+//           return res.status(422).send({
+//             message: err
+//           });
+//         } else {
+//           console.log("Se ha guardado bien la contraseña reseteada");//Aqui tendria que ir el aviso a la persona de que se ha reseteado
+//         }
+//       });
+//     } else {
+//       return res.status(400).send({
+//         message: 'token invalido'
+//       });
+//     }
+//   });
+// });
 
 /* CHANGE PASSWORD */
 /*router.put('/:id/change', function (req, res, next) {

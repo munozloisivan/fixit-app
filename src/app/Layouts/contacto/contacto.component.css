@@ -2,14 +2,14 @@
   box-sizing: border-box;
 }
 agm-map {
-  height: 550px;
+  height: 595px;
 }
 /* Style inputs */
 input[type=text], select, textarea {
   width: 100%;
-  padding: 12px;
+  padding: 5px;
   border: 1px solid #ccc;
-  margin-top: 6px;
+  margin-top: 5px;
   margin-bottom: 16px;
   resize: vertical;
 }
