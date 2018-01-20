@@ -1,3 +1,20 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.bg {
+  /* The image used */
+  background-image: url("http://147.83.7.158/assets/background2.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 h4{
   background-color: #333;
   color: #ebebeb;
