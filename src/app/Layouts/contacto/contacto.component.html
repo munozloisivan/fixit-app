@@ -1,12 +1,11 @@
 <app-navbar-home></app-navbar-home>
 
-<div class="container">
-  <div style="text-align:center">
-    <h2>Contacto</h2>
-    <p>Dejanos tú mensaje y lo atenderemos lo antes posible:</p>
-  </div>
-  <div class="row">
-    <div class="column">
+<div class="row">
+  <div class="col-md-7">
+    <div class="well" style="height: auto;">
+      <h4 class="text-center">
+        Contacta con nosotros
+      </h4>
       <agm-map
         [latitude]="41.275514"
         [longitude]="1.985265"
@@ -17,29 +16,34 @@
           [longitude]="1.985265">
         </agm-marker>
 
-      </agm-map>
-    </div>
-    <div class="column">
-      <form action="/action_page.php">
-        <label for="fname">Nombre</label>
-        <input type="text" id="fname" name="firstname" placeholder="Tu nombre..">
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lastname" placeholder="Tus apellidos..">
-        <label for="city">Ciudad</label>
-        <input type="text" id="city" name="Ciudad" placeholder="Tu ciudad..">
+      </agm-map> </div>
 
-        <label for="Correo">correo</label>
-        <input type="text" id="correo" name="email" placeholder="Tu correo..">
+  </div>
+  <div class="col-md-5">
+    <div class="well" style="height: auto;">
+      <h4 class="text-center">
+        Direcció
+      </h4>
+      <p class="text-center"><strong>EETAC</strong></p>
+      <p class="text-center"><strong> Esteve Terradas, 7</strong></p>
+      <p class="text-center"><strong>08860 Casteldefels, Barcelona</strong></p>
+      <h4 class="text-center">
+        Contacto
+      </h4>
 
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Escribe aquí tu mensaje.." style="height:170px"></textarea>
-
-
-        <input type="submit" value="Enviar">
-      </form>
+      <p class="text-center"><strong>555555555</strong></p>
+      <p class="text-center"><strong>rtrrr7@gmail.com</strong></p>
+      <h4 class="text-center">
+        Xarxes socials
+      </h4>
+      <p class="text-center">
+        <a id="twitter_c" target="_blank" href="https://twitter.com/eaCodersG3" class="fa fa-twitter"></a>
+        <a id="insta_c" target="_blank" href="https://eacod3rs.wordpress.com/author/eacode17/" class="fa fa-wordpress"></a>
+      </p>
     </div>
   </div>
 </div>
+
 <app-footer></app-footer>
 
 
