@@ -205,4 +205,7 @@ router.post('/image/:id', md_upload, function (req, res) {
   //res.status(200).send({path: file_path, split: file_split, name: file_name, ext: file_ext})
 });
 
+
+/*DELETE AVISOS IF DELETE STUDENT*/
+
 module.exports = router;
