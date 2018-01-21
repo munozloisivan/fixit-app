@@ -89,6 +89,14 @@ router.get('/filter/categoria/:categoria', function (req, res, next) {
   });
 });
 
+/*GET AVISOS BY categoria */
+router.get('/filter/seguimiento/:seguimiento', function (req, res, next) {
+  Aviso.find({"seguimiento": req.params.seguimiento }).populate('autor').populate('categoria').exec(function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
 /*GET AVISOS BY TIPO */
 router.get('/filter/tipo/:tipo', function (req, res, next) {
   Categoria.find({"tipo": req.params.tipo}).select('_id').exec(function (err, idcat) {
@@ -135,9 +143,9 @@ router.get('/filter/cp/:ciudad', function (req, res, next) {
   });
 });
 
-/* GET AVISOS ORDERED BY DATE */
-router.get('/filter/date', function (req, res, next) {
-  Aviso.find({}, null, {sort: {fecha: 1 }}).populate('categoria').populate('autor').exec(function (err, result) {
+/* GET AVISOS ORDERED BY APOYOS */
+router.get('/filter/apoyos', function (req, res, next) {
+  Aviso.find({}, null, {sort: {apoyos: -1 }}).populate('categoria').populate('autor').exec(function (err, result) {
     if (err) return next(err);
     res.json(result);
   });

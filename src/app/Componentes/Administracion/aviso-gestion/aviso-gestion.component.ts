@@ -23,6 +23,7 @@ export class AvisoGestionComponent implements OnInit {
   categorias: any;
   ciudad_filtrado: any;
   cp_filtrado: any;
+  seguimiento_filtrado: any;
 
   constructor(private avisoService: AvisoService, private categoriasService: CategoriaService, private router: Router) { }
 
@@ -38,6 +39,7 @@ export class AvisoGestionComponent implements OnInit {
       this.prioridad_filtrado = null;
       this.cp_filtrado = null;
       this.ciudad_filtrado = null;
+      this.seguimiento_filtrado = null;
     }, (err) => {
       console.log(err);
     });
@@ -53,6 +55,16 @@ export class AvisoGestionComponent implements OnInit {
 
   getAvisosByCategoria(categoria) {
     this.avisoService.getAvisosByCategoria(categoria).then(res => {
+      this.aviso = res;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  getAvisosBySeguimiento(seg) {
+    console.log(this.seguimiento_filtrado);
+    console.log(seg);
+    this.avisoService.getAvisosBySeguimiento(seg).then(res => {
       this.aviso = res;
     }, (err) => {
       console.log(err);
@@ -91,8 +103,8 @@ export class AvisoGestionComponent implements OnInit {
     });
   }
 
-  getAvisosOrderedByDate() {
-    this.avisoService.getAvisosOrderedByDate().then(res => {
+  getAvisosOrderedByApoyos() {
+    this.avisoService.getAvisosOrderedByApoyos().then(res => {
       this.aviso = res;
     }, (err) => {
       console.log(err);

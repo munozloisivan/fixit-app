@@ -94,6 +94,18 @@ export class AvisoService {
     });
   }
 
+  getAvisosBySeguimiento(seguimiento) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/aviso/filter/seguimiento/' + seguimiento)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   getAvisosByTipo(tipo) {
     return new Promise((resolve, reject) => {
       this.http.get('/aviso/filter/tipo/' + tipo)
@@ -142,9 +154,9 @@ export class AvisoService {
     });
   }
 
-  getAvisosOrderedByDate() {
+  getAvisosOrderedByApoyos() {
     return new Promise((resolve, reject) => {
-      this.http.get('/aviso/filter/date/')
+      this.http.get('/aviso/filter/apoyos/')
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);

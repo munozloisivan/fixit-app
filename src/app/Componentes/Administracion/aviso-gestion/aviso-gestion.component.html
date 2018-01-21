@@ -33,6 +33,21 @@
             </tr>
             <tr>
               <td>
+                <select style="height: 30px !important;" class="form-control" [(ngModel)]="seguimiento_filtrado">
+                  <option value="Ninguna" selected="selected"></option>
+                  <option value="Notificado">Notificado</option>
+                  <option value="Tramitado">Tramitado</option>
+                  <option value="Reparando">Reparando</option>
+                  <option value="Solucionado">Solucionado</option>
+                  <option value="Descartado">Descartado</option>
+                </select>
+              </td>
+              <td>
+                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosBySeguimiento(seguimiento_filtrado)">Filtrar por seguimiento</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <input style="height: 22px !important;" placeholder="Ciudad" type="text" class="form-control" [(ngModel)]="ciudad_filtrado" name="ciudad" id="ciudad" required>
               </td>
               <td>
@@ -49,9 +64,9 @@
             </tr>
             </tbody>
           </table>
-         <!-- <div class="col-md-12" style="padding: 3px">
-            <a class="btn btn-info btn-xs" style="display: block"  (click)="getAvisosOrderedByDate()">Ordenar por fecha</a>
-          </div>-->
+         <div class="col-md-12" style="padding: 3px">
+            <a class="btn btn-info btn-xs" style="display: block"  (click)="getAvisosOrderedByApoyos()">Ordenar por apoyos</a>
+          </div>
           <div class="col-md-12" style="padding: 3px">
             <a class="btn btn-warning btn-xs" style="display: block" (click)="getAvisoList()">Limpiar filtros</a>
           </div>
