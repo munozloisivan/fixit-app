@@ -54,6 +54,7 @@ import {DataTableModule} from 'angular2-datatable';
 import { EstadisticasComponent } from './Componentes/Administracion/estadisticas/estadisticas.component';
 import { UsuarioEditComponent } from './Componentes/Administracion/usuario-edit/usuario-edit.component';
 import { UsuarioDetailsComponent } from './Componentes/Administracion/usuario-details/usuario-details.component';
+import { DescargarComponent } from './Layouts/descargar/descargar.component';
 
 /*PARA AÑADIR LAS RUTAS DE LA PARTE DE ANGULAR (WEB)
 const appRoutes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -82,7 +83,8 @@ const appRoutes: Routes = [
   { path: 'categoria-edit/:id', component: CategoriaEditComponent, canActivate: [AuthGuard]},
   { path: 'contacto', component: ContactoComponent},
   { path: 'faq', component: FaqComponent},
-  { path: 'usuario/perfil', component: UsuarioPerfilComponent, canActivate: [AuthuserGuard]}
+  { path: 'usuario/perfil', component: UsuarioPerfilComponent, canActivate: [AuthuserGuard]},
+  {path: 'descargar', component: DescargarComponent}
 ];
 
 @NgModule({
@@ -121,7 +123,8 @@ const appRoutes: Routes = [
     CategoriaEditComponent,
     EstadisticasComponent,
     UsuarioEditComponent,
-    UsuarioDetailsComponent
+    UsuarioDetailsComponent,
+    DescargarComponent
   ],
   imports: [BrowserModule,
     FormsModule,

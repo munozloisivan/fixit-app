@@ -1,5 +1,8 @@
 # FixitApp
 
+Es una aplicación para enviar reportes urbanos sobre tu ciudad. Disponemos de una web para administrar los avisos creados por los usuarios.
+Y de una aplicación para los usuarios donde pueden crear sus avisos.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 ## Development server
