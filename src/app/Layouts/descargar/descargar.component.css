@@ -4,7 +4,7 @@ body, html {
 }
 .bgg {
   /* The image used */
-  background-image: url("http://147.83.7.158/assets/descargar.jpg");
+  background-image: url("http://147.83.7.158/assets/descargar.jpeg");
 
   /* Full height */
   height: 100%;
@@ -14,3 +14,7 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
+
+
