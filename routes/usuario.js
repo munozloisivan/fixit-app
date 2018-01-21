@@ -249,7 +249,35 @@ router.post('/:id/addaviso', function(req, res) {
     });
   });
 });
+/*GET AVISOS BY NOMBRE */
+router.get('/filter/nombre/:nombre', function (req, res, next) {
+  Usuario.find({"nombre": req.params.nombre }).exec(function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+/*GET AVISOS BY TEL */
+router.get('/filter/telefono/:telefono', function (req, res, next) {
+  Usuario.find({"telefono": req.params.telefono }).exec(function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+/*GET AVISOS BY CP*/
+router.get('/filter/cp/:cp', function (req, res, next) {
+  Usuario.find({"codigoPostal": req.params.cp }).exec(function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 
+/*GET AVISOS BY CP*/
+router.get('/filter/dni/:dni', function (req, res, next) {
+  Usuario.find({"dni": req.params.dni }).exec(function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
 
 //
 //

@@ -161,7 +161,50 @@ export class UsuarioService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Error del servidor'));
   }
-
+  getUsuarioByNombre(nombre) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/usuario/filter/nombre/' + nombre)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+  getUsuarioByTelefono(telefono) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/usuario/filter/telefono/' + telefono)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+  getUsuarioByCp(cp) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/usuario/filter/cp/' + cp)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+  getUsuarioByDni(dni) {
+    return new Promise((resolve, reject) => {
+      this.http.get('/usuario/filter/dni/' + dni)
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 
   /* TO DO TASKS */
 

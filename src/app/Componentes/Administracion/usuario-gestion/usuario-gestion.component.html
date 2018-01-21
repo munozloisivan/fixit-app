@@ -17,43 +17,40 @@
             <tbody>
             <tr>
               <td>
-                <input placeholder="Nombre" type="text" class="form-control" [(ngModel)]="categoria_filtrado" name="categoria" id="categoria">
+                <input style="height: 22px !important;" placeholder="Nombre" type="text" class="form-control" [(ngModel)]="nombre" name="categoria" id="categoria">
               </td>
               <td>
-                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByCategoria(categoria_filtrado)">Filtrar por nombre</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input placeholder="Teléfono" type="text" class="form-control" [(ngModel)]="tipo_filtrado" name="tipo" id="tipo" required>
-              </td>
-              <td>
-                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByTipo(tipo_filtrado)">Filtrar por teléfono</a>
+                <a class="btn btn-info btn-xs" style="display: block" (click)="getUsuarioByNombre(nombre)">Filtrar por nombre</a>
               </td>
             </tr>
             <tr>
               <td>
-                <input placeholder="CP" type="text" class="form-control" [(ngModel)]="subtipo_filtrado" name="subtipo" id="subtipo" required>
+                <input style="height: 22px !important;"placeholder="Teléfono" type="text" class="form-control" [(ngModel)]="telefono" name="tipo" id="tipo" required>
               </td>
               <td>
-                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosBySubtipo(subtipo_filtrado)">Filtrar por CP</a>
+                <a class="btn btn-info btn-xs" style="display: block" (click)="getUsuarioByTelefono(telefono)">Filtrar por teléfono</a>
               </td>
             </tr>
             <tr>
               <td>
-                <input placeholder="DNI" type="text" class="form-control" [(ngModel)]="prioridad_filtrado" name="prioridad" id="prioridad" required>
+                <input style="height: 22px !important;"placeholder="CP" type="text" class="form-control" [(ngModel)]="cp" name="subtipo" id="subtipo" required>
               </td>
               <td>
-                <a class="btn btn-info btn-sm" style="display: block" (click)="getAvisosByPrioridad(prioridad_filtrado)">Filtrar por DNI</a>
+                <a class="btn btn-info btn-xs" style="display: block" (click)="getUsuarioByCp(cp)">Filtrar por CP</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input  style="height: 22px !important; "placeholder="DNI" type="text" class="form-control" [(ngModel)]="dni" name="prioridad" id="prioridad" required>
+              </td>
+              <td>
+                <a class="btn btn-info btn-xs" style="display: block" (click)="getUsuarioByDni(dni)">Filtrar por DNI</a>
               </td>
             </tr>
             </tbody>
           </table>
           <div class="col-md-12" style="padding: 3px">
-            <a class="btn btn-info btn-sm" style="display: block"  (click)="getAvisosOrderedByDate()">Ordenar por apellido</a>
-          </div>
-          <div class="col-md-12" style="padding: 3px">
-            <a class="btn btn-warning btn-sm" style="display: block" (click)="getAvisoList()">Limpiar filtros</a>
+            <a class="btn btn-warning btn-xs" style="display: block" (click)="getUsuarioList()">Limpiar filtros</a>
           </div>
         </div>
       </div>
