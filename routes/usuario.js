@@ -231,6 +231,7 @@ router.post('/:id/addaviso', function(req, res) {
   var idAviso;
   var idUsuario = req.params.id;
 
+  console.log('REQ crear aviso desde usuario :'+ req.toString());
   console.log('ID USUARIO: ' + req.params.id);
   console.log('ID AVISO: ' + req.body._id);
 
