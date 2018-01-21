@@ -10,7 +10,18 @@
               <h3 class="panel-title">{{avisomodal._id}}</h3>
             </div>
             <div class="col col-xs-6 text-right">
-              <button type="button" class="btn btn-sm btn-danger" (click)="deleteAviso(avisomodal._id)">Eliminar</button>
+              <button type="button" class="btn btn-sm btn-danger"
+                      mwlConfirmationPopover
+                      [popoverTitle]="popoverTitle"
+                      [popoverMessage]="popoverMessage"
+                      placement="bottom"
+                      confirmText="Eliminar"
+                      cancelText="Cancelar"
+                      appendToBody="true"
+                      (confirm)="deleteAviso(avisomodal._id)"
+                      (cancel)="cancel = true">
+                Eliminar
+              </button>
               <button type="button" class="btn btn-sm btn-info" [routerLink]="['/aviso-edit', avisomodal._id]">Editar</button>
               <button type="button" class="btn btn-sm btn-primary" [routerLink]="['/admin-avisos']">Ver listado</button>
             </div>

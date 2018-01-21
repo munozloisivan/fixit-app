@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {AvisoService} from '../../../Services/aviso.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+declare var swal: any;
+
 
 @Component({
   selector: 'app-aviso-details',
@@ -16,6 +18,10 @@ export class AvisoDetailsComponent implements OnInit {
   view_lon: any;
   view_lat: any;
 
+  public popoverTitle = '¿Estás seguro?';
+  public popoverMessage = 'Eliminar un aviso es una acción irreversible.';
+  public cancel = false;
+
   constructor(private route: ActivatedRoute, private avisoService: AvisoService, private router: Router) { }
 
   ngOnInit() {
@@ -27,11 +33,21 @@ export class AvisoDetailsComponent implements OnInit {
   }
 
   deleteAviso(id) {
-    this.avisoService.deleteAviso(id).then((result) => {
-      this.router.navigate(['/admin-avisos']);
+   this.avisoService.deleteAviso(id).then((result) => {
       // this.router.navigate(['/dashboard']);
+     swal(
+       'Eliminado',
+       'El aviso se ha eliminado correctamente',
+       'success'
+     );
+      this.router.navigate(['/admin-avisos']);
     }, (err) => {
       console.log(err);
+     swal(
+       'Error',
+       'Ha ocurrido un error al eliminar el aviso',
+       'error'
+     );
     });
   }
 

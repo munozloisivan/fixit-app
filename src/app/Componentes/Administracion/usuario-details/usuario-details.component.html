@@ -10,7 +10,18 @@
               <h3 class="panel-title">{{usuario._id}}</h3>
             </div>
             <div class="col col-xs-6 text-right">
-              <button type="button" class="btn btn-sm btn-danger" (click)="deleteUsuario(usuario._id)">Eliminar</button>
+              <button type="button" class="btn btn-sm btn-danger"
+                      mwlConfirmationPopover
+                      [popoverTitle]="popoverTitle"
+                      [popoverMessage]="popoverMessage"
+                      placement="bottom"
+                      confirmText="Eliminar"
+                      cancelText="Cancelar"
+                      appendToBody="true"
+                      (confirm)="deleteUsuario(usuario._id)"
+                      (cancel)="cancel = true">
+                Eliminar
+              </button>
               <button type="button" class="btn btn-sm btn-info" [routerLink]="['/usuario-edit', usuario._id]">Editar</button>
               <button type="button" class="btn btn-sm btn-primary" [routerLink]="['/admin-usuarios']">Ver listado</button>
             </div>

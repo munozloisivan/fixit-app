@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {CategoriaService} from "../../../Services/categoria.service";
 import {AgmMap} from "@agm/core";
 
+declare let swal: any;
+
 @Component({
   selector: 'app-aviso-edit',
   templateUrl: './aviso-edit.component.html',
@@ -49,9 +51,19 @@ export class AvisoEditComponent implements OnInit {
 
   updateAviso(id, data) {
     this.avisoService.updateAviso(id, data).then((result) => {
+      swal(
+        'Actualizado',
+        'El aviso se ha actualizado correctamente',
+        'success'
+      );
       this.router.navigate(['/aviso-details', id]);
     }, (err) => {
       console.log(err);
+      swal(
+        'Error',
+        'Ha ocurrido un error durante la actualización del aviso',
+        'error'
+      );
     });
   }
 }

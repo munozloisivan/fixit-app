@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService} from '../../../Services/usuario.service';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
+
+declare let swal: any;
+
 
 @Component({
   selector: 'app-usuario-edit',
@@ -27,9 +30,19 @@ export class UsuarioEditComponent implements OnInit {
 
   updateUsuario(id, data) {
     this.usuarioService.updateUsuario(id, data).then((result) => {
+      swal(
+        'Actualizado',
+        'El usuario se ha actualizado correctamente',
+        'success'
+      );
       this.router.navigate(['/usuario-details', id]);
     }, (err) => {
       console.log(err);
+      swal(
+        'Error',
+        'Ha ocurrido un error durante la actualización del usuario',
+        'error'
+      );
     });
   }
 }

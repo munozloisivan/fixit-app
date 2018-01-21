@@ -7,7 +7,7 @@ import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { HttpModule} from '@angular/http';
 import { FormsModule} from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router';
-
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 /* SERVICES */
 import { UsuarioService } from './Services/usuario.service';
 import { LogroService } from './Services/logro.service';
@@ -127,6 +127,9 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     DataTableModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' // set defaults here
+    }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBkEnyDP9tEWPI97FdYK82xyx2VDGQvt-A'
     }),

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CategoriaService} from "../../../Services/categoria.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
+declare let swal: any;
+
 @Component({
   selector: 'app-categoria-edit',
   templateUrl: './categoria-edit.component.html',
@@ -29,9 +31,19 @@ export class CategoriaEditComponent implements OnInit {
 
   updateCategoria(id, data) {
     this.categoriaService.updateCategoria(id, data).then((result) => {
+      swal(
+        'Actualizada',
+        'La categoría se ha actualizado correctamente',
+        'success'
+      );
       this.router.navigate(['/categorias']);
     }, (err) => {
       console.log(err);
+      swal(
+        'Error',
+        'Ha ocurrido un error durante la actualización de la categoría',
+        'error'
+      );
     });
   }
 }
