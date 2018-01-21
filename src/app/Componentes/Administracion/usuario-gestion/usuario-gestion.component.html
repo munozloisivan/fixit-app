@@ -81,7 +81,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let a of mf.data" (click)="getUsuarioDetails(a._id)">
-              <td>
+              <td class="text-center">
                 <img src="/usuarios/{{a.imagen}}" class="img-thumbnail" alt="usuario" style="overflow: auto; max-height: 50px; max-width: 100px;">
               </td>
               <td>{{ a.nombre }}</td>
