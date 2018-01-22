@@ -4,6 +4,7 @@ var express = require('express'),
 
 var Aviso = require('../models/aviso');
 var Categoria = require('../models/categoria');
+var Usuario = require('../models/usuario');
 var fs = require('fs');
 var multipart = require('connect-multiparty');
 var md_upload = multipart({ uploadDir: './public/avisos'});
@@ -213,7 +214,17 @@ router.post('/image/:id', md_upload, function (req, res) {
   //res.status(200).send({path: file_path, split: file_split, name: file_name, ext: file_ext})
 });
 
-
-/*DELETE AVISOS IF DELETE STUDENT*/
+/* GET AVISOS NO APOYADOS POR EL USUARIO */
+router.get('/no_apoyados/:idusuario', function(req, res, next) {
+  Usuario.findById(req.params.idusuario, 'avisos.apoyados -_id').exec(function(err, result) {
+    if (err) return next(err);
+    var avisos = (result.avisos);
+    var apoyados = avisos['apoyados'];
+    Aviso.find({ "_id": { "$nin": apoyados}}, function (err, result) {
+      if (err) return next(err);
+      res.json(result);
+    });
+  });
+});
 
 module.exports = router;
