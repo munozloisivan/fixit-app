@@ -176,11 +176,23 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
-/* AÑADIR AVISO A USUARIO */
-router.post('/:id/aviso/:idaviso', function (req, res, next) {
-  Usuario.update({_id:req.params.id},{ $push: { "avisos.creados" : req.params.idaviso }}, function (err, aviso) {
+/* AÑADIR APOYO A  AVISO de un usuario */
+router.post('/:id/apoyo/:idaviso', function (req, res, next) {
+  Usuario.update({_id:req.params.id},{ $push: { "avisos.apoyados" : req.params.idaviso }}, function (err, usuario) {
     if (err) return next(err);
-    res.json(aviso);
+
+    Aviso.findById(req.params.idaviso).exec(function (err, aviso) {
+      if (err) return next(err);
+      console.log(aviso['apoyos']);
+
+      var apoyos_act = +aviso['apoyos'];
+      apoyos_act = apoyos_act + 1;
+
+      Aviso.findByIdAndUpdate({_id:req.params.idaviso},{ $set: { "apoyos" : apoyos_act }}, function (err, aviso_act) {
+        if (err) return next(err);
+        res.json(aviso);
+      });
+    });
   });
 });
 
