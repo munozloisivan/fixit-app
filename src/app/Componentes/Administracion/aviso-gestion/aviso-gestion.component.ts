@@ -62,8 +62,6 @@ export class AvisoGestionComponent implements OnInit {
   }
 
   getAvisosBySeguimiento(seg) {
-    console.log(this.seguimiento_filtrado);
-    console.log(seg);
     this.avisoService.getAvisosBySeguimiento(seg).then(res => {
       this.aviso = res;
     }, (err) => {
